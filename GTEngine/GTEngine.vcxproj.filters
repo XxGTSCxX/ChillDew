@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_unsorted">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hh;hpp;hxx;hm;inl;inc;ipp;xsd;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{89918e2c-6668-48ed-829e-80e90ed82e4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Architecture">
+      <UniqueIdentifier>{d8b6df07-03c4-4ddf-8ed5-4daba09b78c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Architecture\Application">
+      <UniqueIdentifier>{df9a12b5-c476-428e-bf17-fec500338d44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{6131209d-e4a2-4ed6-9166-d8396af59759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Debug">
+      <UniqueIdentifier>{5f6fa58d-22db-41a5-9bde-a2b5ee3c7e42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Debug\Log">
+      <UniqueIdentifier>{2e1b9030-2699-4b98-99d9-608e9f9b07b0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\GTEngine.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_AppState.h">
+      <Filter>Architecture\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Application.h">
+      <Filter>Architecture\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Core.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_EntryPoint.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_pch.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Debug.h">
+      <Filter>Utility\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_LogFormat.h">
+      <Filter>Utility\Debug\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Logger.h">
+      <Filter>Utility\Debug\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_LogHandler.h">
+      <Filter>Utility\Debug\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_LogType.h">
+      <Filter>Utility\Debug\Log</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\GTE\GTE_Application.cpp">
+      <Filter>Architecture\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTE\GTE_Debug.cpp">
+      <Filter>Utility\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTE\GTE_LogFormat.cpp">
+      <Filter>Utility\Debug\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTE\GTE_Logger.cpp">
+      <Filter>Utility\Debug\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTE\GTE_LogHandler.cpp">
+      <Filter>Utility\Debug\Log</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\GTE\GTE_LogFormat.inl">
+      <Filter>Utility\Debug\Log</Filter>
+    </None>
+    <None Include="source\GTE\GTE_Logger.inl">
+      <Filter>Utility\Debug\Log</Filter>
+    </None>
+  </ItemGroup>
+</Project>

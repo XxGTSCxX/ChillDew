@@ -1,0 +1,8 @@
+# Directories to ignore
+.vs/
+bin/
+bin-int/
+ignore/
+
+# Files to ignore
+*.user
