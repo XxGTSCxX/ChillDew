@@ -25,16 +25,11 @@ extern GTE::Application* GTE::CreateApplication();
 extern void              GTE::DestroyApplication(GTE::Application* app);
 
 // if Win32 is the platform - different entry point for different platforms
-int CALLBACK WinMain( _In_     HINSTANCE hInstance
-                    , _In_opt_ HINSTANCE hPrevInstance // obsolete
-                    , _In_     LPSTR     lpCmdLine
-                    , _In_     int       nCmdShow)
+int CALLBACK WinMain( _In_     [[maybe_unused]] HINSTANCE hInstance
+                    , _In_opt_ [[maybe_unused]] HINSTANCE hPrevInstance // obsolete
+                    , _In_     [[maybe_unused]] LPSTR     lpCmdLine
+                    , _In_     [[maybe_unused]] int       nCmdShow)
 {
-    UNREFERENCED_PARAMETER(hInstance);
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
-    UNREFERENCED_PARAMETER(nCmdShow);
-
 #ifdef _DEBUG
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     //_CrtSetBreakAlloc(2799);

@@ -16,10 +16,18 @@
 // -----------------------------------------------------------------------------
 // STL Headers
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
+#include <stdio.h>
+#include <fcntl.h>
+#include <io.h>
 #include <chrono>
 #include <ctime>
 #include <cstdint>     // std::uint64_t, etc.
 #include <string_view> // great for view only strings
+#include <iostream>
 #include <sstream>
 #include <fstream>
 #include <string>

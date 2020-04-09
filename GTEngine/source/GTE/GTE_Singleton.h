@@ -28,7 +28,7 @@ namespace GTE
         Singleton();
         virtual ~Singleton();
 
-        // Disabling Copy
+        // Disable Copy
         Singleton(Singleton const&)            = delete;
         Singleton(Singleton&&)                 = delete;
         Singleton& operator=(Singleton const&) = delete;
