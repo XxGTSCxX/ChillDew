@@ -1,18 +1,25 @@
 /******************************************************************************/
 /*!
-  \project GTEngine
-  \file    GTEngine.h
+  \project GTE
+  \file    GTE_Log.cpp
   \author  Gabrielle Tan Suan Choo
   \brief
-    All of the exposed headers that can be used by the client.
+    Defines most of the commonly used data by all log features.
 
     All content (C) 2020 DigiPen (SINGAPORE) Corporation, all rights reserved.
     Reproduction or disclosure of this file or its contents without the prior
     written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#pragma once
+#include "GTE_pch.h"
+#include "GTE_Log.h"
 
-#include "GTE/GTE_Application.h"
-#include "GTE/GTE_EntryPoint.h"
-#include "GTE/GTE_Debug.inl"
+namespace GTE
+{
+
+    GTE::string Log::Format::FormatText(GTE::string_view const& text)
+    {
+        return GTE::string{ text };
+    }
+
+}

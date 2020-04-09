@@ -1,18 +1,35 @@
 /******************************************************************************/
 /*!
-  \project GTEngine
-  \file    GTEngine.h
+  \project GTE
+  \file    GTE_ILogger.cpp
   \author  Gabrielle Tan Suan Choo
   \brief
-    All of the exposed headers that can be used by the client.
+    Interface for all Logger classes.
 
     All content (C) 2020 DigiPen (SINGAPORE) Corporation, all rights reserved.
     Reproduction or disclosure of this file or its contents without the prior
     written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#pragma once
+#include "GTE_pch.h"
+#include "GTE_ILogger.h"
 
-#include "GTE/GTE_Application.h"
-#include "GTE/GTE_EntryPoint.h"
-#include "GTE/GTE_Debug.inl"
+namespace GTE
+{
+
+    void ILogger::Enable()
+    {
+        _is_enabled = true;
+    }
+
+    void ILogger::Disable()
+    {
+        _is_enabled = false;
+    }
+
+    bool ILogger::IsEnabled() const
+    {
+        return _is_enabled;
+    }
+
+}

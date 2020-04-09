@@ -16,20 +16,20 @@
 #pragma once
 
 #include "GTE_Core.h"
+#include "GTE_Singleton.inl"
 #include "GTE_AppState.h"
+#include "GTE_Debug.inl"
 #include <Windows.h> // DWORD, BOOL
 
 namespace GTE
 {
 
-    class GTE_API Application
+    class GTE_API Application : public Singleton<Application>
     {
     public:
 
         Application();
-        virtual ~Application() = default;
-
-        static Application* Get();
+        virtual ~Application();
 
         void Run();
         void Pause();
@@ -60,9 +60,8 @@ namespace GTE
 
     private:
 
-        static Application* _application_instance;
-
         //Engine   _engine;
+        Debug    _debugger;
         AppState _app_state = AppState::Load;
         bool     _is_paused = false;
 

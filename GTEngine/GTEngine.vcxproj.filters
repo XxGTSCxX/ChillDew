@@ -20,14 +20,17 @@
     <Filter Include="Utility\Debug">
       <UniqueIdentifier>{5f6fa58d-22db-41a5-9bde-a2b5ee3c7e42}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utility\Debug\Log">
+    <Filter Include="Utility\Log">
       <UniqueIdentifier>{2e1b9030-2699-4b98-99d9-608e9f9b07b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Log\Interfaces">
+      <UniqueIdentifier>{4f6bd850-cc37-480b-a95c-3b5568c43334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Log\Implementations">
+      <UniqueIdentifier>{6c3d9230-08ed-4a7e-862a-2189d4e36038}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\GTEngine.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="source\GTE\GTE_AppState.h">
       <Filter>Architecture\Application</Filter>
     </ClInclude>
@@ -46,18 +49,31 @@
     <ClInclude Include="source\GTE\GTE_Debug.h">
       <Filter>Utility\Debug</Filter>
     </ClInclude>
-    <ClInclude Include="source\GTE\GTE_LogFormat.h">
-      <Filter>Utility\Debug\Log</Filter>
+    <ClInclude Include="source\GTE\GTE_Flag.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_MetaFunctions.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_ILogger.h">
+      <Filter>Utility\Log\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_ILogHandler.h">
+      <Filter>Utility\Log\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Log.h">
+      <Filter>Utility\Log</Filter>
     </ClInclude>
     <ClInclude Include="source\GTE\GTE_Logger.h">
-      <Filter>Utility\Debug\Log</Filter>
+      <Filter>Utility\Log\Implementations</Filter>
     </ClInclude>
     <ClInclude Include="source\GTE\GTE_LogHandler.h">
-      <Filter>Utility\Debug\Log</Filter>
+      <Filter>Utility\Log\Implementations</Filter>
     </ClInclude>
-    <ClInclude Include="source\GTE\GTE_LogType.h">
-      <Filter>Utility\Debug\Log</Filter>
+    <ClInclude Include="source\GTE\GTE_Singleton.h">
+      <Filter>Utility</Filter>
     </ClInclude>
+    <ClInclude Include="source\GTEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\GTE\GTE_Application.cpp">
@@ -66,22 +82,34 @@
     <ClCompile Include="source\GTE\GTE_Debug.cpp">
       <Filter>Utility\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="source\GTE\GTE_LogFormat.cpp">
-      <Filter>Utility\Debug\Log</Filter>
+    <ClCompile Include="source\GTE\GTE_ILogger.cpp">
+      <Filter>Utility\Log\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GTE\GTE_Log.cpp">
+      <Filter>Utility\Log</Filter>
     </ClCompile>
     <ClCompile Include="source\GTE\GTE_Logger.cpp">
-      <Filter>Utility\Debug\Log</Filter>
+      <Filter>Utility\Log\Implementations</Filter>
     </ClCompile>
     <ClCompile Include="source\GTE\GTE_LogHandler.cpp">
-      <Filter>Utility\Debug\Log</Filter>
+      <Filter>Utility\Log\Implementations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\GTE\GTE_LogFormat.inl">
-      <Filter>Utility\Debug\Log</Filter>
+    <None Include="source\GTE\GTE_Flag.inl">
+      <Filter>Utility</Filter>
+    </None>
+    <None Include="source\GTE\GTE_Debug.inl">
+      <Filter>Utility\Debug</Filter>
+    </None>
+    <None Include="source\GTE\GTE_Log.inl">
+      <Filter>Utility\Log</Filter>
     </None>
     <None Include="source\GTE\GTE_Logger.inl">
-      <Filter>Utility\Debug\Log</Filter>
+      <Filter>Utility\Log\Implementations</Filter>
+    </None>
+    <None Include="source\GTE\GTE_Singleton.inl">
+      <Filter>Utility</Filter>
     </None>
   </ItemGroup>
 </Project>

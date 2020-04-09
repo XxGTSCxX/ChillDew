@@ -1,3 +1,18 @@
+/******************************************************************************/
+/*!
+  \project GTEngine
+  \file    GTE_Application.cpp
+  \author  Gabrielle Tan Suan Choo
+  \brief
+    Application interface for uses who wish to create their program using this
+    engine. Also defines how the application is mainly run, with some available
+    customisations that the clients can make.
+
+    All content (C) 2020 DigiPen (SINGAPORE) Corporation, all rights reserved.
+    Reproduction or disclosure of this file or its contents without the prior
+    written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
 #include "GTE_pch.h"
 #include "GTE_Application.h"
 #include <cassert> // assert
@@ -5,47 +20,42 @@
 namespace GTE
 {
 
-    Application* Application::_application_instance = nullptr;
-
     Application::Application()
-    {
-        assert(!_application_instance);                                         // TODO: Replace with own assert function
-        _application_instance = this;
-    }
+    {}
 
-    Application* Application::Get()
-    {
-        return _application_instance;
-    }
+    Application::~Application()
+    {}
 
     void Application::Run()
     {
-        GTE::cout << GTE_STRING("Welcome to the GTEngine") << std::endl;
+        SetConsoleCtrlHandler((PHANDLER_ROUTINE)(Application::ControlHandlerWrapper), TRUE);
 
-        //Setup();
+        Debug::Get()->Log("Welcome to the GTEngine {}");
 
-        //while (_app_state != AppState::QUIT)
-        //{
-        //	switch (_app_state)
-        //	{
-        //	case AppState::LOAD:
-        //		Load();
-        //	case AppState::INIT:
-        //		Init();
-        //		_app_state = AppState::RUN;
-        //	}
+        Setup();
 
-        //	Update();
+        while (_app_state != AppState::Quit)
+        {
+            switch (_app_state)
+            {
+            case AppState::Load:
+                Load();
+            case AppState::Init:
+                Init();
+                _app_state = AppState::Run;
+            }
 
-        //	if (_app_state != AppState::RUN)
-        //	{
-        //		Cleanup();
-        //		if (_app_state != AppState::INIT)
-        //			Unload();
-        //	}
-        //}
+            Update();
 
-        //Destroy();
+            if (_app_state != AppState::Run)
+            {
+                Cleanup();
+                if (_app_state != AppState::Init)
+                    Unload();
+            }
+        }
+
+        Destroy();
     }
 
     void Application::Pause()
@@ -74,7 +84,7 @@ namespace GTE
             Sleep(1000);                                                        // Give the application 1 second to do the quitting
             break;
             // Add more cases as needed
-        default:
+        default:                                                                // If unhandled, message is not processed, so return FALSE
             result = FALSE;
         }
 
@@ -125,8 +135,7 @@ namespace GTE
     BOOL Application::ControlHandlerWrapper(DWORD event_code)
     {
         BOOL result = FALSE;
-        if (_application_instance)
-            result = _application_instance->ControlHandler(event_code);
+        result = Get()->ControlHandler(event_code);
         return result;
     }
 

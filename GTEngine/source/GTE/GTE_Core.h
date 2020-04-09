@@ -60,10 +60,12 @@ namespace GTE
     inline GTE::string CStrToStr(std::string_view const& c_string)
     {
         GTE::string result;
-        size_t      size = c_string.size() + 1;
+        size_t      size      = c_string.size() + 1;
+        size_t      converted = 0;
 
         result.resize(size);
-        mbtowc(&result.front(), c_string.data(), size);
+        mbstowcs_s(&converted, &result.front(), size, c_string.data(), size);
+        result.resize(converted);
 
         return result;
     }
