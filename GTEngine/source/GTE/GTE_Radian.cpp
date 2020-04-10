@@ -20,7 +20,7 @@ namespace GTE
 {
 
     Radian::Radian(Degree deg_angle) noexcept
-    : _angle{ static_cast<FLD>(deg_angle)* DEG_TO_RAD }
+    : _angle{ deg_angle._angle * DEG_TO_RAD }
     {}
 
     Radian& GTE::Radian::operator+=(Radian angle) noexcept
@@ -35,37 +35,32 @@ namespace GTE
         return *this;
     }
 
-    Radian& Radian::operator*=(FLD scale) noexcept
+    Radian& Radian::operator*=(Real scale) noexcept
     {
         _angle *= scale;
         return *this;
     }
 
-    Radian& Radian::operator/=(FLD scale) noexcept
+    Radian& Radian::operator/=(Real scale) noexcept
     {
         if (scale)
             _angle /= scale;
         else
         {
-            _angle = std::numeric_limits<FLD>::infinity();
+            _angle = std::numeric_limits<Real>::infinity();
             Debug::Get()->LogWarning("[GTE_Radian.cpp] Zero Division Occurred - Value set to infinity.");
         }
         return *this;
     }
 
-    Radian::operator FLD()
-    {
-        return _angle;
-    }
-
     bool FuzzyEqual(Radian lhs, Radian rhs, Radian epsilon)
     {
-        return FuzzyEqual(static_cast<FLD>(lhs), static_cast<FLD>(rhs), static_cast<FLD>(epsilon));
+        return FuzzyEqual(lhs._angle, rhs._angle, epsilon._angle);
     }
 
     bool FuzzyEqual(Radian lhs, Radian rhs)
     {
-        return FuzzyEqual(lhs, rhs, Radian{ EPSIlON });
+        return FuzzyEqual(lhs._angle, rhs._angle, EPSIlON);
     }
 
     Radian operator+(Radian lhs, Radian rhs)
@@ -78,39 +73,39 @@ namespace GTE
         return Radian{ lhs } -= rhs;
     }
 
-    Radian operator*(Radian angle, FLD scale)
+    Radian operator*(Radian angle, Real scale)
     {
         return Radian{ angle } *= scale;
     }
 
-    Radian operator*(FLD scale, Radian angle)
+    Radian operator*(Real scale, Radian angle)
     {
         return Radian{ angle } *= scale;
     }
 
-    Radian operator/(Radian angle, FLD scale)
+    Radian operator/(Radian angle, Real scale)
     {
         return Radian{ angle } /= scale;
     }
 
     Radian operator-(Radian angle)
     {
-        return Radian{ -static_cast<FLD>(angle) };
+        return Radian{ -angle._angle };
     }
 
     bool operator==(Radian lhs, Radian rhs)
     {
-        return static_cast<FLD>(lhs) == static_cast<FLD>(rhs);
+        return lhs._angle == rhs._angle;
     }
 
     bool operator<(Radian lhs, Radian rhs)
     {
-        return static_cast<FLD>(lhs) < static_cast<FLD>(rhs);
+        return lhs._angle < rhs._angle;
     }
 
     bool operator>(Radian lhs, Radian rhs)
     {
-        return static_cast<FLD>(lhs) > static_cast<FLD>(rhs);
+        return lhs._angle > rhs._angle;
     }
 
     bool operator!=(Radian lhs, Radian rhs)

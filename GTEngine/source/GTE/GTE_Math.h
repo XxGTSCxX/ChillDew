@@ -18,15 +18,15 @@
 namespace GTE
 {
 
-    using FLD = double;
+    using Real = double;
 
-    static constexpr FLD EPSIlON    = std::numeric_limits<FLD>::epsilon();
-    static constexpr FLD M_PI       = static_cast<FLD>(3.14159265358979323846l);
-    static constexpr FLD DEG_TO_RAD = M_PI / static_cast<FLD>(180.0l);
-    static constexpr FLD RAD_TO_DEG = static_cast<FLD>(180.0l) / M_PI;
+    static constexpr Real EPSIlON    = std::numeric_limits<Real>::epsilon();
+    static constexpr Real M_PI       = static_cast<Real>(3.14159265358979323846l);
+    static constexpr Real DEG_TO_RAD = M_PI / static_cast<Real>(180.0l);
+    static constexpr Real RAD_TO_DEG = static_cast<Real>(180.0l) / M_PI;
 
-    inline bool FuzzyEqual(FLD lhs, FLD rhs, FLD epsilon);
-    inline bool FuzzyEqual(FLD lhs, FLD rhs             );
+    inline bool FuzzyEqual(Real lhs, Real rhs, Real epsilon);
+    inline bool FuzzyEqual(Real lhs, Real rhs             );
 
     template <typename T>
     inline T Clamp(T const& value, T const& lower_bound, T const& upper_bound); // Requires < operator for T

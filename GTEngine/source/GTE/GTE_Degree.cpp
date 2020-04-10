@@ -20,7 +20,7 @@ namespace GTE
 {
 
     Degree::Degree(Radian rad_angle) noexcept
-    : _angle{ static_cast<FLD>(rad_angle)* RAD_TO_DEG }
+    : _angle{ rad_angle._angle * RAD_TO_DEG }
     {}
 
     Degree& Degree::operator+=(Degree angle) noexcept
@@ -35,37 +35,32 @@ namespace GTE
         return *this;
     }
 
-    Degree& Degree::operator*=(FLD scale) noexcept
+    Degree& Degree::operator*=(Real scale) noexcept
     {
         _angle *= scale;
         return *this;
     }
 
-    Degree& Degree::operator/=(FLD scale) noexcept
+    Degree& Degree::operator/=(Real scale) noexcept
     {
         if (scale)
             _angle /= scale;
         else
         {
-            _angle = std::numeric_limits<FLD>::infinity();
+            _angle = std::numeric_limits<Real>::infinity();
             Debug::Get()->LogWarning("[GTE_Degree.cpp] Zero Division Occurred - Value set to infinity.");
         }
         return *this;
     }
 
-    Degree::operator FLD()
-    {
-        return _angle;
-    }
-
     inline bool FuzzyEqual(Degree lhs, Degree rhs, Degree epsilon)
     {
-        return FuzzyEqual(static_cast<FLD>(lhs), static_cast<FLD>(rhs), static_cast<FLD>(epsilon));
+        return FuzzyEqual(lhs._angle, rhs._angle, epsilon._angle);
     }
 
     inline bool FuzzyEqual(Degree lhs, Degree rhs)
     {
-        return FuzzyEqual(lhs, rhs, Degree{ EPSIlON });
+        return FuzzyEqual(lhs._angle, rhs._angle, EPSIlON);
     }
 
     Degree operator+(Degree lhs, Degree rhs)
@@ -78,39 +73,39 @@ namespace GTE
         return Degree{ lhs } -= rhs;
     }
 
-    Degree operator*(Degree angle, FLD scale)
+    Degree operator*(Degree angle, Real scale)
     {
         return Degree{ angle } *= scale;
     }
 
-    Degree operator*(FLD scale, Degree angle)
+    Degree operator*(Real scale, Degree angle)
     {
         return Degree{ angle } *= scale;
     }
 
-    Degree operator/(Degree angle, FLD scale)
+    Degree operator/(Degree angle, Real scale)
     {
         return Degree{ angle } /= scale;
     }
 
     Degree operator-(Degree angle)
     {
-        return Degree{ -static_cast<FLD>(angle) };
+        return Degree{ -angle._angle };
     }
 
     bool operator==(Degree lhs, Degree rhs)
     {
-        return static_cast<FLD>(lhs) == static_cast<FLD>(rhs);
+        return lhs._angle == rhs._angle;
     }
 
     bool operator<(Degree lhs, Degree rhs)
     {
-        return static_cast<FLD>(lhs) < static_cast<FLD>(rhs);
+        return lhs._angle < rhs._angle;
     }
 
     bool operator>(Degree lhs, Degree rhs)
     {
-        return static_cast<FLD>(lhs) > static_cast<FLD>(rhs);
+        return lhs._angle > rhs._angle;
     }
 
     bool operator!=(Degree lhs, Degree rhs)

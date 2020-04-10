@@ -19,29 +19,23 @@
 namespace GTE
 {
 
-    class Radian;
+    struct Radian;
 
-    class GTE_API Degree final
+    struct GTE_API Degree final
     {
-    public:
+        Real _angle = static_cast<Real>(0.0l);
 
         constexpr          Degree()                 noexcept = default;
         constexpr          Degree(Degree const&)    noexcept = default;
-        constexpr explicit Degree(FLD    deg_angle) noexcept;
-                           Degree(Radian rad_angle) noexcept;
+        constexpr explicit Degree(Real   deg_angle) noexcept;
+                  explicit Degree(Radian rad_angle) noexcept;
 
         Degree& operator=(Degree const&) noexcept = default;
 
         Degree& operator+=(Degree angle) noexcept;
         Degree& operator-=(Degree angle) noexcept;
-        Degree& operator*=(FLD    scale) noexcept;
-        Degree& operator/=(FLD    scale) noexcept; // If scale is 0, value will be set to infinity
-
-        explicit operator FLD();
-
-    private:
-
-        FLD _angle = static_cast<FLD>(0.0l);
+        Degree& operator*=(Real   scale) noexcept;
+        Degree& operator/=(Real   scale) noexcept; // If scale is 0, value will be set to infinity
     };
 
     inline bool FuzzyEqual(Degree lhs, Degree rhs, Degree epsilon);
@@ -49,9 +43,9 @@ namespace GTE
 
     Degree operator+(Degree lhs  , Degree rhs  );
     Degree operator-(Degree lhs  , Degree rhs  );
-    Degree operator*(Degree angle, FLD    scale);
-    Degree operator*(FLD    scale, Degree angle);
-    Degree operator/(Degree angle, FLD    scale);
+    Degree operator*(Degree angle, Real   scale);
+    Degree operator*(Real   scale, Degree angle);
+    Degree operator/(Degree angle, Real   scale);
     Degree operator-(Degree angle              );
 
     bool operator==(Degree lhs, Degree rhs);

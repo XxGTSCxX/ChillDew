@@ -4,12 +4,12 @@
 namespace GTE
 {
 
-    inline bool FuzzyEqual(FLD lhs, FLD rhs, FLD epsilon)
+    bool FuzzyEqual(Real lhs, Real rhs, Real epsilon)
     {
         return std::fabs(lhs - rhs) <= epsilon;
     }
 
-    inline bool FuzzyEqual(FLD lhs, FLD rhs)
+    bool FuzzyEqual(Real lhs, Real rhs)
     {
         return FuzzyEqual(lhs, rhs, EPSIlON);
     }

@@ -19,39 +19,35 @@
 namespace GTE
 {
 
-    class Degree;
+    struct Degree;
 
-    class GTE_API Radian final
+    struct GTE_API Radian final
     {
     public:
 
+        Real _angle = static_cast<Real>(0.0l);
+
         constexpr          Radian()                 noexcept = default;
         constexpr          Radian(Radian const&)    noexcept = default;
-        constexpr explicit Radian(FLD    rad_angle) noexcept;
-                           Radian(Degree deg_angle) noexcept;
+        constexpr explicit Radian(Real   rad_angle) noexcept;
+                  explicit Radian(Degree deg_angle) noexcept;
 
         Radian& operator=(Radian const&) noexcept = default;
 
         Radian& operator+=(Radian angle) noexcept;
         Radian& operator-=(Radian angle) noexcept;
-        Radian& operator*=(FLD    scale) noexcept;
-        Radian& operator/=(FLD    scale) noexcept; // If scale is 0, value will be set to infinity
-
-        explicit operator FLD();
-
-    private:
-
-        FLD _angle = static_cast<FLD>(0.0l);
+        Radian& operator*=(Real   scale) noexcept;
+        Radian& operator/=(Real   scale) noexcept;                              // If scale is 0, value will be set to infinity
     };
 
-    inline bool FuzzyEqual(Radian lhs, Radian rhs, Radian epsilon);
-    inline bool FuzzyEqual(Radian lhs, Radian rhs                );
+    bool FuzzyEqual(Radian lhs, Radian rhs, Radian epsilon);
+    bool FuzzyEqual(Radian lhs, Radian rhs                );
 
     Radian operator+(Radian lhs  , Radian rhs  );
     Radian operator-(Radian lhs  , Radian rhs  );
-    Radian operator*(Radian angle, FLD    scale);
-    Radian operator*(FLD    scale, Radian angle);
-    Radian operator/(Radian angle, FLD    scale);
+    Radian operator*(Radian angle, Real   scale);
+    Radian operator*(Real   scale, Radian angle);
+    Radian operator/(Radian angle, Real   scale);
     Radian operator-(Radian angle              );
 
     bool operator==(Radian lhs, Radian rhs);

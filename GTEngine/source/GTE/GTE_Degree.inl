@@ -16,7 +16,7 @@
 namespace GTE
 {
 
-    constexpr Degree::Degree(FLD deg_angle) noexcept
+    constexpr Degree::Degree(Real deg_angle) noexcept
     : _angle{ deg_angle }
     {}
 

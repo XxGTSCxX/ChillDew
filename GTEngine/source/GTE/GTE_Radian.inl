@@ -16,7 +16,7 @@
 namespace GTE
 {
 
-    constexpr Radian::Radian(FLD rad_angle) noexcept
+    constexpr Radian::Radian(Real rad_angle) noexcept
     : _angle{ rad_angle }
     {}
 
