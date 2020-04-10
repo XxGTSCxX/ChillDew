@@ -30,8 +30,6 @@ namespace GTE
     {
         SetConsoleCtrlHandler((PHANDLER_ROUTINE)(Application::ControlHandlerWrapper), TRUE);
 
-        Debug::Get()->Log("Welcome to the GTEngine {}");
-
         Setup();
 
         while (_app_state != AppState::Quit)
