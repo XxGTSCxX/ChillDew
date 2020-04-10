@@ -29,25 +29,22 @@
     <Filter Include="Utility\Log\Implementations">
       <UniqueIdentifier>{6c3d9230-08ed-4a7e-862a-2189d4e36038}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data">
-      <UniqueIdentifier>{9eb1120c-4aaa-4a4a-9aab-381721bfd61b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Data\Math">
-      <UniqueIdentifier>{11d76ac1-97e3-4c2e-b435-686a06085ef5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Data\Math\Data">
-      <UniqueIdentifier>{a802fcf7-d231-4c57-be10-b842b4aa4579}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utility\Flag">
       <UniqueIdentifier>{2ede36d1-969f-4cfe-9b47-b0148f923fcf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Utility\Singleton">
       <UniqueIdentifier>{096b5104-4f5a-4c36-9ccd-a8b7a15c3ce3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data\Math\Data\Angles">
+    <Filter Include="Utility\Math">
+      <UniqueIdentifier>{11d76ac1-97e3-4c2e-b435-686a06085ef5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Math\Data">
+      <UniqueIdentifier>{9eb1120c-4aaa-4a4a-9aab-381721bfd61b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Math\Data\Angles">
       <UniqueIdentifier>{6719b579-1574-4a5e-a509-a45c960a2166}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data\Math\Data\Vector">
+    <Filter Include="Utility\Math\Data\Vector">
       <UniqueIdentifier>{dfc48e2a-6844-48db-9b10-859fb0e31e98}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -90,7 +87,7 @@
     </ClInclude>
     <ClInclude Include="source\GTEngine.h" />
     <ClInclude Include="source\GTE\GTE_Math.h">
-      <Filter>Data\Math</Filter>
+      <Filter>Utility\Math</Filter>
     </ClInclude>
     <ClInclude Include="source\GTE\GTE_Flag.h">
       <Filter>Utility\Flag</Filter>
@@ -99,13 +96,13 @@
       <Filter>Utility\Singleton</Filter>
     </ClInclude>
     <ClInclude Include="source\GTE\GTE_Degree.h">
-      <Filter>Data\Math\Data\Angles</Filter>
+      <Filter>Utility\Math\Data\Angles</Filter>
     </ClInclude>
     <ClInclude Include="source\GTE\GTE_Radian.h">
-      <Filter>Data\Math\Data\Angles</Filter>
+      <Filter>Utility\Math\Data\Angles</Filter>
     </ClInclude>
     <ClInclude Include="source\GTE\GTE_Vector.h">
-      <Filter>Data\Math\Data\Vector</Filter>
+      <Filter>Utility\Math\Data\Vector</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,13 +125,13 @@
       <Filter>Utility\Log\Implementations</Filter>
     </ClCompile>
     <ClCompile Include="source\GTE\GTE_Math.cpp">
-      <Filter>Data\Math</Filter>
+      <Filter>Utility\Math</Filter>
     </ClCompile>
     <ClCompile Include="source\GTE\GTE_Degree.cpp">
-      <Filter>Data\Math\Data\Angles</Filter>
+      <Filter>Utility\Math\Data\Angles</Filter>
     </ClCompile>
     <ClCompile Include="source\GTE\GTE_Radian.cpp">
-      <Filter>Data\Math\Data\Angles</Filter>
+      <Filter>Utility\Math\Data\Angles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -148,7 +145,7 @@
       <Filter>Utility\Log\Implementations</Filter>
     </None>
     <None Include="source\GTE\GTE_Math.inl">
-      <Filter>Data\Math</Filter>
+      <Filter>Utility\Math</Filter>
     </None>
     <None Include="source\GTE\GTE_Flag.inl">
       <Filter>Utility\Flag</Filter>
@@ -157,13 +154,13 @@
       <Filter>Utility\Singleton</Filter>
     </None>
     <None Include="source\GTE\GTE_Degree.inl">
-      <Filter>Data\Math\Data\Angles</Filter>
+      <Filter>Utility\Math\Data\Angles</Filter>
     </None>
     <None Include="source\GTE\GTE_Radian.inl">
-      <Filter>Data\Math\Data\Angles</Filter>
+      <Filter>Utility\Math\Data\Angles</Filter>
     </None>
     <None Include="source\GTE\GTE_Vector.inl">
-      <Filter>Data\Math\Data\Vector</Filter>
+      <Filter>Utility\Math\Data\Vector</Filter>
     </None>
   </ItemGroup>
 </Project>
