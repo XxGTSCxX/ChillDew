@@ -58,7 +58,7 @@ namespace GTE
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ>& Vector<T, SZ>::operator*=(Real scale)
+    Vector<T, SZ>& Vector<T, SZ>::operator*=(T const& scale)
     {
         for (T& elem : *this)
         {
@@ -67,7 +67,7 @@ namespace GTE
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ>& Vector<T, SZ>::operator/=(Real scale)
+    Vector<T, SZ>& Vector<T, SZ>::operator/=(T const& scale)
     {
         if (scale)
             for (T& elem : *this)
@@ -100,19 +100,19 @@ namespace GTE
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ> operator*(Vector<T, SZ> const& vector, Real scale)
+    Vector<T, SZ> operator*(Vector<T, SZ> const& vector, T const& scale)
     {
         return Vector<T, SZ>{ vector } *= scale;
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ> operator*(Real scale, Vector<T, SZ> const& vector)
+    Vector<T, SZ> operator*(T const& scale, Vector<T, SZ> const& vector)
     {
         return Vector<T, SZ>{ vector } *= scale;
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ> operator/(Vector<T, SZ> const& vector, Real scale)
+    Vector<T, SZ> operator/(Vector<T, SZ> const& vector, T const& scale)
     {
         return Vector<T, SZ>{ vector } /= scale;
     }

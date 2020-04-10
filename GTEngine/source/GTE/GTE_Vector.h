@@ -15,7 +15,6 @@
 
 #include "GTE_Core.h"          // GTE_API
 #include "GTE_MetaFunctions.h" // is_all_same
-#include "GTE_Math.h"
 #include <array>               // std::array
 
 namespace GTE
@@ -48,8 +47,8 @@ namespace GTE
         Vector& operator+=(Vector const& other);
         Vector& operator-=(Vector const& other);
         Vector& operator*=(Vector const& other);                                // This is using Hadamard Product
-        Vector& operator*=(Real          scale);
-        Vector& operator/=(Real          scale);                                // Division by 0 will set the values to infinity
+        Vector& operator*=(T      const& scale);
+        Vector& operator/=(T      const& scale);                                // Division by 0 will set the values to infinity
 
         using std::array<T, SZ>::operator[];
         using std::array<T, SZ>::fill;
@@ -63,9 +62,9 @@ namespace GTE
     template <typename T, size_t SZ> Vector<T, SZ> operator+(Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs   );
     template <typename T, size_t SZ> Vector<T, SZ> operator-(Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs   );
     template <typename T, size_t SZ> Vector<T, SZ> operator*(Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs   ); // This is using Hadamard Product
-    template <typename T, size_t SZ> Vector<T, SZ> operator*(Vector<T, SZ> const& vector, Real                 scale );
-    template <typename T, size_t SZ> Vector<T, SZ> operator*(Real                 scale , Vector<T, SZ> const& vector);
-    template <typename T, size_t SZ> Vector<T, SZ> operator/(Vector<T, SZ> const& vector, Real                 scale ); // Division by 0 will set the values to infinity
+    template <typename T, size_t SZ> Vector<T, SZ> operator*(Vector<T, SZ> const& vector, T             const& scale );
+    template <typename T, size_t SZ> Vector<T, SZ> operator*(T             const& scale , Vector<T, SZ> const& vector);
+    template <typename T, size_t SZ> Vector<T, SZ> operator/(Vector<T, SZ> const& vector, T             const& scale ); // Division by 0 will set the values to infinity
     template <typename T, size_t SZ> Vector<T, SZ> operator-(Vector<T, SZ> const& vector                             );
 
     template <typename T, size_t SZ> bool operator==(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs);
