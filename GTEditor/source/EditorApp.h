@@ -12,6 +12,8 @@ namespace GTEditor
         EditorApp();
 
     private:
+
+        void Setup() override;
     };
 
 }

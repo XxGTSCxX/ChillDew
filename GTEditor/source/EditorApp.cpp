@@ -16,4 +16,11 @@ namespace GTEditor
     EditorApp::EditorApp()
     {}
 
+    void EditorApp::Setup()
+    {
+        GTE::Debug::Get()->LogWarning("Press [Enter] to Quit the Application");
+        if (getchar())
+            Quit();
+    }
+
 }
