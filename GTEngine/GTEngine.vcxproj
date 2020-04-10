@@ -104,6 +104,7 @@
     <ClInclude Include="source\GTE\GTE_Application.h" />
     <ClInclude Include="source\GTE\GTE_AppState.h" />
     <ClInclude Include="source\GTE\GTE_Core.h" />
+    <ClInclude Include="source\GTE\GTE_Degree.h" />
     <ClInclude Include="source\GTE\GTE_EntryPoint.h" />
     <ClInclude Include="source\GTE\GTE_Flag.h" />
     <ClInclude Include="source\GTE\GTE_ILogger.h" />
@@ -111,6 +112,9 @@
     <ClInclude Include="source\GTE\GTE_Log.h" />
     <ClInclude Include="source\GTE\GTE_Logger.h" />
     <ClInclude Include="source\GTE\GTE_LogHandler.h" />
+    <ClInclude Include="source\GTE\GTE_Math.h" />
+    <ClInclude Include="source\GTE\GTE_Radian.h" />
+    <ClInclude Include="source\GTE\GTE_Vector.h" />
     <ClInclude Include="source\GTE\GTE_MetaFunctions.h" />
     <ClInclude Include="source\GTE\GTE_pch.h" />
     <ClInclude Include="source\GTE\GTE_Singleton.h" />
@@ -118,17 +122,24 @@
   <ItemGroup>
     <ClCompile Include="source\GTE\GTE_Debug.cpp" />
     <ClCompile Include="source\GTE\GTE_Application.cpp" />
+    <ClCompile Include="source\GTE\GTE_Degree.cpp" />
     <ClCompile Include="source\GTE\GTE_ILogger.cpp" />
     <ClCompile Include="source\GTE\GTE_Log.cpp" />
     <ClCompile Include="source\GTE\GTE_Logger.cpp" />
     <ClCompile Include="source\GTE\GTE_LogHandler.cpp" />
+    <ClCompile Include="source\GTE\GTE_Math.cpp" />
+    <ClCompile Include="source\GTE\GTE_Radian.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="source\GTE\GTE_Degree.inl" />
     <None Include="source\GTE\GTE_Debug.inl" />
     <None Include="source\GTE\GTE_Flag.inl" />
     <None Include="source\GTE\GTE_Log.inl" />
     <None Include="source\GTE\GTE_Logger.inl" />
+    <None Include="source\GTE\GTE_Math.inl" />
     <None Include="source\GTE\GTE_Singleton.inl" />
+    <None Include="source\GTE\GTE_Radian.inl" />
+    <None Include="source\GTE\GTE_Vector.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
