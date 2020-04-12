@@ -19,6 +19,7 @@
 #include "GTE_Singleton.inl"
 #include "GTE_AppState.h"
 #include "GTE_Debug.inl"
+#include "GTE_Flag.inl"
 #include <Windows.h> // DWORD, BOOL
 
 namespace GTE
@@ -28,14 +29,21 @@ namespace GTE
     {
     public:
 
+        // TODO: When Event Delegates are ready, add quitting and wantsToQuit
+        //       event delegates.
+
         Application();
         virtual ~Application();
 
         void Run();
-        void Pause();
         void Quit();
 
-        virtual bool IsEditor() const;
+        virtual void Play();                                                    // Mainly for editor use
+        virtual void Pause();                                                   // Mainly for editor use
+        virtual void Stop();                                                    // Mainly for editor use
+
+        virtual bool IsEditor()  const;                                         // Editor applications are expected to return true in this function (false by default)
+        virtual bool IsPlaying() const;                                         // Editor applications are expected to return false if the game is not being played (true by default)
 
     protected:
 
@@ -60,10 +68,21 @@ namespace GTE
 
     private:
 
+        enum class AppFlags : std::uint8_t
+        {
+              Play    = 0b01
+            , Pause   = 0b10
+
+            , Default = Play
+            , All     = Play | Pause
+        };
+
+        using Flags = GTE::Flags<AppFlags>;
+
         //Engine   _engine;
         Debug    _debugger;
         AppState _app_state = AppState::Load;
-        bool     _is_paused = false;
+        Flags    _flags     = Flags{ AppFlags::Default };
 
         void Load();
         void Init();
@@ -71,7 +90,7 @@ namespace GTE
         void Cleanup();
         void Unload();
 
-        static BOOL ControlHandlerWrapper(DWORD event_code);                    // static wrapper to call virtual control handler
+        static BOOL ControlHandlerWrapper(DWORD event_code);
     };
 
     GTE_API Application* CreateApplication();                                   // Defined by client

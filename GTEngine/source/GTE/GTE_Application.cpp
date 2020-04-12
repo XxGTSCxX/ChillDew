@@ -56,14 +56,41 @@ namespace GTE
         Destroy();
     }
 
-    void Application::Pause()
+    bool Application::IsPlaying() const
     {
-        _is_paused = true;
+        return _flags.IsOn(AppFlags::Play);
     }
 
     void Application::Quit()
     {
+        // TODO: Once quitting and wantsToQuit events are added, fire the events
+        //       here.
         _app_state = AppState::Quit;
+    }
+
+    void Application::Play()
+    {
+        if (IsEditor())
+        {
+            _flags.On (AppFlags::Play );
+            _flags.Off(AppFlags::Pause);
+        }
+    }
+
+    void Application::Pause()
+    {
+        if (IsEditor())
+        {
+            _flags.On(AppFlags::Pause);
+        }
+    }
+
+    void Application::Stop()
+    {
+        if (IsEditor())
+        {
+            _flags.Off(AppFlags::Play, AppFlags::Pause);
+        }
     }
 
     bool Application::IsEditor() const
@@ -107,11 +134,11 @@ namespace GTE
     {
         PreUpdate();
         //if (_is_paused)
-        //	_engine.PausedUpdate();
+        //    _engine.PausedUpdate();
         //else
         //{
-        //	_engine.FixedUpdate();
-        //	_engine.Update();
+        //    _engine.FixedUpdate();
+        //    _engine.Update();
         //}
         PostUpdate();
     }

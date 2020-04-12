@@ -11,6 +11,8 @@ namespace GTEditor
 
         EditorApp();
 
+        bool IsEditor() const override;
+
     private:
 
         void Setup() override;

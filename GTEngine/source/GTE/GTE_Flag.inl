@@ -27,6 +27,14 @@ namespace GTE
     : _value{ static_cast<TYPE>(initial_flags) | ... }
     {}
 
+    template<typename ENUM>
+    template<typename ...Params, typename>
+    inline Flags<ENUM>& Flags<ENUM>::operator=(ENUM flag) noexcept
+    {
+        _value = flag;
+        return *this;
+    }
+
     template <typename ENUM>
     inline Flags<ENUM>& Flags<ENUM>::OnAll()
     {

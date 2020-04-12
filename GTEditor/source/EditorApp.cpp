@@ -14,7 +14,14 @@ namespace GTEditor
 {
 
     EditorApp::EditorApp()
-    {}
+    {
+        Stop();
+    }
+
+    bool EditorApp::IsEditor() const
+    {
+        return true;
+    }
 
     void EditorApp::Setup()
     {

@@ -71,21 +71,24 @@ namespace GTE
         constexpr Flags(Flags const&)  noexcept = default;
         Flags& operator=(Flags const&) noexcept = default;
 
-        template <typename ... Params, typename = SFINAE<Params>>
+        template <typename ... Params, typename = SFINAE<Params...>>
         explicit Flags(Params ... initial_flags) noexcept;
+
+        template <typename ... Params, typename = SFINAE<Params...>>
+        Flags& operator=(ENUM flag) noexcept;
 
         Flags& OnAll();                                                                                            // set to ALL_ON
         Flags& OffAll();                                                                                           // set to ALL_OFF
 
-        template <typename ... Params, typename = SFINAE<Params>> Flags& On (Params ... flags);                    // Switches all given bits to 1
-        template <typename ... Params, typename = SFINAE<Params>> Flags& Off(Params ... flags);                    // Switches all given bits to 0
+        template <typename ... Params, typename = SFINAE<Params...>> Flags& On (Params ... flags);                    // Switches all given bits to 1
+        template <typename ... Params, typename = SFINAE<Params...>> Flags& Off(Params ... flags);                    // Switches all given bits to 0
 
-        template <typename ... Params, typename = SFINAE<Params>> bool IsOn            (Params ... flags) const;   // Checks if at least one of the given 1 bits is 1
-        template <typename ... Params, typename = SFINAE<Params>> bool IsOff           (Params ... flags) const;   // Checks if at least one of the given 1 bits is 0
-        template <typename ... Params, typename = SFINAE<Params>> bool IsAllOn         (Params ... flags) const;   // Checks if all of the given 1 bits is 1
-        template <typename ... Params, typename = SFINAE<Params>> bool IsAllOff        (Params ... flags) const;   // Checks if all of the given 1 bits is 0
-        template <typename ... Params, typename = SFINAE<Params>> bool IsExclusivelyOn (Params ... flags) const;   // Checks if ONLY the given flags are on
-        template <typename ... Params, typename = SFINAE<Params>> bool IsExclusivelyOff(Params ... flags) const;   // Checks if ONLY the given flags are off
+        template <typename ... Params, typename = SFINAE<Params...>> bool IsOn            (Params ... flags) const;   // Checks if at least one of the given 1 bits is 1
+        template <typename ... Params, typename = SFINAE<Params...>> bool IsOff           (Params ... flags) const;   // Checks if at least one of the given 1 bits is 0
+        template <typename ... Params, typename = SFINAE<Params...>> bool IsAllOn         (Params ... flags) const;   // Checks if all of the given 1 bits is 1
+        template <typename ... Params, typename = SFINAE<Params...>> bool IsAllOff        (Params ... flags) const;   // Checks if all of the given 1 bits is 0
+        template <typename ... Params, typename = SFINAE<Params...>> bool IsExclusivelyOn (Params ... flags) const;   // Checks if ONLY the given flags are on
+        template <typename ... Params, typename = SFINAE<Params...>> bool IsExclusivelyOff(Params ... flags) const;   // Checks if ONLY the given flags are off
 
         Flags& operator|=(Flags flag);
         Flags& operator&=(Flags flag);
