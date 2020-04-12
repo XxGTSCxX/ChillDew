@@ -40,9 +40,6 @@ namespace GTE
         Radian& operator/=(Real   scale) noexcept;                              // If scale is 0, value will be set to infinity
     };
 
-    bool FuzzyEqual(Radian lhs, Radian rhs, Radian epsilon);
-    bool FuzzyEqual(Radian lhs, Radian rhs                );
-
     Radian operator+(Radian lhs  , Radian rhs  );
     Radian operator-(Radian lhs  , Radian rhs  );
     Radian operator*(Radian angle, Real   scale);

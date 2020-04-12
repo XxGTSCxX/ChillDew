@@ -20,7 +20,7 @@ namespace GTE
 {
 
     Radian::Radian(Degree deg_angle) noexcept
-    : _angle{ deg_angle._angle * DEG_TO_RAD }
+    : _angle{ deg_angle._angle * Math::DEG_TO_RAD }
     {}
 
     Radian& GTE::Radian::operator+=(Radian angle) noexcept
@@ -51,16 +51,6 @@ namespace GTE
             Debug::Get()->LogWarning("[GTE_Radian.cpp] Zero Division Occurred - Value set to infinity.");
         }
         return *this;
-    }
-
-    bool FuzzyEqual(Radian lhs, Radian rhs, Radian epsilon)
-    {
-        return FuzzyEqual(lhs._angle, rhs._angle, epsilon._angle);
-    }
-
-    bool FuzzyEqual(Radian lhs, Radian rhs)
-    {
-        return FuzzyEqual(lhs._angle, rhs._angle, EPSIlON);
     }
 
     Radian operator+(Radian lhs, Radian rhs)

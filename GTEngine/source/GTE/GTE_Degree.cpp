@@ -20,7 +20,7 @@ namespace GTE
 {
 
     Degree::Degree(Radian rad_angle) noexcept
-    : _angle{ rad_angle._angle * RAD_TO_DEG }
+    : _angle{ rad_angle._angle * Math::RAD_TO_DEG }
     {}
 
     Degree& Degree::operator+=(Degree angle) noexcept
@@ -51,16 +51,6 @@ namespace GTE
             Debug::Get()->LogWarning("[GTE_Degree.cpp] Zero Division Occurred - Value set to infinity.");
         }
         return *this;
-    }
-
-    inline bool FuzzyEqual(Degree lhs, Degree rhs, Degree epsilon)
-    {
-        return FuzzyEqual(lhs._angle, rhs._angle, epsilon._angle);
-    }
-
-    inline bool FuzzyEqual(Degree lhs, Degree rhs)
-    {
-        return FuzzyEqual(lhs._angle, rhs._angle, EPSIlON);
     }
 
     Degree operator+(Degree lhs, Degree rhs)

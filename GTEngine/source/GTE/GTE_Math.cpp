@@ -1,17 +1,17 @@
 #include "GTE_pch.h"
-#include "GTE_Math.h"
+#include "GTE_Math.inl"
 
 namespace GTE
 {
 
-    bool FuzzyEqual(Real lhs, Real rhs, Real epsilon)
+    bool Math::FuzzyEqual(Real lhs, Real rhs, Real epsilon)
     {
-        return std::fabs(lhs - rhs) <= epsilon;
+        return fabs(lhs - rhs) < epsilon;
     }
 
-    bool FuzzyEqual(Real lhs, Real rhs)
+    bool Math::FuzzyEqual(Real lhs, Real rhs)
     {
-        return FuzzyEqual(lhs, rhs, EPSIlON);
+        return FuzzyEqual(lhs, rhs, EPSILON);
     }
 
 }

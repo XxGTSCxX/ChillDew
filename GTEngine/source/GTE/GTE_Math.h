@@ -18,17 +18,24 @@
 namespace GTE
 {
 
-    using Real = double;
+    class Math
+    {
+    public:
 
-    static constexpr Real EPSIlON    = std::numeric_limits<Real>::epsilon();
-    static constexpr Real M_PI       = static_cast<Real>(3.14159265358979323846l);
-    static constexpr Real DEG_TO_RAD = M_PI / static_cast<Real>(180.0l);
-    static constexpr Real RAD_TO_DEG = static_cast<Real>(180.0l) / M_PI;
+        using Real = double;
 
-    inline bool FuzzyEqual(Real lhs, Real rhs, Real epsilon);
-    inline bool FuzzyEqual(Real lhs, Real rhs             );
+        static constexpr Real EPSILON    = std::numeric_limits<Real>::epsilon();
+        static constexpr Real M_PI       = static_cast<Real>(3.14159265358979323846l);
+        static constexpr Real DEG_TO_RAD = M_PI / static_cast<Real>(180.0l);
+        static constexpr Real RAD_TO_DEG = static_cast<Real>(180.0l) / M_PI;
 
-    template <typename T>
-    inline T Clamp(T const& value, T const& lower_bound, T const& upper_bound); // Requires < operator for T
+        static bool FuzzyEqual(Real lhs, Real rhs, Real epsilon);
+        static bool FuzzyEqual(Real lhs, Real rhs              );
+
+        template <typename T> static bool FuzzyEqual(T const& lhs  , T const& rhs        , T const& epsilon    ); // Requires binary operator - and operator < for T
+        template <typename T> static T    Clamp     (T const& value, T const& lower_bound, T const& upper_bound); // Requires < operator for T
+    };
+
+    using Real = Math::Real;
 
 }

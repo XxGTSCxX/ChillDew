@@ -38,9 +38,6 @@ namespace GTE
         Degree& operator/=(Real   scale) noexcept; // If scale is 0, value will be set to infinity
     };
 
-    inline bool FuzzyEqual(Degree lhs, Degree rhs, Degree epsilon);
-    inline bool FuzzyEqual(Degree lhs, Degree rhs                );
-
     Degree operator+(Degree lhs  , Degree rhs  );
     Degree operator-(Degree lhs  , Degree rhs  );
     Degree operator*(Degree angle, Real   scale);

@@ -20,7 +20,13 @@ namespace GTE
 {
 
     template <typename T>
-    inline T Clamp(T const& value, T const& lower_bound, T const& upper_bound)
+    inline bool Math::FuzzyEqual(T const& lhs, T const& rhs, T const& epsilon)
+    {
+        return std::max(lhs - rhs, rhs - lhs) < epsilon;
+    }
+
+    template <typename T>
+    inline T Math::Clamp(T const& value, T const& lower_bound, T const& upper_bound)
     {
         return std::max(lower_bound, std::min(value, upper_bound));
     }
