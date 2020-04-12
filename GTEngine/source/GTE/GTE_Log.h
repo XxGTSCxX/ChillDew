@@ -14,7 +14,7 @@
 #pragma once
 
 #include "GTE_Core.h"
-#include "GTE_Flag.h"
+#include "GTE_Flags.h"
 
 namespace GTE
 {

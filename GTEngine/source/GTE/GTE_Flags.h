@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
   \project GTEngine
-  \file    GTE_Flag.h
+  \file    GTE_Flags.h
   \author  Gabrielle Tan Suan Choo
   \brief
     Wrapper around enum classes that can help with using them as flags.

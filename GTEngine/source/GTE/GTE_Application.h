@@ -19,7 +19,7 @@
 #include "GTE_Singleton.inl"
 #include "GTE_AppState.h"
 #include "GTE_Debug.inl"
-#include "GTE_Flag.inl"
+#include "GTE_Flags.inl"
 #include <Windows.h> // DWORD, BOOL
 
 namespace GTE

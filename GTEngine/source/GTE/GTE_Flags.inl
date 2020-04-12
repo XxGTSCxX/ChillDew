@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
   \project GTEngine
-  \file    GTE_Flag.inl
+  \file    GTE_Flags.inl
   \author  Gabrielle Tan Suan Choo
   \brief
     Wrapper around enum classes that can help with using them as flags.
@@ -16,7 +16,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "GTE_Flag.h"
+#include "GTE_Flags.h"
 
 namespace GTE
 {
@@ -24,7 +24,7 @@ namespace GTE
     template <typename ENUM>
     template <typename ... Params, typename>
     inline Flags<ENUM>::Flags(Params ... initial_flags) noexcept
-    : _value{ static_cast<TYPE>(initial_flags) | ... }
+    : _value{ (static_cast<TYPE>(initial_flags) | ...) }
     {}
 
     template<typename ENUM>
@@ -53,7 +53,7 @@ namespace GTE
     template <typename ... Params, typename>
     inline Flags<ENUM>& Flags<ENUM>::On(Params ... flags)
     {
-        _value |= static_cast<TYPE>(flags._value) | ...;
+        _value |= (static_cast<TYPE>(flags) | ...);
         return *this;
     }
 
@@ -61,7 +61,7 @@ namespace GTE
     template <typename ... Params, typename>
     inline Flags<ENUM>& Flags<ENUM>::Off(Params ... flags)
     {
-        _value &= (~static_cast<TYPE>(flags._value)) & ...;
+        _value &= (~static_cast<TYPE>(flags) & ...);
         return *this;
     }
 
@@ -83,7 +83,7 @@ namespace GTE
     template <typename ... Params, typename>
     inline bool Flags<ENUM>::IsAllOn(Params ... flags) const
     {
-        TYPE combined_flags = static_cast<TYPE>(flags) | ...;
+        TYPE combined_flags = (static_cast<TYPE>(flags) | ...);
         return !((_value & combined_flags) ^ combined_flags);
     }
 
@@ -91,7 +91,7 @@ namespace GTE
     template <typename ... Params, typename>
     inline bool Flags<ENUM>::IsAllOff(Params ... flags) const
     {
-        TYPE combined_flags = static_cast<TYPE>(flags) | ...;
+        TYPE combined_flags = (static_cast<TYPE>(flags) | ...);
         return !((~_value & combined_flags) ^ combined_flags);
     }
 
@@ -164,7 +164,7 @@ namespace GTE
     Flags<ENUM> operator~(Flags<ENUM> const& flag)
     {
         Flags<ENUM> result{ *this };
-        result._value = ~result._value & ALL_ON;
+        result._value = ~result._value & Flags<ENUM>::ALL_ON;
         return result;
     }
 

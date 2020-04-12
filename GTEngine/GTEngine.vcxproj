@@ -106,7 +106,7 @@
     <ClInclude Include="source\GTE\GTE_Core.h" />
     <ClInclude Include="source\GTE\GTE_Degree.h" />
     <ClInclude Include="source\GTE\GTE_EntryPoint.h" />
-    <ClInclude Include="source\GTE\GTE_Flag.h" />
+    <ClInclude Include="source\GTE\GTE_Flags.h" />
     <ClInclude Include="source\GTE\GTE_ILogger.h" />
     <ClInclude Include="source\GTE\GTE_ILogHandler.h" />
     <ClInclude Include="source\GTE\GTE_Log.h" />
@@ -133,7 +133,7 @@
   <ItemGroup>
     <None Include="source\GTE\GTE_Degree.inl" />
     <None Include="source\GTE\GTE_Debug.inl" />
-    <None Include="source\GTE\GTE_Flag.inl" />
+    <None Include="source\GTE\GTE_Flags.inl" />
     <None Include="source\GTE\GTE_Log.inl" />
     <None Include="source\GTE\GTE_Logger.inl" />
     <None Include="source\GTE\GTE_Math.inl" />
