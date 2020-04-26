@@ -81,6 +81,42 @@ namespace GTE
             }
     }
 
+    template<typename T, size_t SZ>
+    inline T& Vector<T, SZ>::operator[](size_t index)
+    {
+        _array[index];
+    }
+
+    template<typename T, size_t SZ>
+    inline T const& Vector<T, SZ>::operator[](size_t index) const
+    {
+        _array[index];
+    }
+
+    template<typename T, size_t SZ>
+    inline T* Vector<T, SZ>::data()
+    {
+        return _array.data();
+    }
+
+    template<typename T, size_t SZ>
+    inline T const* Vector<T, SZ>::data() const
+    {
+        return _array.data();
+    }
+
+    template<typename T, size_t SZ>
+    inline void Vector<T, SZ>::fill(T const& value)
+    {
+        _array.fill(value);
+    }
+
+    template<typename T, size_t SZ>
+    inline constexpr size_t Vector<T, SZ>::size()
+    {
+        return SZ;
+    }
+
     template <typename T, size_t SZ>
     Vector<T, SZ> operator+(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs)
     {
@@ -138,33 +174,27 @@ namespace GTE
     }
 
     template <typename T, size_t SZ>
-    bool operator<(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs)
-    {
-        return MagnitudeSquared(lhs) < MagnitudeSquared(rhs);
-    }
-
-    template <typename T, size_t SZ>
-    bool operator>(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs)
-    {
-        return rhs < lhs;
-    }
-
-    template <typename T, size_t SZ>
     bool operator!=(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs)
     {
         return !(lhs == rhs);
     }
 
     template <typename T, size_t SZ>
-    bool operator<=(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs)
+    GTE::ostream& operator<<(GTE::ostream& stream, Vector<T, SZ> const& vector)
     {
-        return !(lhs > rhs);
+        stream << GTE_STRING("{ ") << vector[0];
+        for (size_t i = 1; i < SZ; ++i)
+            stream << GTE_STRING(", ") << vector[i];
+        return stream << GTE_STRING(" }");
     }
 
     template <typename T, size_t SZ>
-    bool operator>=(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs)
+    GTE::istream& operator>>(GTE::istream& stream, Vector<T, SZ>& vector)
     {
-        return !(lhs < rhs);
+        char discard;
+        for (size_t i = 0; i < SZ; ++i)
+            stream >> discard >> vector[i];
+        return stream >> discard;
     }
 
     template <typename T, size_t SZ>
@@ -176,7 +206,7 @@ namespace GTE
     template <typename T, size_t SZ>
     T Magnitude(Vector<T, SZ> const& vector)
     {
-        return static_cast<T>(std::sqrtl(MagnitudeSquared(vector)));
+        return static_cast<T>(sqrt(MagnitudeSquared(vector)));
     }
 
     template <typename T, size_t SZ>

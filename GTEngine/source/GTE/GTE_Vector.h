@@ -21,10 +21,14 @@ namespace GTE
 {
 
     template <typename T, size_t SZ>
-    struct GTE_API Vector : private std::array<T, SZ>
+    struct GTE_API Vector final
     {
+    private:
+
         template <typename ... Params> using IS_VECTOR_SFINAE      = std::enable_if_t<is_all_same_v<Vector, Params...>>;
         template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
+
+        std::array<T, SZ> _array;
 
     public:
 
@@ -50,13 +54,14 @@ namespace GTE
         Vector& operator*=(T      const& scale);
         Vector& operator/=(T      const& scale);                                // Division by 0 will set the values to infinity
 
-        using std::array<T, SZ>::operator[];
-        using std::array<T, SZ>::fill;
-        using std::array<T, SZ>::begin;
-        using std::array<T, SZ>::end;
-        using std::array<T, SZ>::rbegin;
-        using std::array<T, SZ>::rend;
-        using std::array<T, SZ>::size;
+        T&       operator[](size_t index);
+        T const& operator[](size_t index) const;
+
+        T*       data();
+        T const* data() const;
+
+        void fill(T const& value);
+        static constexpr size_t size();
     };
 
     template <typename T, size_t SZ> Vector<T, SZ> operator+(Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs   );
@@ -68,11 +73,10 @@ namespace GTE
     template <typename T, size_t SZ> Vector<T, SZ> operator-(Vector<T, SZ> const& vector                             );
 
     template <typename T, size_t SZ> bool operator==(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs);
-    template <typename T, size_t SZ> bool operator< (Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs);
-    template <typename T, size_t SZ> bool operator> (Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs);
     template <typename T, size_t SZ> bool operator!=(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs);
-    template <typename T, size_t SZ> bool operator<=(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs);
-    template <typename T, size_t SZ> bool operator>=(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs);
+
+    template <typename T, size_t SZ> GTE::ostream& operator<<(GTE::ostream& stream, Vector<T, SZ> const& vector);
+    template <typename T, size_t SZ> GTE::istream& operator>>(GTE::istream& stream, Vector<T, SZ>&       vector);
 
     template <typename T, size_t SZ> T              MagnitudeSquared(Vector<T, SZ> const& vector);
     template <typename T, size_t SZ> T              Magnitude       (Vector<T, SZ> const& vector);
