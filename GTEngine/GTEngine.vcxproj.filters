@@ -47,6 +47,15 @@
     <Filter Include="Utility\Math\Data\Vector">
       <UniqueIdentifier>{dfc48e2a-6844-48db-9b10-859fb0e31e98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utility\Math\Data\Vector\Vector2D">
+      <UniqueIdentifier>{5eec3fc2-0634-45a5-98f9-85697bc3f861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Math\Data\Vector\Vector3D">
+      <UniqueIdentifier>{448d27a8-7180-4f6c-8c5c-eb1a73b86956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Math\Data\Vector\Vector4D">
+      <UniqueIdentifier>{fcfdc440-1b7f-4dfc-9d6f-0d0bc25e1a0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GTE\GTE_AppState.h">
@@ -98,11 +107,20 @@
     <ClInclude Include="source\GTE\GTE_Radian.h">
       <Filter>Utility\Math\Data\Angles</Filter>
     </ClInclude>
-    <ClInclude Include="source\GTE\GTE_Vector.h">
-      <Filter>Utility\Math\Data\Vector</Filter>
-    </ClInclude>
     <ClInclude Include="source\GTE\GTE_Flags.h">
       <Filter>Utility\Flag</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Swizzle.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Vector2D.h">
+      <Filter>Utility\Math\Data\Vector\Vector2D</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Vector3D.h">
+      <Filter>Utility\Math\Data\Vector\Vector3D</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Vector.h">
+      <Filter>Utility\Math\Data\Vector</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -156,11 +174,20 @@
     <None Include="source\GTE\GTE_Radian.inl">
       <Filter>Utility\Math\Data\Angles</Filter>
     </None>
-    <None Include="source\GTE\GTE_Vector.inl">
-      <Filter>Utility\Math\Data\Vector</Filter>
-    </None>
     <None Include="source\GTE\GTE_Flags.inl">
       <Filter>Utility\Flag</Filter>
+    </None>
+    <None Include="source\GTE\GTE_Swizzle.inl">
+      <Filter>Utility</Filter>
+    </None>
+    <None Include="source\GTE\GTE_Vector2D.inl">
+      <Filter>Utility\Math\Data\Vector\Vector2D</Filter>
+    </None>
+    <None Include="source\GTE\GTE_Vector3D.inl">
+      <Filter>Utility\Math\Data\Vector\Vector3D</Filter>
+    </None>
+    <None Include="source\GTE\GTE_Vector.inl">
+      <Filter>Utility\Math\Data\Vector</Filter>
     </None>
   </ItemGroup>
 </Project>

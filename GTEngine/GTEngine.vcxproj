@@ -114,10 +114,13 @@
     <ClInclude Include="source\GTE\GTE_LogHandler.h" />
     <ClInclude Include="source\GTE\GTE_Math.h" />
     <ClInclude Include="source\GTE\GTE_Radian.h" />
-    <ClInclude Include="source\GTE\GTE_Vector.h" />
+    <ClInclude Include="source\GTE\GTE_Swizzle.h" />
     <ClInclude Include="source\GTE\GTE_MetaFunctions.h" />
     <ClInclude Include="source\GTE\GTE_pch.h" />
     <ClInclude Include="source\GTE\GTE_Singleton.h" />
+    <ClInclude Include="source\GTE\GTE_Vector.h" />
+    <ClInclude Include="source\GTE\GTE_Vector2D.h" />
+    <ClInclude Include="source\GTE\GTE_Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\GTE\GTE_Debug.cpp" />
@@ -139,7 +142,10 @@
     <None Include="source\GTE\GTE_Math.inl" />
     <None Include="source\GTE\GTE_Singleton.inl" />
     <None Include="source\GTE\GTE_Radian.inl" />
+    <None Include="source\GTE\GTE_Swizzle.inl" />
     <None Include="source\GTE\GTE_Vector.inl" />
+    <None Include="source\GTE\GTE_Vector2D.inl" />
+    <None Include="source\GTE\GTE_Vector3D.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
