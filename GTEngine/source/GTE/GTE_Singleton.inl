@@ -20,12 +20,6 @@ namespace GTE
 {
 
     template <typename T>
-    inline T* Singleton<T>::Get()
-    {
-        return _instance;
-    }
-
-    template <typename T>
     inline Singleton<T>::Singleton()
     {
         assert(!_instance && "Only one instance of a singleton should be instantiated at any one time!");
@@ -36,6 +30,12 @@ namespace GTE
     inline Singleton<T>::~Singleton()
     {
         _instance = nullptr;
+    }
+
+    template <typename T>
+    inline T* Singleton<T>::Get()
+    {
+        return _instance;
     }
 
 }
