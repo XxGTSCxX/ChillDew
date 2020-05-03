@@ -83,11 +83,12 @@ namespace GTE
     template <typename T, size_t SZ> Vector<T, SZ>  Normalise       (Vector<T, SZ> const& vector);
     template <typename T, size_t SZ> Vector<T, SZ>& Normalised      (Vector<T, SZ>&       vector);
 
-    template <typename T, size_t SZ> T            Dot     (Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs   );
-    template <typename T, size_t SZ> T            Distance(Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs   );
-    template <typename T, size_t SZ> Vector<T, 4> Max     (Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs   );
-    template <typename T, size_t SZ> Vector<T, 4> Min     (Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs   );
-    template <typename T, size_t SZ> Vector<T, 4> Project (Vector<T, SZ> const& vector, Vector<T, SZ> const& normal);
+    template <typename T, size_t SZ> T             Dot           (Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs          );
+    template <typename T, size_t SZ> T             Distance      (Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs          );
+    template <typename T, size_t SZ> Vector<T, SZ> Max           (Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs          );
+    template <typename T, size_t SZ> Vector<T, SZ> Min           (Vector<T, SZ> const& lhs   , Vector<T, SZ> const& rhs          );
+    template <typename T, size_t SZ> Vector<T, SZ> Project       (Vector<T, SZ> const& vector, Vector<T, SZ> const& normal       );
+    template <typename T, size_t SZ> Vector<T, SZ> ClampMagnitude(Vector<T, SZ> const& vector, T             const& max_magnitude);
 
     template <typename T, size_t SZ> Vector<T, SZ> LerpUnclamped(Vector<T, SZ> const& from   , Vector<T, SZ> const& to    , T const& alpha             );
     template <typename T, size_t SZ> Vector<T, SZ> Lerp         (Vector<T, SZ> const& from   , Vector<T, SZ> const& to    , T const& alpha             );

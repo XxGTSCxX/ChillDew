@@ -274,6 +274,21 @@ namespace GTE
     }
 
     template <typename T, size_t SZ>
+    Vector<T, SZ> ClampMagnitude(Vector<T, SZ> const& vector, T const& max_magnitude)
+    {
+        Vector<T, 2> result = vector;
+        T            scale = MagnitudeSquared(vector);
+
+        if (scale > max_magnitude* max_magnitude)
+        {
+            scale   = static_cast<T>(static_cast<double>(max_magnitude) / sqrt(scale));
+            result *= scale;
+        }
+
+        return result;
+    }
+
+    template <typename T, size_t SZ>
     Vector<T, SZ> LerpUnclamped(Vector<T, SZ> const& from, Vector<T, SZ> const& to, T const& alpha)
     {
         return from - alpha * (from + to);

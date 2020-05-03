@@ -29,6 +29,35 @@ namespace GTE
     template <typename T> Vector<T, 3> const Vector<T, 3>::zero   {  0,  0,  0 };
 
     template <typename T>
+    template <typename U, typename>
+    inline constexpr Vector<T, 3>::Vector(Vector<U, 1> const& vector)
+    : x{ static_cast<T>(vector.x) }
+    {}
+
+    template <typename T>
+    template <typename U, typename>
+    inline constexpr Vector<T, 3>::Vector(Vector<U, 2> const& vector)
+    : x{ static_cast<T>(vector.x) }, y{ static_cast<T>(vector.y) }
+    {}
+
+    template <typename T>
+    template <typename U, typename>
+    inline Vector<T, 3>& Vector<T, 3>::operator=(Vector<U, 1> const& vector)
+    {
+        x = static_cast<T>(vector.x);
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, typename>
+    inline Vector<T, 3>& Vector<T, 3>::operator=(Vector<U, 2> const& vector)
+    {
+        x = static_cast<T>(vector.x);
+        y = static_cast<T>(vector.y);
+        return *this;
+    }
+
+    template <typename T>
     template <typename ... Params, typename>
     inline constexpr Vector<T, 3>::Vector(Params&& ... args) noexcept
     : _array{ static_cast<T>(std::forward<Params>(args))... }
@@ -37,28 +66,16 @@ namespace GTE
     template <typename T>
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 3>::Vector(Vector<U, U_SZ> const& vector)
-    {
-        if constexpr (SZ < U_SZ)
-        {
-            for (size_t i = 0; i < SZ; ++i)
-            {
-                _array[i] = vector[i];
-            }
-        }
-        else
-        {
-            for (size_t i = 0; i < U_SZ; ++i)
-            {
-                _array[i] = vector[i];
-            }
-        }
-    }
+    : x{ static_cast<T>(vector.x) }, y{ static_cast<T>(vector.y) }, z{ static_cast<T>(vector.z) }
+    {}
 
     template <typename T>
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator=(Vector<U, U_SZ> const& vector)
     {
-        new (this) Vector<T, 3>{ vector };
+        x = static_cast<T>(vector.x);
+        y = static_cast<T>(vector.y);
+        z = static_cast<T>(vector.z);
         return *this;
     }
 
@@ -151,42 +168,6 @@ namespace GTE
     }
 
     template <typename T>
-    Vector<T, 3> operator+(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
-    {
-        return Vector<T, 3>{ lhs } += rhs;
-    }
-
-    template <typename T>
-    Vector<T, 3> operator-(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
-    {
-        return Vector<T, 3>{ lhs } -= rhs;
-    }
-
-    template <typename T>
-    Vector<T, 3> operator*(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
-    {
-        return Vector<T, 3>{ lhs } *= rhs;
-    }
-
-    template <typename T>
-    Vector<T, 3> operator*(Vector<T, 3> const& vector, T const& scale)
-    {
-        return Vector<T, 3>{ vector } *= scale;
-    }
-
-    template <typename T>
-    Vector<T, 3> operator*(T const& scale, Vector<T, 3> const& vector)
-    {
-        return Vector<T, 3>{ vector } *= scale;
-    }
-
-    template <typename T>
-    Vector<T, 3> operator/(Vector<T, 3> const& vector, T const& scale)
-    {
-        return Vector<T, 3>{ vector } /= scale;
-    }
-
-    template <typename T>
     Vector<T, 3> operator-(Vector<T, 3> const& vector)
     {
         return Vector<T, 3>{ -vector.x, -vector.y, -vector.z };
@@ -196,12 +177,6 @@ namespace GTE
     bool operator==(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
     {
         return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
-    }
-
-    template <typename T>
-    bool operator!=(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
-    {
-        return !(lhs == rhs);
     }
 
     template <typename T>
@@ -218,96 +193,27 @@ namespace GTE
     }
 
     template <typename T>
-    T MagnitudeSquared(Vector<T, 3> const& vector)
-    {
-        return Dot(vector, vector);
-    }
-
-    template <typename T>
-    T Magnitude(Vector<T, 3> const& vector)
-    {
-        return static_cast<T>(sqrt(MagnitudeSquared(vector)));
-    }
-
-    template <typename T>
-    Vector<T, 3> Normalise(Vector<T, 3> const& vector)
-    {
-        Vector<T, 3> result{ vector };
-        return Normalised(result);
-    }
-
-    template <typename T>
-    Vector<T, 3>& Normalised(Vector<T, 3>& vector)
-    {
-        if (T inv_mag = Magnitude(vector))
-            vector *= static_cast<T>(1) / inv_mag;
-        return vector;
-    }
-
-    template <typename T>
-    Vector<T, 3> Cross(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
-    {
-        return Vector<T, 3>{ lhs.y * rhs.z - lhs.z * rhs.y
-                           , lhs.z * rhs.x - lhs.x * rhs.z
-                           , lhs.x * rhs.y - lhs.y * rhs.x };
-    }
-
-    template <typename T>
     T Dot(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
     {
         return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
     }
 
     template <typename T>
-    Degree Angle(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
-    {
-        return Degree{ static_cast<Real>(acos(Dot(Normalise(lhs), Normalise(rhs)))) * Math::RAD_TO_DEG };
-    }
-
-    template <typename T>
-    T Distance(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
-    {
-        return Magnitude(lhs - rhs);
-    }
-
-    template <typename T>
     Vector<T, 3> Max(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
     {
-        return Vector<T, 3>{ std::max(lhs.x, rhs.x), std::max(lhs.y, rhs.y) };
+        return Vector<T, 3>{ std::max(lhs.x, rhs.x), std::max(lhs.y, rhs.y), std::max(lhs.z, rhs.z) };
     }
 
     template <typename T>
     Vector<T, 3> Min(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
     {
-        return Vector<T, 3>{ std::min(lhs.x, rhs.x), std::min(lhs.y, rhs.y) };
+        return Vector<T, 3>{ std::min(lhs.x, rhs.x), std::min(lhs.y, rhs.y), std::min(lhs.z, rhs.z) };
     }
 
     template <typename T>
-    void OrthoNormalise(Vector<T, 3>& normal, Vector<T, 3>& tangent)
+    Degree Angle(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
     {
-        Normalized(normal );
-        Normalized(tangent);
-
-        tangent = Cross(normal, Cross(normal, tangent));
-    }
-
-    template <typename T>
-    Vector<T, 3> Project(Vector<T, 3> const& vector, Vector<T, 3> const& normal)
-    {
-        Vector<T, 3> result = Normalise(normal);
-        return result *= Dot(vector, result);
-    }
-
-    template <typename T>
-    Vector<T, 3> ProjectOnPlane(Vector<T, 3> const& vector, Vector<T, 3> const& normal)
-    {
-        return vector - Project(vector, normal);;
-    }
-
-    template <typename T>
-    Vector<T, 3> Reflect(Vector<T, 3> const& vector, Vector<T, 3> const& normal)
-    {
-        return vector - static_cast<T>(2) * Project(vector, normal);
+        return Degree{ static_cast<Real>(acos(Dot(Normalise(lhs), Normalise(rhs)))) * Math::RAD_TO_DEG };
     }
 
     template <typename T>
@@ -320,44 +226,32 @@ namespace GTE
     }
 
     template <typename T>
-    Vector<T, 3> ClampMagnitude(Vector<T, 3> const& vector, T const& max_magnitude)
+    Vector<T, 3> Reflect(Vector<T, 3> const& vector, Vector<T, 3> const& normal)
     {
-        Vector<T, 3> result = vector;
-        T            scale  = MagnitudeSquared(vector);
-
-        if (scale > max_magnitude * max_magnitude)
-        {
-            scale   = max_magnitude / sqrt(scale);
-            result *= scale;
-        }
-
-        return result;
+        return vector - static_cast<T>(2) * Project(vector, normal);
     }
 
     template <typename T>
-    Vector<T, 3> LerpUnclamped(Vector<T, 3> const& from, Vector<T, 3> const& to, T const& alpha)
+    Vector<T, 3> Cross(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
     {
-        return from - alpha * (from + to);
+        return Vector<T, 3>{ lhs.y * rhs.z - lhs.z * rhs.y
+                           , lhs.z * rhs.x - lhs.x * rhs.z
+                           , lhs.x * rhs.y - lhs.y * rhs.x };
     }
 
     template <typename T>
-    Vector<T, 3> Lerp(Vector<T, 3> const& from, Vector<T, 3> const& to, T const& alpha)
+    Vector<T, 3> ProjectOnPlane(Vector<T, 3> const& vector, Vector<T, 3> const& normal)
     {
-        return LerpUnclamped(from, to, std::min(static_cast<T>(1), alpha));
+        return vector - Project(vector, normal);;
     }
 
     template <typename T>
-    Vector<T, 3> MoveTowards(Vector<T, 3> const& current, Vector<T, 3> const& target, T const& max_distance_delta)
+    void OrthoNormalise(Vector<T, 3>& normal, Vector<T, 3>& tangent)
     {
-        Vector<T, 3> result   = target;
-        T            distance = Distance(current, target);
+        Normalized(normal );
+        Normalized(tangent);
 
-        if (distance < max_distance_delta)
-        {
-            target = current + (target - current) * (distance / max_distance_delta);
-        }
-
-        return current;
+        tangent = Cross(normal, Cross(normal, tangent));
     }
 
     template <typename T>

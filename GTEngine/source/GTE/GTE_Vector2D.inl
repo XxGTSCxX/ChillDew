@@ -33,30 +33,31 @@ namespace GTE
     {}
 
     template <typename T>
+    template <typename U, typename>
+    inline constexpr Vector<T, 2>::Vector(Vector<U, 1> const& vector)
+    : x{ static_cast<T>(vector.x) }
+    {}
+
+    template <typename T>
+    template <typename U, typename>
+    inline Vector<T, 2>& Vector<T, 2>::operator=(Vector<U, 1> const& vector)
+    {
+        x = static_cast<T>(vector.x);
+        return *this;
+    }
+
+    template <typename T>
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 2>::Vector(Vector<U, U_SZ> const& vector)
-    {
-        if constexpr (SZ < U_SZ)
-        {
-            for (size_t i = 0; i < SZ; ++i)
-            {
-                _array[i] = vector[i];
-            }
-        }
-        else
-        {
-            for (size_t i = 0; i < U_SZ; ++i)
-            {
-                _array[i] = vector[i];
-            }
-        }
-    }
+    : x{ static_cast<T>(vector.x) }, y{ static_cast<T>(vector.y) }
+    {}
 
     template <typename T>
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 2>& Vector<T, 2>::operator=(Vector<U, U_SZ> const& vector)
     {
-        new (this) Vector<T, 2>{ vector };
+        x = static_cast<T>(vector.x);
+        y = static_cast<T>(vector.y);
         return *this;
     }
 
@@ -144,42 +145,6 @@ namespace GTE
     }
 
     template <typename T>
-    Vector<T, 2> operator+(Vector<T, 2> const& lhs, Vector<T, 2> const& rhs)
-    {
-        return Vector<T, 2>{ lhs } += rhs;
-    }
-
-    template <typename T>
-    Vector<T, 2> operator-(Vector<T, 2> const& lhs, Vector<T, 2> const& rhs)
-    {
-        return Vector<T, 2>{ lhs } -= rhs;
-    }
-
-    template <typename T>
-    Vector<T, 2> operator*(Vector<T, 2> const& lhs, Vector<T, 2> const& rhs)
-    {
-        return Vector<T, 2>{ lhs } *= rhs;
-    }
-
-    template <typename T>
-    Vector<T, 2> operator*(Vector<T, 2> const& vector, T const& scale)
-    {
-        return Vector<T, 2>{ vector } *= scale;
-    }
-
-    template <typename T>
-    Vector<T, 2> operator*(T const& scale, Vector<T, 2> const& vector)
-    {
-        return Vector<T, 2>{ vector } *= scale;
-    }
-
-    template <typename T>
-    Vector<T, 2> operator/(Vector<T, 2> const& vector, T const& scale)
-    {
-        return Vector<T, 2>{ vector } /= scale;
-    }
-
-    template <typename T>
     Vector<T, 2> operator-(Vector<T, 2> const& vector)
     {
         return Vector<T, 2>{ -vector.x, -vector.y };
@@ -189,12 +154,6 @@ namespace GTE
     bool operator==(Vector<T, 2> const& lhs, Vector<T, 2> const& rhs)
     {
         return lhs.x == rhs.x && lhs.y == rhs.y;
-    }
-
-    template <typename T>
-    bool operator!=(Vector<T, 2> const& lhs, Vector<T, 2> const& rhs)
-    {
-        return !(lhs == rhs);
     }
 
     template <typename T>
@@ -208,18 +167,6 @@ namespace GTE
     {
         char discard;
         return stream >> discard >> vector.x >> discard >> vector.y >> discard;
-    }
-
-    template <typename T>
-    T MagnitudeSquared(Vector<T, 2> const& vector)
-    {
-        return Dot(vector, vector);
-    }
-
-    template <typename T>
-    T Magnitude(Vector<T, 2> const& vector)
-    {
-        return static_cast<T>(sqrt(MagnitudeSquared(vector)));
     }
 
     template <typename T>
@@ -239,36 +186,9 @@ namespace GTE
     }
 
     template <typename T>
-    Vector<T, 2> Normalise(Vector<T, 2> const& vector)
-    {
-        Vector<T, 2> result{ vector };
-        return Normalised(result);
-    }
-
-    template <typename T>
-    Vector<T, 2>& Normalised(Vector<T, 2>& vector)
-    {
-        if (T inv_mag = Magnitude(vector))
-            vector *= static_cast<T>(1) / inv_mag;
-        return vector;
-    }
-
-    template <typename T>
     T Dot(Vector<T, 2> const& lhs, Vector<T, 2> const& rhs)
     {
         return lhs.x * rhs.x + lhs.y * rhs.y;
-    }
-
-    template <typename T>
-    Degree Angle(Vector<T, 2> const& lhs, Vector<T, 2> const& rhs)
-    {
-        return Degree{ static_cast<Real>(acos(Dot(Normalise(lhs), Normalise(rhs)))) * Math::RAD_TO_DEG };
-    }
-
-    template <typename T>
-    T Distance(Vector<T, 2> const& lhs, Vector<T, 2> const& rhs)
-    {
-        return Magnitude(lhs - rhs);
     }
 
     template <typename T>
@@ -284,16 +204,9 @@ namespace GTE
     }
 
     template <typename T>
-    Vector<T, 2> Project(Vector<T, 2> const& vector, Vector<T, 2> const& normal)
+    Degree Angle(Vector<T, 2> const& lhs, Vector<T, 2> const& rhs)
     {
-        Vector<T, 2> result = Normalise(normal);
-        return result *= Dot(vector, result);
-    }
-
-    template <typename T>
-    Vector<T, 2> Reflect(Vector<T, 2> const& vector, Vector<T, 2> const& normal)
-    {
-        return vector - static_cast<T>(2) * Project(vector, normal);
+        return Degree{ static_cast<Real>(acos(Dot(Normalise(lhs), Normalise(rhs))))* Math::RAD_TO_DEG };
     }
 
     template <typename T>
@@ -306,44 +219,9 @@ namespace GTE
     }
 
     template <typename T>
-    Vector<T, 2> ClampMagnitude(Vector<T, 2> const& vector, T const& max_magnitude)
+    Vector<T, 2> Reflect(Vector<T, 2> const& vector, Vector<T, 2> const& normal)
     {
-        Vector<T, 2> result = vector;
-        T            scale  = MagnitudeSquared(vector);
-
-        if (scale > max_magnitude * max_magnitude)
-        {
-            scale   = max_magnitude / sqrt(scale);
-            result *= scale;
-        }
-
-        return result;
-    }
-
-    template <typename T>
-    Vector<T, 2> LerpUnclamped(Vector<T, 2> const& from, Vector<T, 2> const& to, T const& alpha)
-    {
-        return from - alpha * (from + to);
-    }
-
-    template <typename T>
-    Vector<T, 2> Lerp(Vector<T, 2> const& from, Vector<T, 2> const& to, T const& alpha)
-    {
-        return LerpUnclamped(from, to, std::min(static_cast<T>(1), alpha));
-    }
-
-    template <typename T>
-    Vector<T, 2> MoveTowards(Vector<T, 2> const& current, Vector<T, 2> const& target, T const& max_distance_delta)
-    {
-        Vector<T, 2> result   = target;
-        T            distance = Distance(current, target);
-
-        if (distance < max_distance_delta)
-        {
-            target = current + (target - current) * (distance / max_distance_delta);
-        }
-
-        return current;
+        return vector - static_cast<T>(2) * Project(vector, normal);
     }
 
 }

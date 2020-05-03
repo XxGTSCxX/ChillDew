@@ -90,6 +90,11 @@ namespace GTE
         constexpr Vector(Vector<T, 3> const&)        noexcept = default;
         Vector<T, 3>& operator=(Vector<T, 3> const&) noexcept = default;
 
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> constexpr Vector(Vector<U, 1> const&)        noexcept;
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> constexpr Vector(Vector<U, 2> const&)        noexcept;
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 3>& operator=(Vector<U, 1> const&) noexcept;
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 3>& operator=(Vector<U, 2> const&) noexcept;
+
         template <typename ... Params, typename = IS_CONVERTIBLE_SFINAE<Params...>>
         constexpr Vector(Params&& ... args) noexcept;                           // Construct with elements
 
@@ -115,43 +120,22 @@ namespace GTE
         static constexpr size_t size();
     };
 
-    template <typename T> Vector<T, 3> operator+(Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs   );
-    template <typename T> Vector<T, 3> operator-(Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs   );
-    template <typename T> Vector<T, 3> operator*(Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs   ); // Multiplies two vectors component-wise (Hadamard Product)
-    template <typename T> Vector<T, 3> operator*(Vector<T, 3> const& vector, T            const& scale );
-    template <typename T> Vector<T, 3> operator*(T            const& scale , Vector<T, 3> const& vector);
-    template <typename T> Vector<T, 3> operator/(Vector<T, 3> const& vector, T            const& scale ); // Division by 0 will set the values to infinity
-    template <typename T> Vector<T, 3> operator-(Vector<T, 3> const& vector                            );
+    template <typename T> Vector<T, 3> operator-(Vector<T, 3> const& vector);
 
     template <typename T> bool operator==(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs);
-    template <typename T> bool operator!=(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs);
 
     template <typename T> GTE::ostream& operator<<(GTE::ostream& stream, Vector<T, 3> const& vector);
     template <typename T> GTE::istream& operator>>(GTE::istream& stream, Vector<T, 3>&       vector);
 
-    template <typename T> T             MagnitudeSquared(Vector<T, 3> const& vector);
-    template <typename T> T             Magnitude       (Vector<T, 3> const& vector);
-    template <typename T> Vector<T, 3>  Normalise       (Vector<T, 3> const& vector);
-    template <typename T> Vector<T, 3>& Normalised      (Vector<T, 3>&       vector);
-
-    template <typename T> Vector<T, 3> Cross   (Vector<T, 3> const& lhs, Vector<T, 3> const& rhs);
-    template <typename T> T            Dot     (Vector<T, 3> const& lhs, Vector<T, 3> const& rhs);
-    template <typename T> Degree       Angle   (Vector<T, 3> const& lhs, Vector<T, 3> const& rhs);
-    template <typename T> T            Distance(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs);
-    template <typename T> Vector<T, 3> Max     (Vector<T, 3> const& lhs, Vector<T, 3> const& rhs);
-    template <typename T> Vector<T, 3> Min     (Vector<T, 3> const& lhs, Vector<T, 3> const& rhs);
-
-    template <typename T> void         OrthoNormalise(Vector<T, 3>&       normal, Vector<T, 3>&       tangent);
-    template <typename T> Vector<T, 3> Project       (Vector<T, 3> const& vector, Vector<T, 3> const& normal );
-    template <typename T> Vector<T, 3> ProjectOnPlane(Vector<T, 3> const& vector, Vector<T, 3> const& normal );
-    template <typename T> Vector<T, 3> Reflect       (Vector<T, 3> const& vector, Vector<T, 3> const& normal );
+    template <typename T> T            Dot           (Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs    );
+    template <typename T> Vector<T, 3> Max           (Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs    );
+    template <typename T> Vector<T, 3> Min           (Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs    );
+    template <typename T> Degree       Angle         (Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs    );
     template <typename T> Degree       SignedAngle   (Vector<T, 3> const& from  , Vector<T, 3> const& to     );
-
-    template <typename T> Vector<T, 3> ClampMagnitude(Vector<T, 3> const& vector, T const& max_magnitude);
-
-    template <typename T> Vector<T, 3> LerpUnclamped(Vector<T, 3> const& from   , Vector<T, 3> const& to    , T const& alpha             );
-    template <typename T> Vector<T, 3> Lerp         (Vector<T, 3> const& from   , Vector<T, 3> const& to    , T const& alpha             );
-    template <typename T> Vector<T, 3> MoveTowards  (Vector<T, 3> const& current, Vector<T, 3> const& target, T const& max_distance_delta);
+    template <typename T> Vector<T, 3> Reflect       (Vector<T, 3> const& vector, Vector<T, 3> const& normal );
+    template <typename T> Vector<T, 3> Cross         (Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs    );
+    template <typename T> Vector<T, 3> ProjectOnPlane(Vector<T, 3> const& vector, Vector<T, 3> const& normal );
+    template <typename T> void         OrthoNormalise(Vector<T, 3>&       normal, Vector<T, 3>&       tangent);
 
     template <typename T> Vector<T, 3> RotateTowards(Vector<T, 3> const& current, Vector<T, 3> const& target, Radian max_angle_delta, T const& max_magnitude_delta); // TODO: Might wanna consider moving this to Quaternion instead?
 
