@@ -43,11 +43,7 @@ namespace GTE
 
         union
         {
-        private:
-
-            std::array<T, 3> _array;
-
-        public:
+            std::array<T, 3> _array{};
 
             struct
             {

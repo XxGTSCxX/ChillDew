@@ -246,6 +246,14 @@ namespace GTE
         return vector;
     }
 
+    template<typename T>
+    Vector<T, 3> Cross(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
+    {
+        return Vector<T, 3>{ lhs.y * rhs.z - lhs.z * rhs.y
+                           , lhs.z * rhs.x - lhs.x * rhs.z
+                           , lhs.x * rhs.y - lhs.y * rhs.x };
+    }
+
     template <typename T>
     T Dot(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
     {
@@ -277,10 +285,25 @@ namespace GTE
     }
 
     template <typename T>
+    void OrthoNormalise(Vector<T, 3>& normal, Vector<T, 3>& tangent)
+    {
+        Normalized(normal );
+        Normalized(tangent);
+
+        tangent = Cross(normal, Cross(normal, tangent));
+    }
+
+    template <typename T>
     Vector<T, 3> Project(Vector<T, 3> const& vector, Vector<T, 3> const& normal)
     {
         Vector<T, 3> result = Normalise(normal);
         return result *= Dot(vector, result);
+    }
+
+    template<typename T>
+    Vector<T, 3> ProjectOnPlane(Vector<T, 3> const& vector, Vector<T, 3> const& normal)
+    {
+        return vector - Project(vector, normal);;
     }
 
     template <typename T>
