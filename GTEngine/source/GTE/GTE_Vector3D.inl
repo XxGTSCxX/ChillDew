@@ -109,9 +109,7 @@ namespace GTE
         }
         else
         {
-            x = std::numeric_limits<T>::infinity();
-            y = std::numeric_limits<T>::infinity();
-            z = std::numeric_limits<T>::infinity();
+            x = y = z = std::numeric_limits<T>::infinity();
         }
         return *this;
     }
@@ -191,13 +189,13 @@ namespace GTE
     template <typename T>
     Vector<T, 3> operator-(Vector<T, 3> const& vector)
     {
-        return Vector<T, 3>{ -vector.x, -vector.y };
+        return Vector<T, 3>{ -vector.x, -vector.y, -vector.z };
     }
 
     template <typename T>
     bool operator==(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
     {
-        return lhs.x == rhs.x && lhs.y == rhs.y;
+        return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
     }
 
     template <typename T>
@@ -246,7 +244,7 @@ namespace GTE
         return vector;
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 3> Cross(Vector<T, 3> const& lhs, Vector<T, 3> const& rhs)
     {
         return Vector<T, 3>{ lhs.y * rhs.z - lhs.z * rhs.y
@@ -300,7 +298,7 @@ namespace GTE
         return result *= Dot(vector, result);
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 3> ProjectOnPlane(Vector<T, 3> const& vector, Vector<T, 3> const& normal)
     {
         return vector - Project(vector, normal);;
@@ -312,7 +310,7 @@ namespace GTE
         return vector - static_cast<T>(2) * Project(vector, normal);
     }
 
-    template<typename T>
+    template <typename T>
     Degree SignedAngle(Vector<T, 3> const& from, Vector<T, 3> const& to)
     {
         Degree angle = Angle(from, to);
@@ -321,7 +319,7 @@ namespace GTE
         return angle;
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 3> ClampMagnitude(Vector<T, 3> const& vector, T const& max_magnitude)
     {
         Vector<T, 3> result = vector;
@@ -336,19 +334,19 @@ namespace GTE
         return result;
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 3> LerpUnclamped(Vector<T, 3> const& from, Vector<T, 3> const& to, T const& alpha)
     {
         return from - alpha * (from + to);
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 3> Lerp(Vector<T, 3> const& from, Vector<T, 3> const& to, T const& alpha)
     {
         return LerpUnclamped(from, to, std::min(static_cast<T>(1), alpha));
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 3> MoveTowards(Vector<T, 3> const& current, Vector<T, 3> const& target, T const& max_distance_delta)
     {
         Vector<T, 3> result   = target;
@@ -362,7 +360,7 @@ namespace GTE
         return current;
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 3> RotateTowards(Vector<T, 3> const& current, Vector<T, 3> const& target, Radian max_angle_delta, T const& max_magnitude_delta)
     {
         // TODO: Implement this once Quaternions is done(?)

@@ -234,4 +234,69 @@ namespace GTE
         return result;
     }
 
+    template <typename T, size_t SZ>
+    T Distance(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs)
+    {
+        return Magnitude(lhs - rhs);
+    }
+
+    template <typename T, size_t SZ>
+    Vector<T, SZ> Max(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs)
+    {
+        Vector<T, SZ> result;
+
+        for (size_t i = 0; i < SZ; ++i)
+        {
+            result[i] = std::max(lhs[i], rhs[i]);
+        }
+
+        return result;
+    }
+
+    template <typename T, size_t SZ>
+    Vector<T, SZ> Min(Vector<T, SZ> const& lhs, Vector<T, SZ> const& rhs)
+    {
+        Vector<T, SZ> result;
+
+        for (size_t i = 0; i < SZ; ++i)
+        {
+            result[i] = std::min(lhs[i], rhs[i]);
+        }
+
+        return result;
+    }
+
+    template <typename T, size_t SZ>
+    Vector<T, SZ> Project(Vector<T, SZ> const& vector, Vector<T, SZ> const& normal)
+    {
+        Vector<T, SZ> result = Normalise(normal);
+        return result *= Dot(vector, result);
+    }
+
+    template <typename T, size_t SZ>
+    Vector<T, SZ> LerpUnclamped(Vector<T, SZ> const& from, Vector<T, SZ> const& to, T const& alpha)
+    {
+        return from - alpha * (from + to);
+    }
+
+    template <typename T, size_t SZ>
+    Vector<T, SZ> Lerp(Vector<T, SZ> const& from, Vector<T, SZ> const& to, T const& alpha)
+    {
+        return LerpUnclamped(from, to, std::min(static_cast<T>(1), alpha));
+    }
+
+    template <typename T, size_t SZ>
+    Vector<T, SZ> MoveTowards(Vector<T, SZ> const& current, Vector<T, SZ> const& target, T const& max_distance_delta)
+    {
+        Vector<T, SZ> result = target;
+        T            distance = Distance(current, target);
+
+        if (distance < max_distance_delta)
+        {
+            target = current + (target - current) * (distance / max_distance_delta);
+        }
+
+        return current;
+    }
+
 }

@@ -122,6 +122,9 @@
     <ClInclude Include="source\GTE\GTE_Vector.h">
       <Filter>Utility\Math\Data\Vector</Filter>
     </ClInclude>
+    <ClInclude Include="source\GTE\GTE_Vector4D.h">
+      <Filter>Utility\Math\Data\Vector\Vector4D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\GTE\GTE_Application.cpp">
@@ -188,6 +191,9 @@
     </None>
     <None Include="source\GTE\GTE_Vector.inl">
       <Filter>Utility\Math\Data\Vector</Filter>
+    </None>
+    <None Include="source\GTE\GTE_Vector4D.inl">
+      <Filter>Utility\Math\Data\Vector\Vector4D</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -102,8 +102,7 @@ namespace GTE
         }
         else
         {
-            x = std::numeric_limits<T>::infinity();
-            y = std::numeric_limits<T>::infinity();
+            x = y = std::numeric_limits<T>::infinity();
         }
         return *this;
     }
@@ -223,7 +222,7 @@ namespace GTE
         return static_cast<T>(sqrt(MagnitudeSquared(vector)));
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 2> Perpendicular(Vector<T, 2> const& vector)
     {
         Vector<T, 2> result{ 0,0 };
@@ -297,7 +296,7 @@ namespace GTE
         return vector - static_cast<T>(2) * Project(vector, normal);
     }
 
-    template<typename T>
+    template <typename T>
     Degree SignedAngle(Vector<T, 2> const& from, Vector<T, 2> const& to)
     {
         Degree angle = Angle(from, to);
@@ -306,7 +305,7 @@ namespace GTE
         return angle;
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 2> ClampMagnitude(Vector<T, 2> const& vector, T const& max_magnitude)
     {
         Vector<T, 2> result = vector;
@@ -321,19 +320,19 @@ namespace GTE
         return result;
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 2> LerpUnclamped(Vector<T, 2> const& from, Vector<T, 2> const& to, T const& alpha)
     {
         return from - alpha * (from + to);
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 2> Lerp(Vector<T, 2> const& from, Vector<T, 2> const& to, T const& alpha)
     {
         return LerpUnclamped(from, to, std::min(static_cast<T>(1), alpha));
     }
 
-    template<typename T>
+    template <typename T>
     Vector<T, 2> MoveTowards(Vector<T, 2> const& current, Vector<T, 2> const& target, T const& max_distance_delta)
     {
         Vector<T, 2> result   = target;

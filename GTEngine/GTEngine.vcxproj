@@ -121,6 +121,7 @@
     <ClInclude Include="source\GTE\GTE_Vector.h" />
     <ClInclude Include="source\GTE\GTE_Vector2D.h" />
     <ClInclude Include="source\GTE\GTE_Vector3D.h" />
+    <ClInclude Include="source\GTE\GTE_Vector4D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\GTE\GTE_Debug.cpp" />
@@ -146,6 +147,7 @@
     <None Include="source\GTE\GTE_Vector.inl" />
     <None Include="source\GTE\GTE_Vector2D.inl" />
     <None Include="source\GTE\GTE_Vector3D.inl" />
+    <None Include="source\GTE\GTE_Vector4D.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

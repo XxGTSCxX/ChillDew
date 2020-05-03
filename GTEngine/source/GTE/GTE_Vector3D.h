@@ -101,7 +101,7 @@ namespace GTE
 
         Vector<T, 3>& operator+=(Vector<T, 3> const& other);
         Vector<T, 3>& operator-=(Vector<T, 3> const& other);
-        Vector<T, 3>& operator*=(Vector<T, 3> const& other);                    // This is using Hadamard Product
+        Vector<T, 3>& operator*=(Vector<T, 3> const& other);                    // Multiplies two vectors component-wise (Hadamard Product)
         Vector<T, 3>& operator*=(T            const& scale);
         Vector<T, 3>& operator/=(T            const& scale);                    // Division by 0 will set the values to infinity
 
@@ -117,7 +117,7 @@ namespace GTE
 
     template <typename T> Vector<T, 3> operator+(Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs   );
     template <typename T> Vector<T, 3> operator-(Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs   );
-    template <typename T> Vector<T, 3> operator*(Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs   ); // This is using Hadamard Product
+    template <typename T> Vector<T, 3> operator*(Vector<T, 3> const& lhs   , Vector<T, 3> const& rhs   ); // Multiplies two vectors component-wise (Hadamard Product)
     template <typename T> Vector<T, 3> operator*(Vector<T, 3> const& vector, T            const& scale );
     template <typename T> Vector<T, 3> operator*(T            const& scale , Vector<T, 3> const& vector);
     template <typename T> Vector<T, 3> operator/(Vector<T, 3> const& vector, T            const& scale ); // Division by 0 will set the values to infinity
