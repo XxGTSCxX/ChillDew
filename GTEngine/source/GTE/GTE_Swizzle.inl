@@ -16,8 +16,8 @@ namespace GTE
         return *static_cast<ArrayTemplate<ElemType, N>*>(this);
     }
 
-    template <class ArrayTemplate<>, typename ElemType, size_t N, size_t ... INDICES>
-    inline Swizzle<ArrayTemplate<>, ElemType, N, ... INDICES>::operator ArrayTemplate<ElemType, N>() const
+    template <class ArrayTemplate<,>, typename ElemType, size_t N, size_t ...INDICES>
+    inline Swizzle<ArrayTemplate<,>, ElemType, N, ...INDICES>::operator ArrayTemplate<ElemType, N>() const
     {
         return ArrayTemplate<ElemType, N>{ _array[INDICES]... };
     }

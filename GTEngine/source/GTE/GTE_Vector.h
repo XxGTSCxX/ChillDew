@@ -21,29 +21,34 @@ namespace GTE
 {
 
     template <typename T, size_t SZ>
-    struct GTE_API Vector final
+    struct VectorData
     {
-    private:
+        template <typename ... Params> using SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
 
-        template <typename ... Params> using IS_VECTOR_SFINAE      = std::enable_if_t<is_all_same_v<Vector, Params...>>;
+        std::array<T, SZ> _array{};
+
+        template <typename ... Params, typename = SFINAE<Params...>>
+        constexpr VectorData(Params&& ... args) noexcept;
+    };
+
+    template <typename T, size_t SZ>
+    struct GTE_API Vector : private VectorData<T, SZ>
+    {
+    protected:
+
         template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
-
-        std::array<T, SZ> _array;
+        template <typename ... Params> using MULTI_PARAM_SFINAE    = std::enable_if_t<(std::conjunction_v<std::is_convertible<Params, T>...> && sizeof...(Params) == SZ)>;
 
     public:
 
-        Vector()              = default;
-        Vector(Vector const&) = default;
-        Vector(Vector&&)      = default;
-
-        Vector& operator=(Vector const&) = default;
-        Vector& operator=(Vector&&)      = default;
-
-        template <typename ... Params, typename = IS_CONVERTIBLE_SFINAE<Params...>>
+        template <typename ... Params, typename = MULTI_PARAM_SFINAE<Params...>>
         constexpr Vector(Params&& ... args);                                    // Construct with elements
 
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>>
+        explicit constexpr Vector(U&& fill_value) noexcept;                     // Fill constructor
+
         template <typename U, unsigned U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit Vector(Vector<U, U_SZ> const& vector);                         // Conversion construction between vectors with different dimensions and element types
+        explicit constexpr Vector(Vector<U, U_SZ> const& vector) noexcept;      // Conversion construction between vectors with different dimensions and element types
 
         template <typename U, unsigned U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
         Vector& operator=(Vector<U, U_SZ> const& vector);                       // Conversion assignment between vectors with different dimensions and element types
@@ -93,5 +98,8 @@ namespace GTE
     template <typename T, size_t SZ> Vector<T, SZ> LerpUnclamped(Vector<T, SZ> const& from   , Vector<T, SZ> const& to    , T const& alpha             );
     template <typename T, size_t SZ> Vector<T, SZ> Lerp         (Vector<T, SZ> const& from   , Vector<T, SZ> const& to    , T const& alpha             );
     template <typename T, size_t SZ> Vector<T, SZ> MoveTowards  (Vector<T, SZ> const& current, Vector<T, SZ> const& target, T const& max_distance_delta);
+
+    template <typename T>
+    struct Vector<T, 0>; // There shouldn't be a 0 dimension vector
 
 }

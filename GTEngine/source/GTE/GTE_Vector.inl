@@ -3,23 +3,37 @@
 #include "GTE_Vector.h"
 #include <algorithm> // std::min
 #include <cmath>     // sqrt
+#include "GTE_Vector2D.h"
 
 namespace GTE
 {
 
     template <typename T, size_t SZ>
     template <typename ... Params, typename>
-    constexpr Vector<T, SZ>::Vector(Params&& ... args)
-    : std::array<T, SZ>{ std::forward<Params>(args)... }
+    inline constexpr VectorData<T, SZ>::VectorData(Params&& ...args) noexcept
+    : _array{ static_cast<T>(args)... }
     {}
 
     template <typename T, size_t SZ>
+    template <typename ... Params, typename>
+    constexpr Vector<T, SZ>::Vector(Params&& ... args)
+    : VectorData<T, SZ>{ std::forward<Params>(args)... }
+    {}
+
+    template <typename T, size_t SZ>
+    template <typename U, typename>
+    inline constexpr Vector<T, SZ>::Vector(U&& fill_value) noexcept
+    {
+        _array.fill(static_cast<T>(fill_value));
+    }
+
+    template <typename T, size_t SZ>
     template <typename U, unsigned U_SZ, typename>
-    Vector<T, SZ>::Vector(Vector<U, U_SZ> const& vector)
+    inline constexpr Vector<T, SZ>::Vector(Vector<U, U_SZ> const& vector) noexcept
     {
         for (size_t i = 0, count = std::min(SZ, U_SZ); i < count; ++i)
         {
-            (*this)[i] = static_cast<T>(vector[i]);
+            _array[i] = static_cast<T>(vector[i]);
         }
     }
 
@@ -35,7 +49,7 @@ namespace GTE
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            (*this)[i] += other[i];
+            _array[i] += other[i];
         }
     }
 
@@ -44,7 +58,7 @@ namespace GTE
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            (*this)[i] -= other[i];
+            _array[i] -= other[i];
         }
     }
 
@@ -53,14 +67,14 @@ namespace GTE
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            (*this)[i] *= other[i];
+            _array[i] *= other[i];
         }
     }
 
     template <typename T, size_t SZ>
     Vector<T, SZ>& Vector<T, SZ>::operator*=(T const& scale)
     {
-        for (T& elem : *this)
+        for (T& elem : _array)
         {
             elem *= scale;
         }
@@ -70,12 +84,12 @@ namespace GTE
     Vector<T, SZ>& Vector<T, SZ>::operator/=(T const& scale)
     {
         if (scale)
-            for (T& elem : *this)
+            for (T& elem : _array)
             {
                 elem *= scale;
             }
         else
-            for (T& elem : *this)
+            for (T& elem : _array)
             {
                 elem = std::numeric_limits<T>::infinity();
             }
@@ -303,8 +317,8 @@ namespace GTE
     template <typename T, size_t SZ>
     Vector<T, SZ> MoveTowards(Vector<T, SZ> const& current, Vector<T, SZ> const& target, T const& max_distance_delta)
     {
-        Vector<T, SZ> result = target;
-        T            distance = Distance(current, target);
+        Vector<T, SZ> result   = target;
+        T             distance = Distance(current, target);
 
         if (distance < max_distance_delta)
         {

@@ -23,23 +23,9 @@ namespace GTE
 {
 
     template <typename T>
-    struct GTE_API Vector<T, 3>
+    struct GTE_API VectorData<T, 3>
     {
-    protected:
-
-        template <typename ... Params> using IS_VECTOR_SFINAE      = std::enable_if_t<is_all_same_v<Vector, Params...>>;
         template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
-
-    public:
-
-        static Vector<T, 3> const up;
-        static Vector<T, 3> const down;
-        static Vector<T, 3> const left;
-        static Vector<T, 3> const right;
-        static Vector<T, 3> const forward;
-        static Vector<T, 3> const back;
-        static Vector<T, 3> const one;
-        static Vector<T, 3> const zero;
 
         union
         {
@@ -86,20 +72,73 @@ namespace GTE
             Swizzle<Vector, T, 3, 2, 1, 0> bgr;
         };
 
-        constexpr Vector()                           noexcept = default;
-        constexpr Vector(Vector<T, 3> const&)        noexcept = default;
-        Vector<T, 3>& operator=(Vector<T, 3> const&) noexcept = default;
-
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> constexpr Vector(Vector<U, 1> const&)        noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> constexpr Vector(Vector<U, 2> const&)        noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 3>& operator=(Vector<U, 1> const&) noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 3>& operator=(Vector<U, 2> const&) noexcept;
-
         template <typename ... Params, typename = IS_CONVERTIBLE_SFINAE<Params...>>
-        constexpr Vector(Params&& ... args) noexcept;                           // Construct with elements
+        constexpr VectorData(Params&& ... args) noexcept;
+    };
+
+    template <typename T>
+    struct GTE_API Vector<T, 3> : private VectorData<T, 3>
+    {
+    private:
+
+        template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
+
+    public:
+
+        static Vector<T, 3> const up;
+        static Vector<T, 3> const down;
+        static Vector<T, 3> const left;
+        static Vector<T, 3> const right;
+        static Vector<T, 3> const forward;
+        static Vector<T, 3> const back;
+        static Vector<T, 3> const one;
+        static Vector<T, 3> const zero;
+
+        using VectorData<T, 3>::x;
+        using VectorData<T, 3>::y;
+        using VectorData<T, 3>::z;
+
+        using VectorData<T, 3>::r;
+        using VectorData<T, 3>::g;
+        using VectorData<T, 3>::b;
+
+        using VectorData<T, 3>::xy;
+        using VectorData<T, 3>::xz;
+        using VectorData<T, 3>::yx;
+        using VectorData<T, 3>::yz;
+        using VectorData<T, 3>::zx;
+        using VectorData<T, 3>::zy;
+        using VectorData<T, 3>::xyz;
+        using VectorData<T, 3>::xzy;
+        using VectorData<T, 3>::yxz;
+        using VectorData<T, 3>::yzx;
+        using VectorData<T, 3>::zxy;
+        using VectorData<T, 3>::zyx;
+
+        using VectorData<T, 3>::rg;
+        using VectorData<T, 3>::rb;
+        using VectorData<T, 3>::gr;
+        using VectorData<T, 3>::gb;
+        using VectorData<T, 3>::br;
+        using VectorData<T, 3>::bg;
+        using VectorData<T, 3>::rgb;
+        using VectorData<T, 3>::rbg;
+        using VectorData<T, 3>::grb;
+        using VectorData<T, 3>::gbr;
+        using VectorData<T, 3>::brg;
+        using VectorData<T, 3>::bgr;
+
+        template <typename U, typename V, typename W, typename = IS_CONVERTIBLE_SFINAE<U, V, W>>
+        explicit constexpr Vector(U&& x, V&& y, W&& z) noexcept;                // Construct with elements
+
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>>
+        explicit constexpr Vector(U&& fill_value) noexcept;                     // Fill constructor
+
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 1> const& vector) noexcept;
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 2> const& vector) noexcept;
 
         template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit Vector(Vector<U, U_SZ> const& vector);                         // Conversion construction between vectors with different dimensions and element types
+        explicit constexpr Vector(Vector<U, U_SZ> const& vector) noexcept;      // Conversion construction between vectors with different dimensions and element types
 
         template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
         Vector<T, 3>& operator=(Vector<U, U_SZ> const& vector);                 // Conversion assignment between vectors with different dimensions and element types

@@ -23,21 +23,9 @@ namespace GTE
 {
 
     template <typename T>
-    struct GTE_API Vector<T, 2>
+    struct GTE_API VectorData<T, 2>
     {
-    protected:
-
-        template <typename ... Params> using IS_VECTOR_SFINAE      = std::enable_if_t<is_all_same_v<Vector, Params...>>;
         template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
-
-    public:
-
-        static Vector<T, 2> const up;
-        static Vector<T, 2> const down;
-        static Vector<T, 2> const left;
-        static Vector<T, 2> const right;
-        static Vector<T, 2> const one;
-        static Vector<T, 2> const zero;
 
         union
         {
@@ -53,18 +41,42 @@ namespace GTE
             Swizzle<Vector, T, 2, 1, 0> yx;
         };
 
-        constexpr Vector()                           noexcept = default;
-        constexpr Vector(Vector<T, 2> const&)        noexcept = default;
-        Vector<T, 2>& operator=(Vector<T, 2> const&) noexcept = default;
-
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> constexpr Vector(Vector<U, 1> const&)        noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 2>& operator=(Vector<U, 1> const&) noexcept;
-
         template <typename ... Params, typename = IS_CONVERTIBLE_SFINAE<Params...>>
-        constexpr Vector(Params&& ... args) noexcept;                           // Construct with elements
+        constexpr VectorData(Params&& ... args) noexcept;
+    };
+
+    template <typename T>
+    struct GTE_API Vector<T, 2> : private VectorData<T, 2>
+    {
+    private:
+
+        template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
+
+    public:
+
+        static Vector<T, 2> const up;
+        static Vector<T, 2> const down;
+        static Vector<T, 2> const left;
+        static Vector<T, 2> const right;
+        static Vector<T, 2> const one;
+        static Vector<T, 2> const zero;
+
+        using VectorData<T, 2>::x;
+        using VectorData<T, 2>::y;
+        using VectorData<T, 2>::xy;
+        using VectorData<T, 2>::yx;
+
+        template <typename U, typename V, typename = IS_CONVERTIBLE_SFINAE<U, V>>
+        explicit constexpr Vector(U&& x, U&& y) noexcept;                       // Construct with elements
+
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>>
+        explicit constexpr Vector(U&& fill_value) noexcept;                     // Fill constructor
+
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>>
+        explicit constexpr Vector(Vector<U, 1> const& vector) noexcept;
 
         template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit Vector(Vector<U, U_SZ> const& vector);                         // Conversion construction between vectors with different dimensions and element types
+        explicit constexpr Vector(Vector<U, U_SZ> const& vector) noexcept;      // Conversion construction between vectors with different dimensions and element types
 
         template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
         Vector<T, 2>& operator=(Vector<U, U_SZ> const& vector);                 // Conversion assignment between vectors with different dimensions and element types
@@ -92,7 +104,7 @@ namespace GTE
     template <typename T> GTE::ostream& operator<<(GTE::ostream& stream, Vector<T, 2> const& vector);
     template <typename T> GTE::istream& operator>>(GTE::istream& stream, Vector<T, 2>&       vector);
 
-    template <typename T> Vector<T, 2>  Perpendicular(Vector<T, 2> const& vector);
+    template <typename T> Vector<T, 2> Perpendicular(Vector<T, 2> const& vector);
 
     template <typename T> T            Dot        (Vector<T, 2> const& lhs   , Vector<T, 2> const& rhs   );
     template <typename T> Vector<T, 2> Max        (Vector<T, 2> const& lhs   , Vector<T, 2> const& rhs   );

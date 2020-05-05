@@ -19,6 +19,12 @@
 namespace GTE
 {
 
+    template <typename T>
+    template <typename ... Params, typename>
+    inline constexpr VectorData<T, 3>::VectorData(Params&& ...args) noexcept
+    : _array{ static_cast<T>(args)... }
+    {}
+
     template <typename T> Vector<T, 3> const Vector<T, 3>::up     {  0,  1,  0 };
     template <typename T> Vector<T, 3> const Vector<T, 3>::down   {  0, -1,  0 };
     template <typename T> Vector<T, 3> const Vector<T, 3>::left   { -1,  0,  0 };
@@ -29,53 +35,45 @@ namespace GTE
     template <typename T> Vector<T, 3> const Vector<T, 3>::zero   {  0,  0,  0 };
 
     template <typename T>
-    template <typename U, typename>
-    inline constexpr Vector<T, 3>::Vector(Vector<U, 1> const& vector)
-    : x{ static_cast<T>(vector.x) }
+    template <typename U, typename V, typename W, typename>
+    inline constexpr Vector<T, 3>::Vector(U&& x, V&& y, W&& z) noexcept
+    : VectorData<T, 3>{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(z) }
     {}
 
     template <typename T>
     template <typename U, typename>
-    inline constexpr Vector<T, 3>::Vector(Vector<U, 2> const& vector)
-    : x{ static_cast<T>(vector.x) }, y{ static_cast<T>(vector.y) }
+    inline constexpr Vector<T, 3>::Vector(U&& fill_value) noexcept
+    : VectorData<T, 3>{ static_cast<T>(fill_value), static_cast<T>(fill_value), static_cast<T>(fill_value) }
     {}
 
     template <typename T>
     template <typename U, typename>
-    inline Vector<T, 3>& Vector<T, 3>::operator=(Vector<U, 1> const& vector)
-    {
-        x = static_cast<T>(vector.x);
-        return *this;
-    }
+    inline constexpr Vector<T, 3>::Vector(Vector<U, 1> const& vector) noexcept
+    : VectorData<T, 3>{ static_cast<T>(vector[0]) }
+    {}
 
     template <typename T>
     template <typename U, typename>
-    inline Vector<T, 3>& Vector<T, 3>::operator=(Vector<U, 2> const& vector)
-    {
-        x = static_cast<T>(vector.x);
-        y = static_cast<T>(vector.y);
-        return *this;
-    }
-
-    template <typename T>
-    template <typename ... Params, typename>
-    inline constexpr Vector<T, 3>::Vector(Params&& ... args) noexcept
-    : _array{ static_cast<T>(std::forward<Params>(args))... }
+    inline constexpr Vector<T, 3>::Vector(Vector<U, 2> const& vector) noexcept
+    : VectorData<T, 3>{ static_cast<T>(vector[0]), static_cast<T>(vector[1]) }
     {}
 
     template <typename T>
     template <typename U, size_t U_SZ, typename>
-    inline Vector<T, 3>::Vector(Vector<U, U_SZ> const& vector)
-    : x{ static_cast<T>(vector.x) }, y{ static_cast<T>(vector.y) }, z{ static_cast<T>(vector.z) }
+    inline constexpr Vector<T, 3>::Vector(Vector<U, U_SZ> const& vector) noexcept
+    : VectorData<T, 3>{ static_cast<T>(vector[0]), static_cast<T>(vector[1]), static_cast<T>(vector[2]) }
     {}
 
     template <typename T>
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator=(Vector<U, U_SZ> const& vector)
     {
-        x = static_cast<T>(vector.x);
-        y = static_cast<T>(vector.y);
-        z = static_cast<T>(vector.z);
+        switch (U_SZ)
+        {
+        default: z = static_cast<T>(vector[2]);
+        case 2 : y = static_cast<T>(vector[1]);
+        case 1 : x = static_cast<T>(vector[0]);
+        }
         return *this;
     }
 

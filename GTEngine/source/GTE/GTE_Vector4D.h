@@ -23,17 +23,9 @@ namespace GTE
 {
 
     template <typename T>
-    struct GTE_API Vector<T, 4>
+    struct GTE_API VectorData<T, 4>
     {
-    protected:
-
-        template <typename ... Params> using IS_VECTOR_SFINAE      = std::enable_if_t<is_all_same_v<Vector, Params...>>;
         template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
-
-    public:
-
-        static Vector<T, 4> const one;
-        static Vector<T, 4> const zero;
 
         union
         {
@@ -166,22 +158,154 @@ namespace GTE
             Swizzle<Vector, T, 4, 3, 2, 1, 0> abgr;
         };
 
-        constexpr Vector()                           noexcept = default;
-        constexpr Vector(Vector<T, 4> const&)        noexcept = default;
-        Vector<T, 4>& operator=(Vector<T, 4> const&) noexcept = default;
-
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> constexpr Vector(Vector<U, 1> const&)        noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> constexpr Vector(Vector<U, 2> const&)        noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> constexpr Vector(Vector<U, 3> const&)        noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 4>& operator=(Vector<U, 1> const&) noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 4>& operator=(Vector<U, 2> const&) noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 4>& operator=(Vector<U, 3> const&) noexcept;
-
         template <typename ... Params, typename = IS_CONVERTIBLE_SFINAE<Params...>>
-        constexpr Vector(Params&& ... args) noexcept;                           // Construct with elements
+        constexpr VectorData(Params&& ... args) noexcept;
+    };
+
+    template <typename T>
+    struct GTE_API Vector<T, 4> : private VectorData<T, 4>
+    {
+    private:
+
+        template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
+
+    public:
+
+        static Vector<T, 4> const one;
+        static Vector<T, 4> const zero;
+
+        using VectorData<T, 4>::x;
+        using VectorData<T, 4>::y;
+        using VectorData<T, 4>::z;
+        using VectorData<T, 4>::w;
+
+        using VectorData<T, 4>::r;
+        using VectorData<T, 4>::g;
+        using VectorData<T, 4>::b;
+        using VectorData<T, 4>::a;
+
+        using VectorData<T, 4>::xy;
+        using VectorData<T, 4>::xz;
+        using VectorData<T, 4>::xw;
+        using VectorData<T, 4>::yx;
+        using VectorData<T, 4>::yz;
+        using VectorData<T, 4>::yw;
+        using VectorData<T, 4>::zx;
+        using VectorData<T, 4>::zy;
+        using VectorData<T, 4>::zw;
+        using VectorData<T, 4>::wx;
+        using VectorData<T, 4>::wy;
+        using VectorData<T, 4>::wz;
+        using VectorData<T, 4>::xyz;
+        using VectorData<T, 4>::xyw;
+        using VectorData<T, 4>::xzy;
+        using VectorData<T, 4>::xzw;
+        using VectorData<T, 4>::xwy;
+        using VectorData<T, 4>::xwz;
+        using VectorData<T, 4>::yxz;
+        using VectorData<T, 4>::yxw;
+        using VectorData<T, 4>::yzx;
+        using VectorData<T, 4>::yzw;
+        using VectorData<T, 4>::ywx;
+        using VectorData<T, 4>::ywz;
+        using VectorData<T, 4>::zxy;
+        using VectorData<T, 4>::zxw;
+        using VectorData<T, 4>::zyx;
+        using VectorData<T, 4>::zyw;
+        using VectorData<T, 4>::zwx;
+        using VectorData<T, 4>::zwy;
+        using VectorData<T, 4>::xyzw;
+        using VectorData<T, 4>::xywz;
+        using VectorData<T, 4>::xzyw;
+        using VectorData<T, 4>::xzwy;
+        using VectorData<T, 4>::xwyz;
+        using VectorData<T, 4>::xwzy;
+        using VectorData<T, 4>::yxzw;
+        using VectorData<T, 4>::yxwz;
+        using VectorData<T, 4>::yzxw;
+        using VectorData<T, 4>::yzwx;
+        using VectorData<T, 4>::ywxz;
+        using VectorData<T, 4>::ywzx;
+        using VectorData<T, 4>::zxyw;
+        using VectorData<T, 4>::zxwy;
+        using VectorData<T, 4>::zyxw;
+        using VectorData<T, 4>::zywx;
+        using VectorData<T, 4>::zwxy;
+        using VectorData<T, 4>::zwyx;
+        using VectorData<T, 4>::wxyz;
+        using VectorData<T, 4>::wxzy;
+        using VectorData<T, 4>::wyxz;
+        using VectorData<T, 4>::wyzx;
+        using VectorData<T, 4>::wzxy;
+        using VectorData<T, 4>::wzyx;
+
+        using VectorData<T, 4>::rg;
+        using VectorData<T, 4>::rb;
+        using VectorData<T, 4>::ra;
+        using VectorData<T, 4>::gr;
+        using VectorData<T, 4>::gb;
+        using VectorData<T, 4>::ga;
+        using VectorData<T, 4>::br;
+        using VectorData<T, 4>::bg;
+        using VectorData<T, 4>::ba;
+        using VectorData<T, 4>::ar;
+        using VectorData<T, 4>::ag;
+        using VectorData<T, 4>::ab;
+        using VectorData<T, 4>::rgb;
+        using VectorData<T, 4>::rga;
+        using VectorData<T, 4>::rbg;
+        using VectorData<T, 4>::rba;
+        using VectorData<T, 4>::rag;
+        using VectorData<T, 4>::rab;
+        using VectorData<T, 4>::grb;
+        using VectorData<T, 4>::gra;
+        using VectorData<T, 4>::gbr;
+        using VectorData<T, 4>::gba;
+        using VectorData<T, 4>::gar;
+        using VectorData<T, 4>::gab;
+        using VectorData<T, 4>::brg;
+        using VectorData<T, 4>::bra;
+        using VectorData<T, 4>::bgr;
+        using VectorData<T, 4>::bga;
+        using VectorData<T, 4>::bar;
+        using VectorData<T, 4>::bag;
+        using VectorData<T, 4>::rgba;
+        using VectorData<T, 4>::rgab;
+        using VectorData<T, 4>::rbga;
+        using VectorData<T, 4>::rbag;
+        using VectorData<T, 4>::ragb;
+        using VectorData<T, 4>::rabg;
+        using VectorData<T, 4>::grba;
+        using VectorData<T, 4>::grab;
+        using VectorData<T, 4>::gbra;
+        using VectorData<T, 4>::gbar;
+        using VectorData<T, 4>::garb;
+        using VectorData<T, 4>::gabr;
+        using VectorData<T, 4>::brga;
+        using VectorData<T, 4>::brag;
+        using VectorData<T, 4>::bgra;
+        using VectorData<T, 4>::bgar;
+        using VectorData<T, 4>::barg;
+        using VectorData<T, 4>::bagr;
+        using VectorData<T, 4>::argb;
+        using VectorData<T, 4>::arbg;
+        using VectorData<T, 4>::agrb;
+        using VectorData<T, 4>::agbr;
+        using VectorData<T, 4>::abrg;
+        using VectorData<T, 4>::abgr;
+
+        template <typename X, typename Y, typename Z, typename W, typename = IS_CONVERTIBLE_SFINAE<X, Y, Z, W>>
+        explicit constexpr Vector(X&& x, Y&& y, Z&& z, W&& w) noexcept;         // Construct with elements
+
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>>
+        explicit constexpr Vector(U&& fill_value) noexcept;                     // Fill constructor
+
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 1> const&) noexcept;
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 2> const&) noexcept;
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 3> const&) noexcept;
 
         template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit Vector(Vector<U, U_SZ> const& vector);                         // Conversion construction between vectors with different dimensions and element types
+        explicit constexpr Vector(Vector<U, U_SZ> const& vector) noexcept;      // Conversion construction between vectors with different dimensions and element types
 
         template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
         Vector<T, 4>& operator=(Vector<U, U_SZ> const& vector);                 // Conversion assignment between vectors with different dimensions and element types
