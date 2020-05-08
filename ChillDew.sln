@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChillDew Engine", "Engine\Engine.vcxproj", "{3CF7A7C6-5DBC-4AC5-9A01-7A2FBCA83F69}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor", "Editor\Editor.vcxproj", "{19D2809E-DC68-436A-8CF9-BDE04AE4B33F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChillDew Editor", "Editor\Editor.vcxproj", "{19D2809E-DC68-436A-8CF9-BDE04AE4B33F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{3CF7A7C6-5DBC-4AC5-9A01-7A2FBCA83F69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
