@@ -25,7 +25,7 @@ namespace CD
 #pragma warning (disable : 4201)
 
     template <typename T>
-    union CD_API VectorData<T, 2>
+    struct CD_API VectorData<T, 2>
     {
         template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
 
@@ -69,7 +69,7 @@ namespace CD
         using VectorData<T, 2>::yx;
 
         template <typename U, typename V, typename = IS_CONVERTIBLE_SFINAE<U, V>>
-        explicit constexpr Vector(U&& x, U&& y) noexcept;                       // Construct with elements
+        explicit constexpr Vector(U&& x, V&& y) noexcept;                       // Construct with elements
 
         template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>>
         explicit constexpr Vector(U&& fill_value) noexcept;                     // Fill constructor

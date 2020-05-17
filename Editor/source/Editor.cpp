@@ -25,8 +25,11 @@ namespace CDEditor
 
     void EditorApp::Setup()
     {
-        CD::Vector3D<float> vec{ 1,2,3 };
-        CD::Debug::Get()->Log("vec = {}", vec);
+        CD::Vector2D<float> vec2{ 1,2   };
+        CD::Vector3D<float> vec3{ 1,2,3 };
+
+        CD::Debug::Get()->Log("vec2 = {}", vec2);
+        CD::Debug::Get()->Log("vec3 = {}", vec3);
 
         CD::Debug::Get()->LogWarning("Press [Enter] to Quit the Application");
         if (getchar())

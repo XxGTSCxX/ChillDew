@@ -35,7 +35,7 @@ namespace CD
 
     template <typename T>
     template <typename U, typename V, typename>
-    inline constexpr Vector<T, 2>::Vector(U&& x, U&& y) noexcept
+    inline constexpr Vector<T, 2>::Vector(U&& x, V&& y) noexcept
     : VectorData<T, 2>{ static_cast<T>(x), static_cast<T>(y) }
     {}
 
