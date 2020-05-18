@@ -34,15 +34,15 @@ namespace CD
     template <typename T> Vector<T, 2> const Vector<T, 2>::zero {  0,  0 };
 
     template <typename T>
-    template <typename U, typename V, typename>
-    inline constexpr Vector<T, 2>::Vector(U&& x, V&& y) noexcept
-    : VectorData<T, 2>{ static_cast<T>(x), static_cast<T>(y) }
+    template <typename X, typename Y, typename>
+    inline constexpr Vector<T, 2>::Vector(X&& x, Y&& y) noexcept
+    : VectorData<T, 2>{ std::forward<X>(x), std::forward<Y>(y) }
     {}
 
     template <typename T>
     template <typename U, typename>
     inline constexpr Vector<T, 2>::Vector(U&& fill_value) noexcept
-    : VectorData<T, 2>{ static_cast<T>(fill_value), static_cast<T>(fill_value) }
+    : VectorData<T, 2>{ std::forward<U>(fill_value), std::forward<U>(fill_value) }
     {}
 
     template <typename T>
@@ -52,62 +52,69 @@ namespace CD
     {}
 
     template <typename T>
-    template <typename U, typename>
-    inline constexpr Vector<T, 2>::Vector(Vector<U, 1> const& vector) noexcept
-    : VectorData<T, 2>{ vector[0] }
-    {}
-
-    template <typename T>
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 2>& Vector<T, 2>::operator=(Vector<U, U_SZ> const& vector)
     {
-        switch (U_SZ)
+        x = static_cast<T>(vector[0]);
+        y = static_cast<T>(vector[1]);
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, size_t U_SZ, typename>
+    inline Vector<T, 2>& Vector<T, 2>::operator+=(Vector<U, U_SZ> const& vector)
+    {
+        x += vector[0];
+        y += vector[1];
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, size_t U_SZ, typename>
+    inline Vector<T, 2>& Vector<T, 2>::operator-=(Vector<U, U_SZ> const& vector)
+    {
+        x -= vector[0];
+        y -= vector[1];
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, size_t U_SZ, typename>
+    inline Vector<T, 2>& Vector<T, 2>::operator*=(Vector<U, U_SZ> const& vector)
+    {
+        x *= vector[0];
+        y *= vector[1];
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, size_t U_SZ, typename>
+    inline Vector<T, 2>& Vector<T, 2>::operator/=(Vector<U, U_SZ> const& vector)
+    {
+        x /= vector[0];
+        y /= vector[1];
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, typename>
+    inline Vector<T, 2>& Vector<T, 2>::operator*=(U const& scale)
+    {
+        T converted_scale = static_cast<T>(scale);
+        x *= converted_scale;
+        y *= converted_scale;
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, typename>
+    inline Vector<T, 2>& Vector<T, 2>::operator/=(U const& scale)
+    {
+        if (T converted_scale = static_cast<T>(scale))
         {
-        default: y = static_cast<T>(vector[1]);
-        case 1 : x = static_cast<T>(vector[0]);
-        }
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 2>& Vector<T, 2>::operator+=(Vector<T, 2> const& other)
-    {
-        x += other.x;
-        y += other.y;
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 2>& Vector<T, 2>::operator-=(Vector<T, 2> const& other)
-    {
-        x -= other.x;
-        y -= other.y;
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 2>& Vector<T, 2>::operator*=(Vector<T, 2> const& other)
-    {
-        x *= other.x;
-        y *= other.y;
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 2>& Vector<T, 2>::operator*=(T const& scale)
-    {
-        x *= scale;
-        y *= scale;
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 2>& Vector<T, 2>::operator/=(T const& scale)
-    {
-        if (scale)
-        {
-            x /= scale;
-            y /= scale;
+            converted_scale = static_cast<T>(1) / converted_scale;
+            x *= converted_scale;
+            y *= converted_scale;
         }
         else
         {

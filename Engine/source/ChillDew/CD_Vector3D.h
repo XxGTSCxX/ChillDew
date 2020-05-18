@@ -16,8 +16,8 @@
 #include "CD_Core.h"
 #include "CD_Math.h"
 #include "CD_Vector.h"
-#include "CD_Swizzle.h"
 #include "CD_Degree.h"
+#include "CD_Swizzle.inl"
 
 namespace CD
 {
@@ -81,7 +81,8 @@ namespace CD
     {
     private:
 
-        template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
+        template <typename ... Params    > using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
+        template <typename U, size_t U_SZ> using VEC_CONVERSION_SFINAE = std::enable_if_t<std::is_convertible_v<U, T> && (U_SZ > 2)>;
 
     public:
 
@@ -128,26 +129,23 @@ namespace CD
         using VectorData<T, 3>::brg;
         using VectorData<T, 3>::bgr;
 
-        template <typename U, typename V, typename W, typename = IS_CONVERTIBLE_SFINAE<U, V, W>>
-        explicit constexpr Vector(U&& x, V&& y, W&& z) noexcept;                // Construct with elements
+        template <typename X, typename Y, typename Z, typename = IS_CONVERTIBLE_SFINAE<X, Y, Z>>
+        explicit constexpr Vector(X&& x, Y&& y, Z&& z) noexcept; // Construct with elements
 
         template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit constexpr Vector(U&& fill_value) noexcept;                     // Fill constructor
+        explicit constexpr Vector(U&& fill_value) noexcept; // Fill constructor
 
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 1> const& vector) noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 2> const& vector) noexcept;
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>>
+        explicit constexpr Vector(Vector<U, U_SZ> const& vector) noexcept; // Conversion construction between vectors with different dimensions and element types
 
-        template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit constexpr Vector(Vector<U, U_SZ> const& vector) noexcept;      // Conversion construction between vectors with different dimensions and element types
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 3>& operator= (Vector<U, U_SZ> const& vector); // Conversion assignment between vectors with different dimensions and element types
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 3>& operator+=(Vector<U, U_SZ> const& vector);
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 3>& operator-=(Vector<U, U_SZ> const& vector);
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 3>& operator*=(Vector<U, U_SZ> const& vector); // Multiplies two vectors component-wise (Hadamard Product)
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 3>& operator/=(Vector<U, U_SZ> const& vector); // Divides self with other vector component-wise
 
-        template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        Vector<T, 3>& operator=(Vector<U, U_SZ> const& vector);                 // Conversion assignment between vectors with different dimensions and element types
-
-        Vector<T, 3>& operator+=(Vector<T, 3> const& other);
-        Vector<T, 3>& operator-=(Vector<T, 3> const& other);
-        Vector<T, 3>& operator*=(Vector<T, 3> const& other);                    // Multiplies two vectors component-wise (Hadamard Product)
-        Vector<T, 3>& operator*=(T            const& scale);
-        Vector<T, 3>& operator/=(T            const& scale);                    // Division by 0 will set the values to infinity
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 3>& operator*=(U const& scale);
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 3>& operator/=(U const& scale); // Division by 0 will set the values to infinity
 
         T&       operator[](size_t index);
         T const& operator[](size_t index) const;

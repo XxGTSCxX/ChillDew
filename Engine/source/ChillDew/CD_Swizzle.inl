@@ -5,8 +5,8 @@
 namespace CD
 {
 
-    template <class ArrayTemplate<>, typename ElemType, size_t N, size_t ... INDICES>
-    inline ArrayTemplate<ElemType, N>& Swizzle<ArrayTemplate<>, ElemType, N, ... INDICES>::operator=(ArrayTemplate<ElemType, N> const& array_template)
+    template <template <typename T, size_t SZ> class ArrayTemplate, typename ElemType, size_t N, size_t ... INDICES>
+    inline ArrayTemplate<ElemType, N>& Swizzle<ArrayTemplate, ElemType, N, INDICES...>::operator=(ArrayTemplate<ElemType, N> const& array_template)
     {
         size_t indices[] = { INDICES... };
         for (size_t i = 0; i < sizeof...(INDICES); ++i)
@@ -16,10 +16,10 @@ namespace CD
         return *static_cast<ArrayTemplate<ElemType, N>*>(this);
     }
 
-    template <class ArrayTemplate<,>, typename ElemType, size_t N, size_t ...INDICES>
-    inline Swizzle<ArrayTemplate<,>, ElemType, N, ...INDICES>::operator ArrayTemplate<ElemType, N>() const
+    template <template <typename T, size_t SZ> class ArrayTemplate, typename ElemType, size_t N, size_t ... INDICES>
+    inline Swizzle<ArrayTemplate, ElemType, N, INDICES...>::operator ArrayTemplate<ElemType, sizeof...(INDICES)>() const
     {
-        return ArrayTemplate<ElemType, N>{ _array[INDICES]... };
+        return ArrayTemplate<ElemType, sizeof...(INDICES)>{ _array[INDICES]... };
     }
 
 }

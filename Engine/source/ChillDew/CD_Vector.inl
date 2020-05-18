@@ -31,63 +31,82 @@ namespace CD
     template <typename U, unsigned U_SZ, typename>
     inline constexpr Vector<T, SZ>::Vector(Vector<U, U_SZ> const& vector) noexcept
     {
-        for (size_t i = 0, count = std::min(SZ, U_SZ); i < count; ++i)
+        for (size_t i = 0; i < SZ; ++i)
         {
             _array[i] = static_cast<T>(vector[i]);
         }
     }
 
     template <typename T, size_t SZ>
-    template <typename U, unsigned U_SZ, typename>
+    template <typename U, size_t U_SZ, typename>
     Vector<T, SZ>& Vector<T, SZ>::operator=(Vector<U, U_SZ> const& vector)
     {
         new (this) Vector<T, SZ>{ vector };
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ>& Vector<T, SZ>::operator+=(Vector<T, SZ> const& other)
+    template <typename U, size_t U_SZ, typename>
+    Vector<T, SZ>& Vector<T, SZ>::operator+=(Vector<U, U_SZ> const& vector)
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            _array[i] += other[i];
+            _array[i] += vector[i];
         }
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ>& Vector<T, SZ>::operator-=(Vector<T, SZ> const& other)
+    template <typename U, size_t U_SZ, typename>
+    Vector<T, SZ>& Vector<T, SZ>::operator-=(Vector<U, U_SZ> const& vector)
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            _array[i] -= other[i];
+            _array[i] -= vector[i];
         }
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ>& Vector<T, SZ>::operator*=(Vector<T, SZ> const& other)
+    template <typename U, size_t U_SZ, typename>
+    Vector<T, SZ>& Vector<T, SZ>::operator*=(Vector<U, U_SZ> const& vector)
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            _array[i] *= other[i];
+            _array[i] *= vector[i];
         }
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ>& Vector<T, SZ>::operator*=(T const& scale)
+    template <typename U, size_t U_SZ, typename>
+    Vector<T, SZ>& Vector<T, SZ>::operator/=(Vector<U, U_SZ> const& vector)
     {
+        for (size_t i = 0; i < SZ; ++i)
+        {
+            _array[i] /= vector[i];
+        }
+    }
+
+    template <typename T, size_t SZ>
+    template <typename U, typename>
+    Vector<T, SZ>& Vector<T, SZ>::operator*=(U const& scale)
+    {
+        T converted_scale = static_cast<T>(scale);
         for (T& elem : _array)
         {
-            elem *= scale;
+            elem *= converted_scale;
         }
     }
 
     template <typename T, size_t SZ>
-    Vector<T, SZ>& Vector<T, SZ>::operator/=(T const& scale)
+    template <typename U, typename>
+    Vector<T, SZ>& Vector<T, SZ>::operator/=(U const& scale)
     {
-        if (scale)
+        if (T converted_scale = static_cast<T>(scale))
+        {
+            converted_scale = static_cast<T>(1) / converted_scale;
             for (T& elem : _array)
             {
-                elem *= scale;
+                elem *= converted_scale;
             }
+        }
         else
             for (T& elem : _array)
             {

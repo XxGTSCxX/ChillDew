@@ -22,7 +22,7 @@ namespace CD
 
     template <typename T>
     template <typename ... Params, typename>
-    inline constexpr VectorData<T, 3>::VectorData(Params&& ...args) noexcept
+    inline constexpr VectorData<T, 3>::VectorData(Params&& ... args) noexcept
     : _array{ static_cast<T>(args)... }
     {}
 
@@ -36,92 +36,94 @@ namespace CD
     template <typename T> Vector<T, 3> const Vector<T, 3>::zero   {  0,  0,  0 };
 
     template <typename T>
-    template <typename U, typename V, typename W, typename>
-    inline constexpr Vector<T, 3>::Vector(U&& x, V&& y, W&& z) noexcept
-    : VectorData<T, 3>{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(z) }
+    template <typename X, typename Y, typename Z, typename>
+    inline constexpr Vector<T, 3>::Vector(X&& x, Y&& y, Z&& z) noexcept
+    : VectorData<T, 3>{ std::forward<X>(x), std::forward<Y>(y), std::forward<Z>(z) }
     {}
 
     template <typename T>
     template <typename U, typename>
     inline constexpr Vector<T, 3>::Vector(U&& fill_value) noexcept
-    : VectorData<T, 3>{ static_cast<T>(fill_value), static_cast<T>(fill_value), static_cast<T>(fill_value) }
-    {}
-
-    template <typename T>
-    template <typename U, typename>
-    inline constexpr Vector<T, 3>::Vector(Vector<U, 1> const& vector) noexcept
-    : VectorData<T, 3>{ static_cast<T>(vector[0]) }
-    {}
-
-    template <typename T>
-    template <typename U, typename>
-    inline constexpr Vector<T, 3>::Vector(Vector<U, 2> const& vector) noexcept
-    : VectorData<T, 3>{ static_cast<T>(vector[0]), static_cast<T>(vector[1]) }
+    : VectorData<T, 3>{ std::forward<U>(fill_value), std::forward<U>(fill_value), std::forward<U>(fill_value) }
     {}
 
     template <typename T>
     template <typename U, size_t U_SZ, typename>
     inline constexpr Vector<T, 3>::Vector(Vector<U, U_SZ> const& vector) noexcept
-    : VectorData<T, 3>{ static_cast<T>(vector[0]), static_cast<T>(vector[1]), static_cast<T>(vector[2]) }
+    : VectorData<T, 3>{ vector[0], vector[1], vector[2] }
     {}
 
     template <typename T>
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator=(Vector<U, U_SZ> const& vector)
     {
-        switch (U_SZ)
+        x = static_cast<T>(vector[0]);
+        y = static_cast<T>(vector[1]);
+        z = static_cast<T>(vector[2]);
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, size_t U_SZ, typename>
+    inline Vector<T, 3>& Vector<T, 3>::operator+=(Vector<U, U_SZ> const& vector)
+    {
+        x += static_cast<T>(vector.x);
+        y += static_cast<T>(vector.y);
+        z += static_cast<T>(vector.z);
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, size_t U_SZ, typename>
+    inline Vector<T, 3>& Vector<T, 3>::operator-=(Vector<U, U_SZ> const& vector)
+    {
+        x -= static_cast<T>(vector.x);
+        y -= static_cast<T>(vector.y);
+        z -= static_cast<T>(vector.z);
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, size_t U_SZ, typename>
+    inline Vector<T, 3>& Vector<T, 3>::operator*=(Vector<U, U_SZ> const& vector)
+    {
+        x *= static_cast<T>(vector.x);
+        y *= static_cast<T>(vector.y);
+        z *= static_cast<T>(vector.z);
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, size_t U_SZ, typename>
+    inline Vector<T, 3>& Vector<T, 3>::operator/=(Vector<U, U_SZ> const& vector)
+    {
+        x /= static_cast<T>(vector.x);
+        y /= static_cast<T>(vector.y);
+        z /= static_cast<T>(vector.z);
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, typename>
+    inline Vector<T, 3>& Vector<T, 3>::operator*=(U const& scale)
+    {
+        T converted_scale = static_cast<T>(scale);
+        x *= converted_scale;
+        y *= converted_scale;
+        z *= converted_scale;
+        return *this;
+    }
+
+    template <typename T>
+    template <typename U, typename>
+    inline Vector<T, 3>& Vector<T, 3>::operator/=(U const& scale)
+    {
+        if (T converted_scale = static_cast<T>(scale))
         {
-        default: z = static_cast<T>(vector[2]);
-        case 2 : y = static_cast<T>(vector[1]);
-        case 1 : x = static_cast<T>(vector[0]);
-        }
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 3>& Vector<T, 3>::operator+=(Vector<T, 3> const& other)
-    {
-        x += other.x;
-        y += other.y;
-        z += other.z;
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 3>& Vector<T, 3>::operator-=(Vector<T, 3> const& other)
-    {
-        x -= other.x;
-        y -= other.y;
-        z -= other.z;
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 3>& Vector<T, 3>::operator*=(Vector<T, 3> const& other)
-    {
-        x *= other.x;
-        y *= other.y;
-        z *= other.z;
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 3>& Vector<T, 3>::operator*=(T const& scale)
-    {
-        x *= scale;
-        y *= scale;
-        z *= scale;
-        return *this;
-    }
-
-    template <typename T>
-    inline Vector<T, 3>& Vector<T, 3>::operator/=(T const& scale)
-    {
-        if (scale)
-        {
-            x /= scale;
-            y /= scale;
-            z /= scale;
+            converted_scale = static_cast<T>(1) / converted_scale;
+            x *= converted_scale;
+            y *= converted_scale;
+            z *= converted_scale;
         }
         else
         {

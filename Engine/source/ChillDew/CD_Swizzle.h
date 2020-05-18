@@ -18,7 +18,7 @@
 namespace CD
 {
 
-    template <template <typename, size_t> class ArrayTemplate, typename ElemType, size_t N, size_t ... INDICES>
+    template <template <typename, size_t> typename ArrayTemplate, typename ElemType, size_t N, size_t ... INDICES>
     class CD_API Swizzle final
     {
         ElemType _array[N];
@@ -27,7 +27,7 @@ namespace CD
 
         ArrayTemplate<ElemType, N>& operator=(ArrayTemplate<ElemType, N> const& array_template);
 
-        explicit operator ArrayTemplate<ElemType, N>() const;
+        explicit operator ArrayTemplate<ElemType, sizeof...(INDICES)>() const;
     };
 
 }

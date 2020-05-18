@@ -36,28 +36,29 @@ namespace CD
     {
     protected:
 
-        template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
-        template <typename ... Params> using MULTI_PARAM_SFINAE    = std::enable_if_t<(std::conjunction_v<std::is_convertible<Params, T>...> && sizeof...(Params) == SZ)>;
+        template <typename ... Params    > using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
+        template <typename ... Params    > using MULTI_PARAM_SFINAE    = std::enable_if_t<(std::conjunction_v<std::is_convertible<Params, T>...> && sizeof...(Params) == SZ)>;
+        template <typename U, size_t U_SZ> using VEC_CONVERSION_SFINAE = std::enable_if_t<std::is_convertible_v<U, T> && (U_SZ >= SZ)>;
 
     public:
 
         template <typename ... Params, typename = MULTI_PARAM_SFINAE<Params...>>
-        constexpr Vector(Params&& ... args);                                    // Construct with elements
+        constexpr Vector(Params&& ... args); // Construct with elements
 
         template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit constexpr Vector(U&& fill_value) noexcept;                     // Fill constructor
+        explicit constexpr Vector(U&& fill_value) noexcept; // Fill constructor
 
-        template <typename U, unsigned U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit constexpr Vector(Vector<U, U_SZ> const& vector) noexcept;      // Conversion construction between vectors with different dimensions and element types
+        template <typename U, unsigned U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>>
+        explicit constexpr Vector(Vector<U, U_SZ> const& vector) noexcept; // Conversion construction between vectors with different dimensions and element types
 
-        template <typename U, unsigned U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        Vector& operator=(Vector<U, U_SZ> const& vector);                       // Conversion assignment between vectors with different dimensions and element types
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector& operator= (Vector<U, U_SZ> const& vector); // Conversion assignment between vectors with different dimensions and element types
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector& operator+=(Vector<U, U_SZ> const& vector);
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector& operator-=(Vector<U, U_SZ> const& vector);
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector& operator*=(Vector<U, U_SZ> const& vector); // This is using Hadamard Product
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector& operator/=(Vector<U, U_SZ> const& vector);
 
-        Vector& operator+=(Vector const& other);
-        Vector& operator-=(Vector const& other);
-        Vector& operator*=(Vector const& other);                                // This is using Hadamard Product
-        Vector& operator*=(T      const& scale);
-        Vector& operator/=(T      const& scale);                                // Division by 0 will set the values to infinity
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector& operator*=(U const& scale);
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector& operator/=(U const& scale); // Division by 0 will set the values to infinity
 
         T&       operator[](size_t index);
         T const& operator[](size_t index) const;

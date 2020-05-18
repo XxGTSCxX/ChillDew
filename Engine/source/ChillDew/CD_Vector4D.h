@@ -167,7 +167,8 @@ namespace CD
     {
     private:
 
-        template <typename ... Params> using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
+        template <typename ... Params    > using IS_CONVERTIBLE_SFINAE = std::enable_if_t<std::conjunction_v<std::is_convertible<Params, T>...>>;
+        template <typename U, size_t U_SZ> using VEC_CONVERSION_SFINAE = std::enable_if_t<std::is_convertible_v<U, T> && (U_SZ > 3)>;
 
     public:
 
@@ -294,27 +295,18 @@ namespace CD
         using VectorData<T, 4>::abrg;
         using VectorData<T, 4>::abgr;
 
-        template <typename X, typename Y, typename Z, typename W, typename = IS_CONVERTIBLE_SFINAE<X, Y, Z, W>>
-        explicit constexpr Vector(X&& x, Y&& y, Z&& z, W&& w) noexcept;         // Construct with elements
+        template <typename X, typename Y, typename Z, typename W, typename = IS_CONVERTIBLE_SFINAE<X, Y, Z, W>> explicit constexpr Vector(X&& x, Y&& y, Z&& z, W&& w       ) noexcept; // Construct with elements
+        template <typename U,                                     typename = IS_CONVERTIBLE_SFINAE<U>         > explicit constexpr Vector(U&&                    fill_value) noexcept; // Fill constructor
+        template <typename U, size_t U_SZ,                        typename = VEC_CONVERSION_SFINAE<U, U_SZ>   > explicit constexpr Vector(Vector<U, U_SZ> const& vector    ) noexcept; // Conversion construction between vectors with different dimensions and element types
 
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit constexpr Vector(U&& fill_value) noexcept;                     // Fill constructor
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 4>& operator= (Vector<U, U_SZ> const& vector); // Conversion assignment between vectors with different dimensions and element types
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 4>& operator+=(Vector<U, U_SZ> const& vector);
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 4>& operator-=(Vector<U, U_SZ> const& vector);
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 4>& operator*=(Vector<U, U_SZ> const& vector); // Multiplies two vectors component-wise (Hadamard Product)
+        template <typename U, size_t U_SZ, typename = VEC_CONVERSION_SFINAE<U, U_SZ>> Vector<T, 4>& operator/=(Vector<U, U_SZ> const& vector); // Divides self with other vector component-wise
 
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 1> const&) noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 2> const&) noexcept;
-        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> explicit constexpr Vector(Vector<U, 3> const&) noexcept;
-
-        template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        explicit constexpr Vector(Vector<U, U_SZ> const& vector) noexcept;      // Conversion construction between vectors with different dimensions and element types
-
-        template <typename U, size_t U_SZ, typename = IS_CONVERTIBLE_SFINAE<U>>
-        Vector<T, 4>& operator=(Vector<U, U_SZ> const& vector);                 // Conversion assignment between vectors with different dimensions and element types
-
-        Vector<T, 4>& operator+=(Vector<T, 4> const& other);
-        Vector<T, 4>& operator-=(Vector<T, 4> const& other);
-        Vector<T, 4>& operator*=(Vector<T, 4> const& other);                    // Multiplies two vectors component-wise (Hadamard Product)
-        Vector<T, 4>& operator*=(T            const& scale);
-        Vector<T, 4>& operator/=(T            const& scale);                    // Division by 0 will set the values to infinity
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 4>& operator*=(U const& scale);
+        template <typename U, typename = IS_CONVERTIBLE_SFINAE<U>> Vector<T, 4>& operator/=(U const& scale); // Division by 0 will set the values to infinity
 
         T&       operator[](size_t index);
         T const& operator[](size_t index) const;
