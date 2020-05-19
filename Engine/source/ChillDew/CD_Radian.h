@@ -55,5 +55,3 @@ namespace CD
     bool operator>=(Radian lhs, Radian rhs);
 
 }
-
-#include "CD_Radian.inl"

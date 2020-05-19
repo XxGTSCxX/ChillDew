@@ -53,5 +53,3 @@ namespace CD
     bool operator>=(Degree lhs, Degree rhs);
 
 }
-
-#include "CD_Degree.inl"
