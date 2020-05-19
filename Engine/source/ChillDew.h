@@ -23,6 +23,10 @@
 // -----------------------------------------------------------------------------
 // Math
 // -----------------------------------------------------------------------------
+#include "ChillDew/CD_Radian.inl"
+#include "ChillDew/CD_Degree.inl"
+
+#include "ChillDew/CD_Vector.inl"
 #include "ChillDew/CD_Vector2D.inl"
 #include "ChillDew/CD_Vector3D.inl"
 #include "ChillDew/CD_Vector4D.inl"
