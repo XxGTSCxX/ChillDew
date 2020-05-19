@@ -15,6 +15,7 @@
 
 #include "CD_Vector2D.h"
 #include "CD_Degree.inl"
+#include "CD_Radian.inl"
 #include <algorithm> // std::min, std::max
 
 namespace CD
@@ -55,8 +56,8 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 2>& Vector<T, 2>::operator=(Vector<U, U_SZ> const& vector)
     {
-        x = static_cast<T>(vector[0]);
-        y = static_cast<T>(vector[1]);
+        this->x = static_cast<T>(vector[0]);
+        this->y = static_cast<T>(vector[1]);
         return *this;
     }
 
@@ -64,8 +65,8 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 2>& Vector<T, 2>::operator+=(Vector<U, U_SZ> const& vector)
     {
-        x += vector[0];
-        y += vector[1];
+        this->x += static_cast<T>(vector[0]);
+        this->y += static_cast<T>(vector[1]);
         return *this;
     }
 
@@ -73,8 +74,8 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 2>& Vector<T, 2>::operator-=(Vector<U, U_SZ> const& vector)
     {
-        x -= vector[0];
-        y -= vector[1];
+        this->x -= static_cast<T>(vector[0]);
+        this->y -= static_cast<T>(vector[1]);
         return *this;
     }
 
@@ -82,8 +83,8 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 2>& Vector<T, 2>::operator*=(Vector<U, U_SZ> const& vector)
     {
-        x *= vector[0];
-        y *= vector[1];
+        this->x *= static_cast<T>(vector[0]);
+        this->y *= static_cast<T>(vector[1]);
         return *this;
     }
 
@@ -91,8 +92,8 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 2>& Vector<T, 2>::operator/=(Vector<U, U_SZ> const& vector)
     {
-        x /= vector[0];
-        y /= vector[1];
+        this->x /= static_cast<T>(vector[0]);
+        this->y /= static_cast<T>(vector[1]);
         return *this;
     }
 
@@ -100,9 +101,8 @@ namespace CD
     template <typename U, typename>
     inline Vector<T, 2>& Vector<T, 2>::operator*=(U const& scale)
     {
-        T converted_scale = static_cast<T>(scale);
-        x *= converted_scale;
-        y *= converted_scale;
+        this->x *= static_cast<T>(scale);
+        this->y *= static_cast<T>(scale);
         return *this;
     }
 
@@ -110,47 +110,39 @@ namespace CD
     template <typename U, typename>
     inline Vector<T, 2>& Vector<T, 2>::operator/=(U const& scale)
     {
-        if (T converted_scale = static_cast<T>(scale))
-        {
-            converted_scale = static_cast<T>(1) / converted_scale;
-            x *= converted_scale;
-            y *= converted_scale;
-        }
-        else
-        {
-            x = y = std::numeric_limits<T>::infinity();
-        }
+        this->x /= static_cast<T>(scale);
+        this->y /= static_cast<T>(scale);
         return *this;
     }
 
     template <typename T>
     inline T& Vector<T, 2>::operator[](size_t index)
     {
-        return _array[index];
+        return this->_array[index];
     }
 
     template <typename T>
     inline T const& Vector<T, 2>::operator[](size_t index) const
     {
-        return _array[index];
+        return this->_array[index];
     }
 
     template <typename T>
     inline T* Vector<T, 2>::data()
     {
-        return _array.data();
+        return this->_array.data();
     }
 
     template <typename T>
     inline T const* Vector<T, 2>::data() const
     {
-        return _array.data();
+        return this->_array.data();
     }
 
     template <typename T>
     inline void CD::Vector<T, 2>::fill(T const& value)
     {
-        _array.fill(value);
+        this->_array.fill(value);
     }
 
     template <typename T>
@@ -187,17 +179,7 @@ namespace CD
     template <typename T>
     Vector<T, 2> Perpendicular(Vector<T, 2> const& vector)
     {
-        Vector<T, 2> result{ 0,0 };
-        T            mag = Magnitude(vector);
-
-        if (mag)
-        {
-            Radian rad = acos(vector.x / mag) + 90 * Math::DEG_TO_RAD;
-            result.x   = mag * cos(rad._angle);
-            result.y   = mag * sin(rad._angle);
-        }
-
-        return result;
+        return Vector<T, 2>{ -vector.y, vector.x };
     }
 
     template <typename T>

@@ -3,7 +3,6 @@
 #include "CD_Vector.h"
 #include <algorithm> // std::min
 #include <cmath>     // sqrt
-#include "CD_Vector2D.h"
 
 namespace CD
 {
@@ -24,7 +23,7 @@ namespace CD
     template <typename U, typename>
     inline constexpr Vector<T, SZ>::Vector(U&& fill_value) noexcept
     {
-        _array.fill(static_cast<T>(fill_value));
+        this->_array.fill(static_cast<T>(fill_value));
     }
 
     template <typename T, size_t SZ>
@@ -33,7 +32,7 @@ namespace CD
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            _array[i] = static_cast<T>(vector[i]);
+            this->_array[i] = static_cast<T>(vector[i]);
         }
     }
 
@@ -50,7 +49,7 @@ namespace CD
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            _array[i] += vector[i];
+            this->_array[i] += vector[i];
         }
     }
 
@@ -60,7 +59,7 @@ namespace CD
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            _array[i] -= vector[i];
+            this->_array[i] -= vector[i];
         }
     }
 
@@ -70,7 +69,7 @@ namespace CD
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            _array[i] *= vector[i];
+            this->_array[i] *= vector[i];
         }
     }
 
@@ -80,7 +79,7 @@ namespace CD
     {
         for (size_t i = 0; i < SZ; ++i)
         {
-            _array[i] /= vector[i];
+            this->_array[i] /= vector[i];
         }
     }
 
@@ -89,7 +88,7 @@ namespace CD
     Vector<T, SZ>& Vector<T, SZ>::operator*=(U const& scale)
     {
         T converted_scale = static_cast<T>(scale);
-        for (T& elem : _array)
+        for (T& elem : this->_array)
         {
             elem *= converted_scale;
         }
@@ -102,13 +101,13 @@ namespace CD
         if (T converted_scale = static_cast<T>(scale))
         {
             converted_scale = static_cast<T>(1) / converted_scale;
-            for (T& elem : _array)
+            for (T& elem : this->_array)
             {
                 elem *= converted_scale;
             }
         }
         else
-            for (T& elem : _array)
+            for (T& elem : this->_array)
             {
                 elem = std::numeric_limits<T>::infinity();
             }
@@ -117,31 +116,31 @@ namespace CD
     template<typename T, size_t SZ>
     inline T& Vector<T, SZ>::operator[](size_t index)
     {
-        _array[index];
+        this->_array[index];
     }
 
     template<typename T, size_t SZ>
     inline T const& Vector<T, SZ>::operator[](size_t index) const
     {
-        _array[index];
+        this->_array[index];
     }
 
     template<typename T, size_t SZ>
     inline T* Vector<T, SZ>::data()
     {
-        return _array.data();
+        return this->_array.data();
     }
 
     template<typename T, size_t SZ>
     inline T const* Vector<T, SZ>::data() const
     {
-        return _array.data();
+        return this->_array.data();
     }
 
     template<typename T, size_t SZ>
     inline void Vector<T, SZ>::fill(T const& value)
     {
-        _array.fill(value);
+        this->_array.fill(value);
     }
 
     template<typename T, size_t SZ>
@@ -190,9 +189,9 @@ namespace CD
     Vector<T, SZ> operator-(Vector<T, SZ> const& vector)
     {
         Vector<T, SZ> result = vector;
-        for (T& elem : vector)
+        for (size_t i = 0; i < SZ; ++i)
         {
-            elem = -elem;
+            result[0] = -result[0];
         }
         return result;
     }
@@ -224,7 +223,7 @@ namespace CD
     template <typename T, size_t SZ>
     CD::istream& operator>>(CD::istream& stream, Vector<T, SZ>& vector)
     {
-        char discard;
+        TCHAR discard;
         for (size_t i = 0; i < SZ; ++i)
             stream >> discard >> vector[i];
         return stream >> discard;
@@ -280,7 +279,7 @@ namespace CD
 
         for (size_t i = 0; i < SZ; ++i)
         {
-            result[i] = std::max(lhs[i], rhs[i]);
+            result[i] = std::max<T>(lhs[i], rhs[i]);
         }
 
         return result;
@@ -293,7 +292,7 @@ namespace CD
 
         for (size_t i = 0; i < SZ; ++i)
         {
-            result[i] = std::min(lhs[i], rhs[i]);
+            result[i] = std::min<T>(lhs[i], rhs[i]);
         }
 
         return result;
@@ -309,8 +308,8 @@ namespace CD
     template <typename T, size_t SZ>
     Vector<T, SZ> ClampMagnitude(Vector<T, SZ> const& vector, T const& max_magnitude)
     {
-        Vector<T, 2> result = vector;
-        T            scale = MagnitudeSquared(vector);
+        Vector<T, SZ> result = vector;
+        T             scale  = MagnitudeSquared(vector);
 
         if (scale > max_magnitude* max_magnitude)
         {
@@ -330,7 +329,7 @@ namespace CD
     template <typename T, size_t SZ>
     Vector<T, SZ> Lerp(Vector<T, SZ> const& from, Vector<T, SZ> const& to, T const& alpha)
     {
-        return LerpUnclamped(from, to, std::min(static_cast<T>(1), alpha));
+        return LerpUnclamped(from, to, std::min<T>(static_cast<T>(1), alpha));
     }
 
     template <typename T, size_t SZ>

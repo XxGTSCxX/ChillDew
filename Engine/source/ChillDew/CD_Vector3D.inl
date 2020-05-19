@@ -57,9 +57,9 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator=(Vector<U, U_SZ> const& vector)
     {
-        x = static_cast<T>(vector[0]);
-        y = static_cast<T>(vector[1]);
-        z = static_cast<T>(vector[2]);
+        this->x = static_cast<T>(vector[0]);
+        this->y = static_cast<T>(vector[1]);
+        this->z = static_cast<T>(vector[2]);
         return *this;
     }
 
@@ -67,9 +67,9 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator+=(Vector<U, U_SZ> const& vector)
     {
-        x += static_cast<T>(vector.x);
-        y += static_cast<T>(vector.y);
-        z += static_cast<T>(vector.z);
+        this->x += static_cast<T>(vector.x);
+        this->y += static_cast<T>(vector.y);
+        this->z += static_cast<T>(vector.z);
         return *this;
     }
 
@@ -77,9 +77,9 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator-=(Vector<U, U_SZ> const& vector)
     {
-        x -= static_cast<T>(vector.x);
-        y -= static_cast<T>(vector.y);
-        z -= static_cast<T>(vector.z);
+        this->x -= static_cast<T>(vector.x);
+        this->y -= static_cast<T>(vector.y);
+        this->z -= static_cast<T>(vector.z);
         return *this;
     }
 
@@ -87,9 +87,9 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator*=(Vector<U, U_SZ> const& vector)
     {
-        x *= static_cast<T>(vector.x);
-        y *= static_cast<T>(vector.y);
-        z *= static_cast<T>(vector.z);
+        this->x *= static_cast<T>(vector.x);
+        this->y *= static_cast<T>(vector.y);
+        this->z *= static_cast<T>(vector.z);
         return *this;
     }
 
@@ -97,9 +97,9 @@ namespace CD
     template <typename U, size_t U_SZ, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator/=(Vector<U, U_SZ> const& vector)
     {
-        x /= static_cast<T>(vector.x);
-        y /= static_cast<T>(vector.y);
-        z /= static_cast<T>(vector.z);
+        this->x /= static_cast<T>(vector.x);
+        this->y /= static_cast<T>(vector.y);
+        this->z /= static_cast<T>(vector.z);
         return *this;
     }
 
@@ -107,10 +107,9 @@ namespace CD
     template <typename U, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator*=(U const& scale)
     {
-        T converted_scale = static_cast<T>(scale);
-        x *= converted_scale;
-        y *= converted_scale;
-        z *= converted_scale;
+        this->x *= static_cast<T>(scale);
+        this->y *= static_cast<T>(scale);
+        this->z *= static_cast<T>(scale);
         return *this;
     }
 
@@ -118,48 +117,40 @@ namespace CD
     template <typename U, typename>
     inline Vector<T, 3>& Vector<T, 3>::operator/=(U const& scale)
     {
-        if (T converted_scale = static_cast<T>(scale))
-        {
-            converted_scale = static_cast<T>(1) / converted_scale;
-            x *= converted_scale;
-            y *= converted_scale;
-            z *= converted_scale;
-        }
-        else
-        {
-            x = y = z = std::numeric_limits<T>::infinity();
-        }
+        this->x /= static_cast<T>(scale);
+        this->y /= static_cast<T>(scale);
+        this->z /= static_cast<T>(scale);
         return *this;
     }
 
     template <typename T>
     inline T& Vector<T, 3>::operator[](size_t index)
     {
-        return _array[index];
+        return this->_array[index];
     }
 
     template <typename T>
     inline T const& Vector<T, 3>::operator[](size_t index) const
     {
-        return _array[index];
+        return this->_array[index];
     }
 
     template <typename T>
     inline T* Vector<T, 3>::data()
     {
-        return _array.data();
+        return this->_array.data();
     }
 
     template <typename T>
     inline T const* Vector<T, 3>::data() const
     {
-        return _array.data();
+        return this->_array.data();
     }
 
     template <typename T>
     inline void CD::Vector<T, 3>::fill(T const& value)
     {
-        _array.fill(value);
+        this->_array.fill(value);
     }
 
     template <typename T>

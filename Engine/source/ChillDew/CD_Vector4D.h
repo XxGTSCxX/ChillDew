@@ -295,6 +295,8 @@ namespace CD
         using VectorData<T, 4>::abrg;
         using VectorData<T, 4>::abgr;
 
+        constexpr Vector() noexcept = default;
+
         template <typename X, typename Y, typename Z, typename W, typename = IS_CONVERTIBLE_SFINAE<X, Y, Z, W>> explicit constexpr Vector(X&& x, Y&& y, Z&& z, W&& w       ) noexcept; // Construct with elements
         template <typename U,                                     typename = IS_CONVERTIBLE_SFINAE<U>         > explicit constexpr Vector(U&&                    fill_value) noexcept; // Fill constructor
         template <typename U, size_t U_SZ,                        typename = VEC_CONVERSION_SFINAE<U, U_SZ>   > explicit constexpr Vector(Vector<U, U_SZ> const& vector    ) noexcept; // Conversion construction between vectors with different dimensions and element types
@@ -329,9 +331,9 @@ namespace CD
     template <typename T> CD::ostream& operator<<(CD::ostream& stream, Vector<T, 4> const& vector);
     template <typename T> CD::istream& operator>>(CD::istream& stream, Vector<T, 4>&       vector);
 
-    template <typename T> T            Dot(Vector<T, 4> const& lhs   , Vector<T, 4> const& rhs);
-    template <typename T> Vector<T, 4> Max(Vector<T, 4> const& lhs   , Vector<T, 4> const& rhs);
-    template <typename T> Vector<T, 4> Min(Vector<T, 4> const& lhs   , Vector<T, 4> const& rhs);
+    template <typename T> T            Dot(Vector<T, 4> const& lhs, Vector<T, 4> const& rhs);
+    template <typename T> Vector<T, 4> Max(Vector<T, 4> const& lhs, Vector<T, 4> const& rhs);
+    template <typename T> Vector<T, 4> Min(Vector<T, 4> const& lhs, Vector<T, 4> const& rhs);
 
     template <typename T>
     using Vector4D = Vector<T, 4>;

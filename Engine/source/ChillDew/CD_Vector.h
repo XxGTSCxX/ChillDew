@@ -42,6 +42,8 @@ namespace CD
 
     public:
 
+        constexpr Vector() noexcept = default;
+
         template <typename ... Params, typename = MULTI_PARAM_SFINAE<Params...>>
         constexpr Vector(Params&& ... args); // Construct with elements
 

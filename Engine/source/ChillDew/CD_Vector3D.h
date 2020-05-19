@@ -129,6 +129,8 @@ namespace CD
         using VectorData<T, 3>::brg;
         using VectorData<T, 3>::bgr;
 
+        constexpr Vector() noexcept = default;
+
         template <typename X, typename Y, typename Z, typename = IS_CONVERTIBLE_SFINAE<X, Y, Z>>
         explicit constexpr Vector(X&& x, Y&& y, Z&& z) noexcept; // Construct with elements
 
@@ -155,10 +157,6 @@ namespace CD
 
         void fill(T const& value);
         static constexpr size_t size();
-
-    protected:
-
-        using VectorData<T, 3>::_array;
     };
 
     template <typename T> Vector<T, 3> operator-(Vector<T, 3> const& vector);
