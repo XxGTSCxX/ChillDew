@@ -16,6 +16,11 @@ namespace CDEditor
     private:
 
         void Setup() override;
+
+        void MathTestVector2();
+        void MathTestVector3();
+        void MathTestVector4();
+        void MathTestVector5();
     };
 
 }
