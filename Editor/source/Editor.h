@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ChillDew.h"
+#include "Chilldew.h"
 
 namespace CDEditor
 {
