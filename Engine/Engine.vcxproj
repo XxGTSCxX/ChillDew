@@ -47,13 +47,13 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>ChillDew-$(ProjectName)</TargetName>
+    <TargetName>$(SolutionName)-$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>ChillDew-$(ProjectName)</TargetName>
+    <TargetName>$(SolutionName)-$(ProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -102,57 +102,57 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\ChillDew.h" />
-    <ClInclude Include="source\ChillDew\CD_Debug.h" />
-    <ClInclude Include="source\ChillDew\CD_Application.h" />
-    <ClInclude Include="source\ChillDew\CD_AppState.h" />
-    <ClInclude Include="source\ChillDew\CD_Core.h" />
-    <ClInclude Include="source\ChillDew\CD_Degree.h" />
-    <ClInclude Include="source\ChillDew\CD_EntryPoint.h" />
-    <ClInclude Include="source\ChillDew\CD_Flags.h" />
-    <ClInclude Include="source\ChillDew\CD_ILogger.h" />
-    <ClInclude Include="source\ChillDew\CD_ILogHandler.h" />
-    <ClInclude Include="source\ChillDew\CD_Log.h" />
-    <ClInclude Include="source\ChillDew\CD_Logger.h" />
-    <ClInclude Include="source\ChillDew\CD_LogHandler.h" />
-    <ClInclude Include="source\ChillDew\CD_Math.h" />
-    <ClInclude Include="source\ChillDew\CD_Quaternion.h" />
-    <ClInclude Include="source\ChillDew\CD_Radian.h" />
-    <ClInclude Include="source\ChillDew\CD_Swizzle.h" />
-    <ClInclude Include="source\ChillDew\CD_MetaFunctions.h" />
-    <ClInclude Include="source\ChillDew\CD_pch.h" />
-    <ClInclude Include="source\ChillDew\CD_Singleton.h" />
-    <ClInclude Include="source\ChillDew\CD_Vector.h" />
-    <ClInclude Include="source\ChillDew\CD_Vector2D.h" />
-    <ClInclude Include="source\ChillDew\CD_Vector3D.h" />
-    <ClInclude Include="source\ChillDew\CD_Vector4D.h" />
+    <ClInclude Include="source\Chilldew.h" />
+    <ClInclude Include="source\Chilldew\CD_Debug.h" />
+    <ClInclude Include="source\Chilldew\CD_Application.h" />
+    <ClInclude Include="source\Chilldew\CD_AppState.h" />
+    <ClInclude Include="source\Chilldew\CD_Core.h" />
+    <ClInclude Include="source\Chilldew\CD_Degree.h" />
+    <ClInclude Include="source\Chilldew\CD_EntryPoint.h" />
+    <ClInclude Include="source\Chilldew\CD_Flags.h" />
+    <ClInclude Include="source\Chilldew\CD_ILogger.h" />
+    <ClInclude Include="source\Chilldew\CD_ILogHandler.h" />
+    <ClInclude Include="source\Chilldew\CD_Log.h" />
+    <ClInclude Include="source\Chilldew\CD_Logger.h" />
+    <ClInclude Include="source\Chilldew\CD_LogHandler.h" />
+    <ClInclude Include="source\Chilldew\CD_Math.h" />
+    <ClInclude Include="source\Chilldew\CD_Quaternion.h" />
+    <ClInclude Include="source\Chilldew\CD_Radian.h" />
+    <ClInclude Include="source\Chilldew\CD_Swizzle.h" />
+    <ClInclude Include="source\Chilldew\CD_MetaFunctions.h" />
+    <ClInclude Include="source\Chilldew\CD_pch.h" />
+    <ClInclude Include="source\Chilldew\CD_Singleton.h" />
+    <ClInclude Include="source\Chilldew\CD_Vector.h" />
+    <ClInclude Include="source\Chilldew\CD_Vector2D.h" />
+    <ClInclude Include="source\Chilldew\CD_Vector3D.h" />
+    <ClInclude Include="source\Chilldew\CD_Vector4D.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\ChillDew\CD_Debug.cpp" />
-    <ClCompile Include="source\ChillDew\CD_Application.cpp" />
-    <ClCompile Include="source\ChillDew\CD_Degree.cpp" />
-    <ClCompile Include="source\ChillDew\CD_ILogger.cpp" />
-    <ClCompile Include="source\ChillDew\CD_Log.cpp" />
-    <ClCompile Include="source\ChillDew\CD_Logger.cpp" />
-    <ClCompile Include="source\ChillDew\CD_LogHandler.cpp" />
-    <ClCompile Include="source\ChillDew\CD_Math.cpp" />
-    <ClCompile Include="source\ChillDew\CD_Radian.cpp" />
+    <ClCompile Include="source\Chilldew\CD_Debug.cpp" />
+    <ClCompile Include="source\Chilldew\CD_Application.cpp" />
+    <ClCompile Include="source\Chilldew\CD_Degree.cpp" />
+    <ClCompile Include="source\Chilldew\CD_ILogger.cpp" />
+    <ClCompile Include="source\Chilldew\CD_Log.cpp" />
+    <ClCompile Include="source\Chilldew\CD_Logger.cpp" />
+    <ClCompile Include="source\Chilldew\CD_LogHandler.cpp" />
+    <ClCompile Include="source\Chilldew\CD_Math.cpp" />
+    <ClCompile Include="source\Chilldew\CD_Radian.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\ChillDew\CD_Degree.inl" />
-    <None Include="source\ChillDew\CD_Debug.inl" />
-    <None Include="source\ChillDew\CD_Flags.inl" />
-    <None Include="source\ChillDew\CD_Log.inl" />
-    <None Include="source\ChillDew\CD_Logger.inl" />
-    <None Include="source\ChillDew\CD_Math.inl" />
-    <None Include="source\ChillDew\CD_Quaternion.inl" />
-    <None Include="source\ChillDew\CD_Singleton.inl" />
-    <None Include="source\ChillDew\CD_Radian.inl" />
-    <None Include="source\ChillDew\CD_Swizzle.inl" />
-    <None Include="source\ChillDew\CD_Vector.inl" />
-    <None Include="source\ChillDew\CD_Vector2D.inl" />
-    <None Include="source\ChillDew\CD_Vector3D.inl" />
-    <None Include="source\ChillDew\CD_Vector4D.inl" />
+    <None Include="source\Chilldew\CD_Degree.inl" />
+    <None Include="source\Chilldew\CD_Debug.inl" />
+    <None Include="source\Chilldew\CD_Flags.inl" />
+    <None Include="source\Chilldew\CD_Log.inl" />
+    <None Include="source\Chilldew\CD_Logger.inl" />
+    <None Include="source\Chilldew\CD_Math.inl" />
+    <None Include="source\Chilldew\CD_Quaternion.inl" />
+    <None Include="source\Chilldew\CD_Singleton.inl" />
+    <None Include="source\Chilldew\CD_Radian.inl" />
+    <None Include="source\Chilldew\CD_Swizzle.inl" />
+    <None Include="source\Chilldew\CD_Vector.inl" />
+    <None Include="source\Chilldew\CD_Vector2D.inl" />
+    <None Include="source\Chilldew\CD_Vector3D.inl" />
+    <None Include="source\Chilldew\CD_Vector4D.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

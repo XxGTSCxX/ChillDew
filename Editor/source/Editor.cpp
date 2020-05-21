@@ -88,7 +88,8 @@ namespace CDEditor
 
         CD::Debug::Get()->Log("Vector2D<float> operator>>  {}", copy_init == default_init ? "Passed" : "Failed");
 
-        default_init = CD::Perpendicular(copy_init); glm_default_init = glm::perp<glm::vec2>(glm_default_init, glm_default_init); CD::Debug::Get()->Log("Vector2D<float> Perpendicular {}", default_init == glm_default_init ? "Passed" : "Failed");
+        default_init = CD::Perpendicular(copy_init); glm_default_init = glm::perp<glm::vec2>(glm::vec2{ 1,0 }, glm_copy_init); CD::Debug::Get()->Log("Vector2D<float> Perpendicular {}", default_init == glm_default_init ? "Passed" : "Failed");
+        CD::Debug::Get()->Log("vec2 perp {},{}", glm_default_init.x, glm_default_init.y);
     }
 
     void EditorApp::MathTestVector3()
