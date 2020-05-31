@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Singleton.inl
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -16,7 +16,7 @@
 
 #include "CD_Singleton.h"
 
-namespace CD
+namespace chilldew
 {
 
     template <typename T>

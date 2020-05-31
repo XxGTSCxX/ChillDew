@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_MetaFunctions.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -51,7 +51,7 @@ namespace std
 }
 #endif
 
-namespace CD
+namespace chilldew
 {
 
     template<typename T, REQUIRES(std::declval<std::ostream&>() << std::declval<T&>())>

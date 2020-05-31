@@ -14,7 +14,7 @@
 #include "CD_pch.h"
 #include "CD_ILogger.h"
 
-namespace CD
+namespace chilldew
 {
 
     void ILogger::Enable()

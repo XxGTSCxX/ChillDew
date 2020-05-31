@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Swizzle.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -13,21 +13,26 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h"
+#include <cstddef> // std::size_t
 
-namespace CD
+namespace chilldew
 {
 
-    template <template <typename, size_t> typename ArrayTemplate, typename ElemType, size_t N, size_t ... INDICES>
-    class CD_API Swizzle final
+    namespace detail
     {
-        ElemType _array[N];
 
-    public:
+        template <template <typename, std::size_t> typename array_t, typename elem_t, std::size_t size_v, std::size_t ... indices_v>
+        class swizzle final
+        {
+            elem_t _array[size_v];
 
-        ArrayTemplate<ElemType, N>& operator=(ArrayTemplate<ElemType, N> const& array_template);
+        public:
 
-        explicit operator ArrayTemplate<ElemType, sizeof...(INDICES)>() const;
-    };
+            array_t<elem_t, size_v>& operator=(array_t<elem_t, size_v> const& array_template);
+
+            explicit operator array_t<elem_t, sizeof...(indices_v)>() const;
+        };
+
+    }
 
 }

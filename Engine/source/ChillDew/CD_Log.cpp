@@ -14,7 +14,7 @@
 #include "CD_pch.h"
 #include "CD_Log.h"
 
-namespace CD
+namespace chilldew
 {
 
     CD::string Log::Format::FormatText(CD::string_view const& text)

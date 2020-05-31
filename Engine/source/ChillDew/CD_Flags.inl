@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Flags.inl
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -18,7 +18,7 @@
 
 #include "CD_Flags.h"
 
-namespace CD
+namespace chilldew
 {
 
     template <typename ENUM>

@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Degree.inl
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -15,10 +15,10 @@
 
 #include "CD_Degree.h"
 
-namespace CD
+namespace chilldew
 {
 
-    constexpr Degree::Degree(Real deg_angle) noexcept
+    constexpr degree::degree(real deg_angle) noexcept
     : _angle{ deg_angle }
     {}
 

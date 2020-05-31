@@ -16,7 +16,7 @@
 #include "CD_Core.h" // CD_API, CD::string_view
 #include "CD_Log.h"
 
-namespace CD
+namespace chilldew
 {
 
     class CD_API ILogger

@@ -3,19 +3,30 @@
   <ItemGroup>
     <Filter Include="_unsorted">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hh;hpp;hxx;hm;inl;inc;ipp;xsd;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{8616723c-53ee-4003-a741-14c0ce4277ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MathTests">
+      <UniqueIdentifier>{59a2045a-9aa1-4e92-ac26-749964942781}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\UnitTests.h">
+    <ClInclude Include="source\MathTests.h">
+      <Filter>MathTests</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Driver.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\UnitTests.cpp">
+    <None Include="source\MathTests.inl">
+      <Filter>MathTests</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\Driver.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>

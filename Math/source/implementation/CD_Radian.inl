@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Radian.inl
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -15,10 +15,10 @@
 
 #include "CD_Radian.h"
 
-namespace CD
+namespace chilldew
 {
 
-    constexpr Radian::Radian(Real rad_angle) noexcept
+    constexpr radian::radian(real rad_angle) noexcept
     : _angle{ rad_angle }
     {}
 

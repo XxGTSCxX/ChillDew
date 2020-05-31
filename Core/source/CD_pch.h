@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Core
   \file    CD_pch.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -25,6 +25,7 @@
 #include <io.h>
 #include <chrono>
 #include <ctime>
+#include <cstddef>     // std::size_t
 #include <cstdint>     // std::uint64_t, etc.
 #include <string_view> // great for view only strings
 #include <iostream>

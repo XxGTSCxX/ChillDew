@@ -16,7 +16,7 @@
 #include "CD_Core.h"
 #include "CD_Flags.h"
 
-namespace CD
+namespace chilldew
 {
 
     struct CD_API Log final

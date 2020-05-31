@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Application.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -22,7 +22,7 @@
 #include "CD_Flags.inl"
 #include <Windows.h> // DWORD, BOOL
 
-namespace CD
+namespace chilldew
 {
 
     class CD_API Application : public Singleton<Application>
@@ -93,7 +93,7 @@ namespace CD
         static BOOL ControlHandlerWrapper(DWORD event_code);
     };
 
-    CD_API Application* CreateApplication();                                   // Defined by client
-    CD_API void         DestroyApplication(Application* app);                  // Defined by client
+    CD_API Application* CreateApplication();                                    // Defined by client
+    CD_API void         DestroyApplication(Application* app);                   // Defined by client
 
 }

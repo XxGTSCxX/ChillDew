@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_unsorted">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hh;hpp;hxx;hm;inl;inc;ipp;xsd;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{2290b08c-f7f2-4d50-a6ad-94b7d06016e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Angles">
+      <UniqueIdentifier>{4f86027b-9fbe-4dc8-97da-94f8e5f7f4bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Vectors">
+      <UniqueIdentifier>{22ed7b86-04ae-4eed-bb22-43c1843c50cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{41a3f085-e27f-40b4-9423-c680b8e9eddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Vectors\2D">
+      <UniqueIdentifier>{aa5e298a-167e-44e1-bc03-f8fecf3bbc3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Vectors\3D">
+      <UniqueIdentifier>{90656190-ae31-46f9-b7ae-6d2a73d8bf04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Vectors\4D">
+      <UniqueIdentifier>{349c5da2-0d6e-457c-850b-b2afbe874501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Angles\Degree">
+      <UniqueIdentifier>{e74b34d7-e8b3-4226-9e95-32b5ddd12cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Angles\Radian">
+      <UniqueIdentifier>{7f96b440-e4dd-46a3-add1-21467ed9ac3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Functions">
+      <UniqueIdentifier>{38227a96-1f72-4e77-9e80-67614a39cbf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Detail">
+      <UniqueIdentifier>{ce82dacc-5bfb-4505-914e-a1a4f4b86522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Detail\Swizzle">
+      <UniqueIdentifier>{431b07a6-0d26-4262-9418-9bab720b1786}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\implementation\CD_Vector.h">
+      <Filter>Data\Vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="source\implementation\CD_Vector2D.h">
+      <Filter>Data\Vectors\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="source\implementation\CD_Vector3D.h">
+      <Filter>Data\Vectors\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="source\implementation\CD_Vector4D.h">
+      <Filter>Data\Vectors\4D</Filter>
+    </ClInclude>
+    <ClInclude Include="source\implementation\CD_Degree.h">
+      <Filter>Data\Angles\Degree</Filter>
+    </ClInclude>
+    <ClInclude Include="source\implementation\CD_Radian.h">
+      <Filter>Data\Angles\Radian</Filter>
+    </ClInclude>
+    <ClInclude Include="source\implementation\CD_Swizzle.h">
+      <Filter>Utility\Detail\Swizzle</Filter>
+    </ClInclude>
+    <ClInclude Include="source\implementation\CD_MathFunctions.h">
+      <Filter>Utility\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="source\implementation\CD_MathDefines.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Chilldew-Math.h" />
+    <ClInclude Include="source\implementation\CD_VectorBase.h">
+      <Filter>Utility\Detail</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\implementation\CD_Vector.inl">
+      <Filter>Data\Vectors</Filter>
+    </None>
+    <None Include="source\implementation\CD_Vector2D.inl">
+      <Filter>Data\Vectors\2D</Filter>
+    </None>
+    <None Include="source\implementation\CD_Vector3D.inl">
+      <Filter>Data\Vectors\3D</Filter>
+    </None>
+    <None Include="source\implementation\CD_Vector4D.inl">
+      <Filter>Data\Vectors\4D</Filter>
+    </None>
+    <None Include="source\implementation\CD_Degree.inl">
+      <Filter>Data\Angles\Degree</Filter>
+    </None>
+    <None Include="source\implementation\CD_Radian.inl">
+      <Filter>Data\Angles\Radian</Filter>
+    </None>
+    <None Include="source\implementation\CD_Swizzle.inl">
+      <Filter>Utility\Detail\Swizzle</Filter>
+    </None>
+    <None Include="source\implementation\CD_MathFunctions.inl">
+      <Filter>Utility\Functions</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\implementation\CD_Degree.cpp">
+      <Filter>Data\Angles\Degree</Filter>
+    </ClCompile>
+    <ClCompile Include="source\implementation\CD_Radian.cpp">
+      <Filter>Data\Angles\Radian</Filter>
+    </ClCompile>
+    <ClCompile Include="source\implementation\CD_MathFunctions.cpp">
+      <Filter>Utility\Functions</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

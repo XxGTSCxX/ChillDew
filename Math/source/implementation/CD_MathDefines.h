@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
-  \file    CD_Math.inl
+  \project Chilldew-Math
+  \file    CD_MathDefines.h
   \author  Gabrielle Tan Suan Choo
   \brief
     Math stuff.
@@ -13,22 +13,21 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Math.h"
-#include <algorithm> // std::max, std::min
+#include <limits> // std::numeric_limits
 
-namespace CD
+namespace chilldew
 {
 
-    template <typename T>
-    inline bool Math::FuzzyEqual(T const& lhs, T const& rhs, T const& epsilon)
-    {
-        return std::max(lhs - rhs, rhs - lhs) < epsilon;
-    }
+    using real = double;
 
-    template <typename T>
-    inline T Math::Clamp(T const& value, T const& lower_bound, T const& upper_bound)
+    namespace math
     {
-        return std::max(lower_bound, std::min(value, upper_bound));
+
+        static constexpr real epsilon    = std::numeric_limits<real>::epsilon();
+        static constexpr real pi         = static_cast<real>(3.14159265358979323846l);
+        static constexpr real deg_to_rad = pi / static_cast<real>(180.0l);
+        static constexpr real rad_to_deg = static_cast<real>(180.0l) / pi;
+
     }
 
 }

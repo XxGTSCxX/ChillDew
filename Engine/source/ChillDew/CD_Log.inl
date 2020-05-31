@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Log.inl
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -15,7 +15,7 @@
 
 #include "CD_Log.h"
 
-namespace CD
+namespace chilldew
 {
 
 	template <typename Arg, typename ... Args>

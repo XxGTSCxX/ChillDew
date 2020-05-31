@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_EntryPoint.h
   \author  Gabrielle Tan Suan Choo
   \brief

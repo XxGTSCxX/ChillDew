@@ -2,25 +2,15 @@
 
 #include "Chilldew.h"
 
-namespace CDEditor
+class ChilldewEditor : public CD::Application
 {
+public:
 
-    class EditorApp : public CD::Application
-    {
-    public:
+    ChilldewEditor();
 
-        EditorApp();
+    bool IsEditor() const override;
 
-        bool IsEditor() const override;
+private:
 
-    private:
-
-        void Setup() override;
-
-        void MathTestVector2();
-        void MathTestVector3();
-        void MathTestVector4();
-        void MathTestVector5();
-    };
-
-}
+    void Setup() override;
+};

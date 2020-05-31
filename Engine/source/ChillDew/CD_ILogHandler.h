@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_ILogHandler.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -15,7 +15,7 @@
 
 #include "CD_Core.h" // CD::string_view, CD::iostream
 
-namespace CD
+namespace chilldew
 {
 
     class CD_API ILogHandler

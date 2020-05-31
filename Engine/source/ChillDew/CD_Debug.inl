@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Debug.inl
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -16,7 +16,7 @@
 #include "CD_Debug.h"
 #include "CD_Logger.inl"
 
-namespace CD
+namespace chilldew
 {
 
     template <typename ... Args>
@@ -31,19 +31,19 @@ namespace CD
     template <typename ... Args>
     inline void Debug::Log(std::string_view const& text, Args&& ... args)
     {
-        _logger.Log(CD::CStrToStr(text), std::forward<Args>(args)...);
+        _logger.Log(CD::cstr_to_str(text), std::forward<Args>(args)...);
     }
 
     template <typename ... Args>
     inline void Debug::LogError(std::string_view const& text, Args&& ... args)
     {
-        _logger.LogError(CD::CStrToStr(text), std::forward<Args>(args)...);
+        _logger.LogError(CD::cstr_to_str(text), std::forward<Args>(args)...);
     }
 
     template <typename ... Args>
     inline void Debug::LogWarning(std::string_view const& text, Args&& ... args)
     {
-        _logger.LogWarning(CD::CStrToStr(text), std::forward<Args>(args)...);
+        _logger.LogWarning(CD::cstr_to_str(text), std::forward<Args>(args)...);
     }
 
 }

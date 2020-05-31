@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_AppState.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -16,7 +16,7 @@
 #include "CD_Core.h"
 #include <cstdint> // std::uint8_t
 
-namespace CD
+namespace chilldew
 {
 
     enum class CD_API AppState : std::uint8_t

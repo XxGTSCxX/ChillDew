@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Singleton.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -17,7 +17,7 @@
 #include "CD_Core.h"
 #include <cassert> // assert
 
-namespace CD
+namespace chilldew
 {
 
     template <typename T>

@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Debug.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -18,7 +18,7 @@
 #include "CD_ILogger.h"
 #include "CD_Logger.h"
 
-namespace CD
+namespace chilldew
 {
 
     class CD_API Debug final : public Singleton<Debug>

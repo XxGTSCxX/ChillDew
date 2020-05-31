@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Logger.cpp
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -15,7 +15,7 @@
 #include "CD_Logger.inl"
 #include "CD_Log.inl"
 
-namespace CD
+namespace chilldew
 {
 
     Logger::Logger( CD::string_view const& logger_name

@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Quaternion.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -16,12 +16,14 @@
 
 #include "CD_Core.h"
 #include "CD_Math.h"
-#include "CD_Swizzle.inl" // CD::Swizzle
+#include "CD_Swizzle.inl" // CD::swizzle
 #include "CD_Degree.inl"  // CD::Degree
 #include <array>           // std::array
 
-namespace CD
+namespace chilldew
 {
+
+
 
     template <typename T>
     struct CD_API Quaternion final
@@ -40,60 +42,60 @@ namespace CD
                 T w;
             };
 
-            Swizzle<Quaternion, T, 4, 0, 1      > xy;
-            Swizzle<Quaternion, T, 4, 0, 2      > xz;
-            Swizzle<Quaternion, T, 4, 0, 3      > xw;
-            Swizzle<Quaternion, T, 4, 1, 0      > yx;
-            Swizzle<Quaternion, T, 4, 1, 2      > yz;
-            Swizzle<Quaternion, T, 4, 1, 3      > yw;
-            Swizzle<Quaternion, T, 4, 2, 0      > zx;
-            Swizzle<Quaternion, T, 4, 2, 1      > zy;
-            Swizzle<Quaternion, T, 4, 2, 3      > zw;
-            Swizzle<Quaternion, T, 4, 3, 0      > wx;
-            Swizzle<Quaternion, T, 4, 3, 1      > wy;
-            Swizzle<Quaternion, T, 4, 3, 2      > wz;
-            Swizzle<Quaternion, T, 4, 0, 1, 2   > xyz;
-            Swizzle<Quaternion, T, 4, 0, 1, 3   > xyw;
-            Swizzle<Quaternion, T, 4, 0, 2, 1   > xzy;
-            Swizzle<Quaternion, T, 4, 0, 2, 3   > xzw;
-            Swizzle<Quaternion, T, 4, 0, 3, 1   > xwy;
-            Swizzle<Quaternion, T, 4, 0, 3, 2   > xwz;
-            Swizzle<Quaternion, T, 4, 1, 0, 2   > yxz;
-            Swizzle<Quaternion, T, 4, 1, 0, 3   > yxw;
-            Swizzle<Quaternion, T, 4, 1, 2, 0   > yzx;
-            Swizzle<Quaternion, T, 4, 1, 2, 3   > yzw;
-            Swizzle<Quaternion, T, 4, 1, 3, 0   > ywx;
-            Swizzle<Quaternion, T, 4, 1, 3, 2   > ywz;
-            Swizzle<Quaternion, T, 4, 2, 0, 1   > zxy;
-            Swizzle<Quaternion, T, 4, 2, 0, 3   > zxw;
-            Swizzle<Quaternion, T, 4, 2, 1, 0   > zyx;
-            Swizzle<Quaternion, T, 4, 2, 1, 3   > zyw;
-            Swizzle<Quaternion, T, 4, 2, 3, 0   > zwx;
-            Swizzle<Quaternion, T, 4, 2, 3, 1   > zwy;
-            Swizzle<Quaternion, T, 4, 0, 1, 2, 3> xyzw;
-            Swizzle<Quaternion, T, 4, 0, 1, 3, 2> xywz;
-            Swizzle<Quaternion, T, 4, 0, 2, 1, 3> xzyw;
-            Swizzle<Quaternion, T, 4, 0, 2, 3, 1> xzwy;
-            Swizzle<Quaternion, T, 4, 0, 3, 1, 2> xwyz;
-            Swizzle<Quaternion, T, 4, 0, 3, 2, 1> xwzy;
-            Swizzle<Quaternion, T, 4, 1, 0, 2, 3> yxzw;
-            Swizzle<Quaternion, T, 4, 1, 0, 3, 2> yxwz;
-            Swizzle<Quaternion, T, 4, 1, 2, 0, 3> yzxw;
-            Swizzle<Quaternion, T, 4, 1, 2, 3, 0> yzwx;
-            Swizzle<Quaternion, T, 4, 1, 3, 0, 2> ywxz;
-            Swizzle<Quaternion, T, 4, 1, 3, 2, 0> ywzx;
-            Swizzle<Quaternion, T, 4, 2, 0, 1, 3> zxyw;
-            Swizzle<Quaternion, T, 4, 2, 0, 3, 1> zxwy;
-            Swizzle<Quaternion, T, 4, 2, 1, 0, 3> zyxw;
-            Swizzle<Quaternion, T, 4, 2, 1, 3, 0> zywx;
-            Swizzle<Quaternion, T, 4, 2, 3, 0, 1> zwxy;
-            Swizzle<Quaternion, T, 4, 2, 3, 1, 0> zwyx;
-            Swizzle<Quaternion, T, 4, 3, 0, 1, 2> wxyz;
-            Swizzle<Quaternion, T, 4, 3, 0, 2, 1> wxzy;
-            Swizzle<Quaternion, T, 4, 3, 1, 0, 2> wyxz;
-            Swizzle<Quaternion, T, 4, 3, 1, 2, 0> wyzx;
-            Swizzle<Quaternion, T, 4, 3, 2, 0, 1> wzxy;
-            Swizzle<Quaternion, T, 4, 3, 2, 1, 0> wzyx;
+            swizzle<Quaternion, T, 4, 0, 1      > xy;
+            swizzle<Quaternion, T, 4, 0, 2      > xz;
+            swizzle<Quaternion, T, 4, 0, 3      > xw;
+            swizzle<Quaternion, T, 4, 1, 0      > yx;
+            swizzle<Quaternion, T, 4, 1, 2      > yz;
+            swizzle<Quaternion, T, 4, 1, 3      > yw;
+            swizzle<Quaternion, T, 4, 2, 0      > zx;
+            swizzle<Quaternion, T, 4, 2, 1      > zy;
+            swizzle<Quaternion, T, 4, 2, 3      > zw;
+            swizzle<Quaternion, T, 4, 3, 0      > wx;
+            swizzle<Quaternion, T, 4, 3, 1      > wy;
+            swizzle<Quaternion, T, 4, 3, 2      > wz;
+            swizzle<Quaternion, T, 4, 0, 1, 2   > xyz;
+            swizzle<Quaternion, T, 4, 0, 1, 3   > xyw;
+            swizzle<Quaternion, T, 4, 0, 2, 1   > xzy;
+            swizzle<Quaternion, T, 4, 0, 2, 3   > xzw;
+            swizzle<Quaternion, T, 4, 0, 3, 1   > xwy;
+            swizzle<Quaternion, T, 4, 0, 3, 2   > xwz;
+            swizzle<Quaternion, T, 4, 1, 0, 2   > yxz;
+            swizzle<Quaternion, T, 4, 1, 0, 3   > yxw;
+            swizzle<Quaternion, T, 4, 1, 2, 0   > yzx;
+            swizzle<Quaternion, T, 4, 1, 2, 3   > yzw;
+            swizzle<Quaternion, T, 4, 1, 3, 0   > ywx;
+            swizzle<Quaternion, T, 4, 1, 3, 2   > ywz;
+            swizzle<Quaternion, T, 4, 2, 0, 1   > zxy;
+            swizzle<Quaternion, T, 4, 2, 0, 3   > zxw;
+            swizzle<Quaternion, T, 4, 2, 1, 0   > zyx;
+            swizzle<Quaternion, T, 4, 2, 1, 3   > zyw;
+            swizzle<Quaternion, T, 4, 2, 3, 0   > zwx;
+            swizzle<Quaternion, T, 4, 2, 3, 1   > zwy;
+            swizzle<Quaternion, T, 4, 0, 1, 2, 3> xyzw;
+            swizzle<Quaternion, T, 4, 0, 1, 3, 2> xywz;
+            swizzle<Quaternion, T, 4, 0, 2, 1, 3> xzyw;
+            swizzle<Quaternion, T, 4, 0, 2, 3, 1> xzwy;
+            swizzle<Quaternion, T, 4, 0, 3, 1, 2> xwyz;
+            swizzle<Quaternion, T, 4, 0, 3, 2, 1> xwzy;
+            swizzle<Quaternion, T, 4, 1, 0, 2, 3> yxzw;
+            swizzle<Quaternion, T, 4, 1, 0, 3, 2> yxwz;
+            swizzle<Quaternion, T, 4, 1, 2, 0, 3> yzxw;
+            swizzle<Quaternion, T, 4, 1, 2, 3, 0> yzwx;
+            swizzle<Quaternion, T, 4, 1, 3, 0, 2> ywxz;
+            swizzle<Quaternion, T, 4, 1, 3, 2, 0> ywzx;
+            swizzle<Quaternion, T, 4, 2, 0, 1, 3> zxyw;
+            swizzle<Quaternion, T, 4, 2, 0, 3, 1> zxwy;
+            swizzle<Quaternion, T, 4, 2, 1, 0, 3> zyxw;
+            swizzle<Quaternion, T, 4, 2, 1, 3, 0> zywx;
+            swizzle<Quaternion, T, 4, 2, 3, 0, 1> zwxy;
+            swizzle<Quaternion, T, 4, 2, 3, 1, 0> zwyx;
+            swizzle<Quaternion, T, 4, 3, 0, 1, 2> wxyz;
+            swizzle<Quaternion, T, 4, 3, 0, 2, 1> wxzy;
+            swizzle<Quaternion, T, 4, 3, 1, 0, 2> wyxz;
+            swizzle<Quaternion, T, 4, 3, 1, 2, 0> wyzx;
+            swizzle<Quaternion, T, 4, 3, 2, 0, 1> wzxy;
+            swizzle<Quaternion, T, 4, 3, 2, 1, 0> wzyx;
         };
 
 

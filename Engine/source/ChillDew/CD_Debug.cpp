@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Debug.cpp
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -14,7 +14,7 @@
 #include "CD_pch.h"
 #include "CD_Debug.h"
 
-namespace CD
+namespace chilldew
 {
 
     Debug::Debug()

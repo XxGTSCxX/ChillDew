@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Application.cpp
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -17,7 +17,7 @@
 #include "CD_Application.h"
 #include <cassert> // assert
 
-namespace CD
+namespace chilldew
 {
 
     Application::Application()

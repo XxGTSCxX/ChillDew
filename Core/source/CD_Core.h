@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Core
   \file    CD_Core.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -30,6 +30,9 @@
     #error Unsupported Platform
 #endif
 
+namespace chilldew {}
+namespace CD = chilldew;
+
 #ifdef UNICODE
 
 #include <iostream>    // std::wistream, std::wostream, std::wiostream
@@ -40,7 +43,7 @@
 
 #define CD_STRING(x) L##x
 
-namespace CD
+namespace chilldew
 {
     using istream      = std::wistream;
     using ostream      = std::wostream;
@@ -57,7 +60,7 @@ namespace CD
     static inline ostream& cerr = std::wcerr;
     static inline ostream& clog = std::wclog;
 
-    inline CD::string CStrToStr(std::string_view const& c_string)
+    inline CD::string cstr_to_str(std::string_view const& c_string)
     {
         CD::string result;
         size_t     size      = c_string.size() + 1;
@@ -81,7 +84,7 @@ namespace CD
 
 #define CD_STRING(x) x
 
-namespace CD
+namespace chilldew
 {
     using istream      = std::istream;
     using ostream      = std::ostream;
@@ -98,7 +101,7 @@ namespace CD
     static inline ostream& cerr = std::cerr;
     static inline ostream& clog = std::clog;
 
-    inline CD::string CStrToStr(std::string_view const& c_string)
+    inline CD::string cstr_to_str(std::string_view const& c_string)
     {
         return CD::string{ c_string };
     }

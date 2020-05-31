@@ -71,14 +71,8 @@
     <ClInclude Include="source\Chilldew\CD_AppState.h">
       <Filter>Architecture\Application</Filter>
     </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_Core.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="source\Chilldew\CD_Debug.h">
       <Filter>Utility\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_Degree.h">
-      <Filter>Utility\Math\Data\Angles</Filter>
     </ClInclude>
     <ClInclude Include="source\Chilldew\CD_EntryPoint.h">
       <Filter>Core</Filter>
@@ -101,38 +95,14 @@
     <ClInclude Include="source\Chilldew\CD_LogHandler.h">
       <Filter>Utility\Log\Implementations</Filter>
     </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_Math.h">
-      <Filter>Utility\Math</Filter>
-    </ClInclude>
     <ClInclude Include="source\Chilldew\CD_MetaFunctions.h">
       <Filter>Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_pch.h">
-      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="source\Chilldew\CD_Quaternion.h">
       <Filter>Utility\Math\Data\Quaternion</Filter>
     </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_Radian.h">
-      <Filter>Utility\Math\Data\Angles</Filter>
-    </ClInclude>
     <ClInclude Include="source\Chilldew\CD_Singleton.h">
       <Filter>Utility\Singleton</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_Swizzle.h">
-      <Filter>Utility\Swizzle</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_Vector.h">
-      <Filter>Utility\Math\Data\Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_Vector2D.h">
-      <Filter>Utility\Math\Data\Vector\Vector2D</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_Vector3D.h">
-      <Filter>Utility\Math\Data\Vector\Vector3D</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Chilldew\CD_Vector4D.h">
-      <Filter>Utility\Math\Data\Vector\Vector4D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -141,9 +111,6 @@
     </ClCompile>
     <ClCompile Include="source\Chilldew\CD_Debug.cpp">
       <Filter>Utility\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Chilldew\CD_Degree.cpp">
-      <Filter>Utility\Math\Data\Angles</Filter>
     </ClCompile>
     <ClCompile Include="source\Chilldew\CD_ILogger.cpp">
       <Filter>Utility\Log\Interfaces</Filter>
@@ -157,19 +124,10 @@
     <ClCompile Include="source\Chilldew\CD_LogHandler.cpp">
       <Filter>Utility\Log\Implementations</Filter>
     </ClCompile>
-    <ClCompile Include="source\Chilldew\CD_Math.cpp">
-      <Filter>Utility\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Chilldew\CD_Radian.cpp">
-      <Filter>Utility\Math\Data\Angles</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="source\Chilldew\CD_Debug.inl">
       <Filter>Utility\Debug</Filter>
-    </None>
-    <None Include="source\Chilldew\CD_Degree.inl">
-      <Filter>Utility\Math\Data\Angles</Filter>
     </None>
     <None Include="source\Chilldew\CD_Flags.inl">
       <Filter>Utility\Flag</Filter>
@@ -180,32 +138,11 @@
     <None Include="source\Chilldew\CD_Logger.inl">
       <Filter>Utility\Log\Implementations</Filter>
     </None>
-    <None Include="source\Chilldew\CD_Math.inl">
-      <Filter>Utility\Math</Filter>
-    </None>
     <None Include="source\Chilldew\CD_Quaternion.inl">
       <Filter>Utility\Math\Data\Quaternion</Filter>
     </None>
-    <None Include="source\Chilldew\CD_Radian.inl">
-      <Filter>Utility\Math\Data\Angles</Filter>
-    </None>
     <None Include="source\Chilldew\CD_Singleton.inl">
       <Filter>Utility\Singleton</Filter>
-    </None>
-    <None Include="source\Chilldew\CD_Swizzle.inl">
-      <Filter>Utility\Swizzle</Filter>
-    </None>
-    <None Include="source\Chilldew\CD_Vector.inl">
-      <Filter>Utility\Math\Data\Vector</Filter>
-    </None>
-    <None Include="source\Chilldew\CD_Vector2D.inl">
-      <Filter>Utility\Math\Data\Vector\Vector2D</Filter>
-    </None>
-    <None Include="source\Chilldew\CD_Vector3D.inl">
-      <Filter>Utility\Math\Data\Vector\Vector3D</Filter>
-    </None>
-    <None Include="source\Chilldew\CD_Vector4D.inl">
-      <Filter>Utility\Math\Data\Vector\Vector4D</Filter>
     </None>
   </ItemGroup>
 </Project>

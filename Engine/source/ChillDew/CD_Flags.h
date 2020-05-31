@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Flags.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -20,7 +20,7 @@
 #include "CD_MetaFunctions.h"
 #include <type_traits>
 
-namespace CD
+namespace chilldew
 {
 
     /**************************************************************************/

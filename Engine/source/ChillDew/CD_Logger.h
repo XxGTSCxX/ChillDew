@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project ChillDew-Engine
+  \project Chilldew-Engine
   \file    CD_Logger.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -20,7 +20,7 @@
 #include <ostream> // std::ostream
 #include <cstdint> // std::ostream
 
-namespace CD
+namespace chilldew
 {
 
 	class CD_API Logger : public ILogger
