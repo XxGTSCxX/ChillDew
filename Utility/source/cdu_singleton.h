@@ -21,10 +21,8 @@ namespace chilldew::utility
 {
 
     template <typename obj_t>
-    class CD_API singleton
+    struct CD_API singleton
     {
-    public:
-
         singleton();
         virtual ~singleton();
 

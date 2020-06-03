@@ -24,7 +24,7 @@
 // NOTE: This fails if there are more than one member with the same name
 #define DEFINE_HAS_MEMBER(member)                                                \
     template <typename T>                                                        \
-    class has_member_##member                                                    \
+    struct has_member_##member                                                    \
     {                                                                            \
     private:                                                                     \
                                                                                  \

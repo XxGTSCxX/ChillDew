@@ -18,10 +18,8 @@
 namespace chilldew::engine
 {
 
-    class CD_API iloghandler
+    struct CD_API iloghandler
     {
-    public:
-
         virtual ~iloghandler() = default;
 
         virtual void log(cd::string_view const& text) = 0;

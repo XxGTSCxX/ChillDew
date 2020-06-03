@@ -20,10 +20,8 @@
 namespace chilldew::engine
 {
 
-    class CD_API loghandler : public iloghandler
+    struct CD_API loghandler : public iloghandler
     {
-    public:
-
         loghandler();
 
         void log(cd::string_view const& text) override;

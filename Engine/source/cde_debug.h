@@ -21,10 +21,8 @@
 namespace chilldew::engine
 {
 
-    class CD_API debug final : public cdu::singleton<debug>
+    struct CD_API debug final : public cdu::singleton<debug>
     {
-    public:
-
         debug();
         ~debug();
 

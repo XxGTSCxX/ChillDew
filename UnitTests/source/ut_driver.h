@@ -7,7 +7,7 @@
 namespace unit_tests
 {
 
-    class driver : public cde::app
+    struct driver : public cde::app
     {
     private:
 

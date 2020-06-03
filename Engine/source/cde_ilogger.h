@@ -19,10 +19,8 @@
 namespace chilldew::engine
 {
 
-    class CD_API ilogger
+    struct CD_API ilogger
     {
-    public:
-
         constexpr ilogger()  noexcept = default;
         virtual   ~ilogger() noexcept = default;
 

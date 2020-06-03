@@ -22,10 +22,8 @@
 namespace chilldew::engine
 {
 
-    class CD_API logger : public ilogger
+    struct CD_API logger : public ilogger
     {
-    public:
-
         explicit logger( cd::string_view const& logger_name    = CD_STRING("Default Logger")
                        , cd::string_view const& default_colour = log::colour::reset
                        , cd::string_view const& warning_colour = log::colour::bright_yellow
