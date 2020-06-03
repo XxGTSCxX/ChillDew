@@ -21,10 +21,6 @@ namespace unit_tests
 
     void performance::test_division()
     {
-        cd::Debug::Get()->Log("// -----------------------------------------------------------------------------");
-        cd::Debug::Get()->Log("// Division Performance Test"                                                    );
-        cd::Debug::Get()->Log("// -----------------------------------------------------------------------------");
-
         static constexpr std::size_t size    = std::numeric_limits<unsigned short>::max();
         static constexpr std::size_t runtime = std::numeric_limits<         short>::max();
         static constexpr std::size_t mod     = runtime >> 5;
@@ -36,6 +32,10 @@ namespace unit_tests
         double multi_avg    = 0.0;
         val_t* values       = new val_t[size]();
         val_t  divisor      = 5.0f;
+        
+        cd::Debug::Get()->Log("// -----------------------------------------------------------------------------");
+        cd::Debug::Get()->Log("// Division Performance Test"                                                    );
+        cd::Debug::Get()->Log("// -----------------------------------------------------------------------------");
 
         cd::cout << "Initialising... ";
 
