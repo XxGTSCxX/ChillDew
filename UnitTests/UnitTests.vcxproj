@@ -91,8 +91,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\Driver.h" />
-    <ClInclude Include="source\MathTests.h" />
+    <ClInclude Include="source\ut_driver.h" />
+    <ClInclude Include="source\ut_core.h" />
+    <ClInclude Include="source\ut_math.h" />
+    <ClInclude Include="source\ut_performance.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -100,10 +102,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Driver.cpp" />
+    <ClCompile Include="source\ut_driver.cpp" />
+    <ClCompile Include="source\ut_performance.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\MathTests.inl" />
+    <None Include="source\ut_math.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

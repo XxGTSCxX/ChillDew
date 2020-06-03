@@ -11,23 +11,35 @@
     <Filter Include="MathTests">
       <UniqueIdentifier>{59a2045a-9aa1-4e92-ac26-749964942781}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Performace">
+      <UniqueIdentifier>{6ebfa534-6783-48d9-9620-78036390c9d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\MathTests.h">
+    <ClInclude Include="source\ut_performance.h">
+      <Filter>Performace</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ut_math.h">
       <Filter>MathTests</Filter>
     </ClInclude>
-    <ClInclude Include="source\Driver.h">
+    <ClInclude Include="source\ut_core.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ut_driver.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\MathTests.inl">
+    <None Include="source\ut_math.inl">
       <Filter>MathTests</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Driver.cpp">
+    <ClCompile Include="source\ut_driver.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ut_performance.cpp">
+      <Filter>Performace</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
