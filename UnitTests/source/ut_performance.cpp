@@ -1,5 +1,5 @@
 #include "ut_performance.h"
-#include "Chilldew/CD_Debug.inl"
+#include "cde_debug.inl"
 #include <limits>  // std::numeric_limits
 #include <cstddef> // std::size_t
 #include <chrono>  // std::chrono
@@ -15,7 +15,7 @@ namespace unit_tests
         const auto t2        = std::chrono::high_resolution_clock::now();
         const auto time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
         if (!suppress_print)
-            cd::Debug::Get()->Log("\tDone: {} seconds", time_span.count());
+            cde::debug::get()->log("\tDone: {} seconds", time_span.count());
         return time_span.count();
     }
 
@@ -33,9 +33,9 @@ namespace unit_tests
         val_t* values       = new val_t[size]();
         val_t  divisor      = 5.0f;
         
-        cd::Debug::Get()->Log("// -----------------------------------------------------------------------------");
-        cd::Debug::Get()->Log("// Division Performance Test"                                                    );
-        cd::Debug::Get()->Log("// -----------------------------------------------------------------------------");
+        cde::debug::get()->log("// -----------------------------------------------------------------------------");
+        cde::debug::get()->log("// Division Performance Test"                                                    );
+        cde::debug::get()->log("// -----------------------------------------------------------------------------");
 
         cd::cout << "Initialising... ";
 
@@ -78,7 +78,7 @@ namespace unit_tests
         }
 
         cd::cout << " Avg Time: " << (multi_avg /= runtime) << std::endl;
-        cd::Debug::Get()->Log("Result: Multiplication is {}% {} than division", division_avg * 100.0 / multi_avg, multi_avg < division_avg ? "faster" : "slower");
+        cde::debug::get()->log("Result: Multiplication is {}% {} than division", division_avg * 100.0 / multi_avg, multi_avg < division_avg ? "faster" : "slower");
 
         delete [] values;
     }

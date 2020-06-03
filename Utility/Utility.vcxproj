@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -10,41 +10,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="source\cdm_degree.cpp" />
-    <ClCompile Include="source\cdm_radian.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="source\Chilldew-Math.h" />
-    <ClInclude Include="source\cdm_degree.h" />
-    <ClInclude Include="source\cdm_defines.h" />
-    <ClInclude Include="source\cdm_functionals.h" />
-    <ClInclude Include="source\cdm_radian.h" />
-    <ClInclude Include="source\cdm_swizzle.h" />
-    <ClInclude Include="source\cdm_vector.h" />
-    <ClInclude Include="source\cdm_vec2.h" />
-    <ClInclude Include="source\cdm_vec3.h" />
-    <ClInclude Include="source\cdm_vec4.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="source\cdm_degree.inl" />
-    <None Include="source\cdm_functionals.inl" />
-    <None Include="source\cdm_radian.inl" />
-    <None Include="source\cdm_swizzle.inl" />
-    <None Include="source\cdm_vector.inl" />
-    <None Include="source\cdm_vec2.inl" />
-    <None Include="source\cdm_vec3.inl" />
-    <None Include="source\cdm_vec4.inl" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Core.vcxproj">
-      <Project>{68c89c15-ffc1-45af-925e-32d66e0a4043}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{C724BE97-CB7B-4B60-841D-F4F02102498B}</ProjectGuid>
-    <RootNamespace>Math</RootNamespace>
+    <ProjectGuid>{79E68E86-B954-4C89-8C22-AD71A325406C}</ProjectGuid>
+    <RootNamespace>Utility</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -89,7 +58,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)NOMINMAX;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Core\source</AdditionalIncludeDirectories>
@@ -109,7 +78,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Core\source</AdditionalIncludeDirectories>
@@ -125,6 +94,21 @@
       <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Core</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="source\cdu_pch.h" />
+    <ClInclude Include="source\cdu_core.h" />
+    <ClInclude Include="source\Chilldew-Utility.h" />
+    <ClInclude Include="source\cdu_flag.h" />
+    <ClInclude Include="source\cdu_metafunctions.h" />
+    <ClInclude Include="source\cdu_singleton.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\cdu_flag.inl" />
+    <None Include="source\cdu_singleton.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\cdu_pch.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

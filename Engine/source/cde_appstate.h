@@ -1,10 +1,10 @@
 /******************************************************************************/
 /*!
-  \project Chilldew-Math
-  \file    Chilldew-Math.h
+  \project Chilldew-Engine
+  \file    cd_appstate.h
   \author  Gabrielle Tan Suan Choo
   \brief
-    Includes for all math implementations.
+    Used to identify the current application state.
 
     all content (C) 2020 DigiPen (SINGAPORE) Corporation, all rights reserved.
     Reproduction or disclosure of this file or its contents without the prior
@@ -13,11 +13,18 @@
 /******************************************************************************/
 #pragma once
 
-#include "cdm_defines.h"
-#include "cdm_functionals.inl"
-#include "cdm_degree.inl"
-#include "cdm_radian.inl"
-#include "cdm_vector.inl"
-#include "cdm_vec2.inl"
-#include "cdm_vec3.inl"
-#include "cdm_vec4.inl"
+#include "cde_core.h"
+#include <cstdint> // std::uint8_t
+
+namespace chilldew::engine
+{
+
+    enum class CD_API appstate : std::uint8_t
+    {
+          quit = std::numeric_limits<std::uint8_t>::max()
+        , load = 0
+        , init
+        , run
+    };
+
+}

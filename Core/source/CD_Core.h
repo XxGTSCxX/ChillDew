@@ -6,7 +6,7 @@
   \brief
     Defines engine API and settings for the project.
 
-    All content (C) 2020 DigiPen (SINGAPORE) Corporation, all rights reserved.
+    all content (C) 2020 DigiPen (SINGAPORE) Corporation, all rights reserved.
     Reproduction or disclosure of this file or its contents without the prior
     written consent of DigiPen Institute of Technology is prohibited.
 */

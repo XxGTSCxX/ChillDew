@@ -1,18 +1,18 @@
 #pragma once
 
 #include "ut_core.h"
-#include "Chilldew.h"
+#include "Chilldew-Engine.h"
 #include "Chilldew-Math.h"
 
 namespace unit_tests
 {
 
-    class driver : public cd::Application
+    class driver : public cde::app
     {
     private:
 
-        void Setup()      override;
-        void PostUpdate() override;
+        void setup()       override;
+        void post_update() override;
     };
 
 }

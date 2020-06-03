@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_unsorted">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{81334b54-8dc5-4169-87b5-f443e2ecfb04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementations">
+      <UniqueIdentifier>{67495639-cf14-4e93-97ad-715897f643b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementations\Singleton">
+      <UniqueIdentifier>{d0136d17-c1e4-40c6-97b3-6acb00c5824b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementations\Flag">
+      <UniqueIdentifier>{d34ef7ff-490a-4957-ac3e-b5cb855eb04b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\Chilldew-Utility.h" />
+    <ClInclude Include="source\cdu_core.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cdu_metafunctions.h">
+      <Filter>Implementations</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cdu_pch.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cdu_singleton.h">
+      <Filter>Implementations\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cdu_flag.h">
+      <Filter>Implementations\Flag</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\cdu_singleton.inl">
+      <Filter>Implementations\Singleton</Filter>
+    </None>
+    <None Include="source\cdu_flag.inl">
+      <Filter>Implementations\Flag</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\cdu_pch.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

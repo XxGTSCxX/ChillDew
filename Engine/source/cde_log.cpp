@@ -1,23 +1,25 @@
 /******************************************************************************/
 /*!
-  \project Chilldew-Math
-  \file    Chilldew-Math.h
+  \project GTE
+  \file    CD_Log.cpp
   \author  Gabrielle Tan Suan Choo
   \brief
-    Includes for all math implementations.
+    Defines most of the commonly used data by all log features.
 
     all content (C) 2020 DigiPen (SINGAPORE) Corporation, all rights reserved.
     Reproduction or disclosure of this file or its contents without the prior
     written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#pragma once
+#include "cd_pch.h"
+#include "cde_log.h"
 
-#include "cdm_defines.h"
-#include "cdm_functionals.inl"
-#include "cdm_degree.inl"
-#include "cdm_radian.inl"
-#include "cdm_vector.inl"
-#include "cdm_vec2.inl"
-#include "cdm_vec3.inl"
-#include "cdm_vec4.inl"
+namespace chilldew::engine
+{
+
+    cd::string log::format::format_text(cd::string_view const& text)
+    {
+        return cd::string{ text };
+    }
+
+}

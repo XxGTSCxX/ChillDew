@@ -8,11 +8,11 @@
     <Filter Include="Core">
       <UniqueIdentifier>{8616723c-53ee-4003-a741-14c0ce4277ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MathTests">
-      <UniqueIdentifier>{59a2045a-9aa1-4e92-ac26-749964942781}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Performace">
       <UniqueIdentifier>{6ebfa534-6783-48d9-9620-78036390c9d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{59a2045a-9aa1-4e92-ac26-749964942781}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -20,7 +20,7 @@
       <Filter>Performace</Filter>
     </ClInclude>
     <ClInclude Include="source\ut_math.h">
-      <Filter>MathTests</Filter>
+      <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="source\ut_core.h">
       <Filter>Core</Filter>
@@ -31,7 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="source\ut_math.inl">
-      <Filter>MathTests</Filter>
+      <Filter>Math</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

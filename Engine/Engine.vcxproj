@@ -62,7 +62,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions);CD_BUILD_DLL;NOMINMAX;_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\source;$(SolutionDir)Utility\source;$(SolutionDir)Math\source;</AdditionalIncludeDirectories>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>CD_pch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
@@ -75,10 +75,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Chilldew-Core.lib</AdditionalDependencies>
+      <AdditionalDependencies>Chilldew-Core.lib;Chilldew-Utility.lib;Chilldew-Math.lib;</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Core</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Math;$(SolutionDir)bin\$(Configuration)-$(Platform)\Utility;$(SolutionDir)bin\$(Configuration)-$(Platform)\Core</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -90,7 +90,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions);CD_BUILD_DLL;NOMINMAX;NDEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\source;$(SolutionDir)Utility\source;$(SolutionDir)Math\source;</AdditionalIncludeDirectories>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>CD_pch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
@@ -105,43 +105,37 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Chilldew-Core.lib</AdditionalDependencies>
+      <AdditionalDependencies>Chilldew-Core.lib;Chilldew-Utility.lib;Chilldew-Math.lib;</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Core</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Math;$(SolutionDir)bin\$(Configuration)-$(Platform)\Utility;$(SolutionDir)bin\$(Configuration)-$(Platform)\Core</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\Chilldew.h" />
-    <ClInclude Include="source\Chilldew\CD_Debug.h" />
-    <ClInclude Include="source\Chilldew\CD_Application.h" />
-    <ClInclude Include="source\Chilldew\CD_AppState.h" />
-    <ClInclude Include="source\Chilldew\CD_EntryPoint.h" />
-    <ClInclude Include="source\Chilldew\CD_Flags.h" />
-    <ClInclude Include="source\Chilldew\CD_ILogger.h" />
-    <ClInclude Include="source\Chilldew\CD_ILogHandler.h" />
-    <ClInclude Include="source\Chilldew\CD_Log.h" />
-    <ClInclude Include="source\Chilldew\CD_Logger.h" />
-    <ClInclude Include="source\Chilldew\CD_LogHandler.h" />
-    <ClInclude Include="source\Chilldew\CD_Quaternion.h" />
-    <ClInclude Include="source\Chilldew\CD_MetaFunctions.h" />
-    <ClInclude Include="source\Chilldew\CD_Singleton.h" />
+    <ClInclude Include="source\Chilldew-Engine.h" />
+    <ClInclude Include="source\cde_core.h" />
+    <ClInclude Include="source\cde_debug.h" />
+    <ClInclude Include="source\cde_app.h" />
+    <ClInclude Include="source\cde_appstate.h" />
+    <ClInclude Include="source\cde_entrypoint.h" />
+    <ClInclude Include="source\cde_ilogger.h" />
+    <ClInclude Include="source\cde_iloghandler.h" />
+    <ClInclude Include="source\cde_log.h" />
+    <ClInclude Include="source\cde_logger.h" />
+    <ClInclude Include="source\cde_loghandler.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Chilldew\CD_Debug.cpp" />
-    <ClCompile Include="source\Chilldew\CD_Application.cpp" />
-    <ClCompile Include="source\Chilldew\CD_ILogger.cpp" />
-    <ClCompile Include="source\Chilldew\CD_Log.cpp" />
-    <ClCompile Include="source\Chilldew\CD_Logger.cpp" />
-    <ClCompile Include="source\Chilldew\CD_LogHandler.cpp" />
+    <ClCompile Include="source\cde_debug.cpp" />
+    <ClCompile Include="source\cde_app.cpp" />
+    <ClCompile Include="source\cde_ilogger.cpp" />
+    <ClCompile Include="source\cde_log.cpp" />
+    <ClCompile Include="source\cde_logger.cpp" />
+    <ClCompile Include="source\cde_loghandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\Chilldew\CD_Debug.inl" />
-    <None Include="source\Chilldew\CD_Flags.inl" />
-    <None Include="source\Chilldew\CD_Log.inl" />
-    <None Include="source\Chilldew\CD_Logger.inl" />
-    <None Include="source\Chilldew\CD_Quaternion.inl" />
-    <None Include="source\Chilldew\CD_Singleton.inl" />
+    <None Include="source\cde_debug.inl" />
+    <None Include="source\cde_log.inl" />
+    <None Include="source\cde_logger.inl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
@@ -149,6 +143,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Math\Math.vcxproj">
       <Project>{c724be97-cb7b-4b60-841d-f4f02102498b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.vcxproj">
+      <Project>{79e68e86-b954-4c89-8c22-ad71a325406c}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

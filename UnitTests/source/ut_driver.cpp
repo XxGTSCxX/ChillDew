@@ -1,13 +1,13 @@
 #include "ut_driver.h"
 #include "ut_math.inl"
-#include "ut_performance.inl"
+#include "ut_performance.h"
 
-cd::Application* cd::CreateApplication()
+cde::app* cde::create_app()
 {
     return new ut::driver{};
 }
 
-void cd::DestroyApplication(cd::Application* game)
+void cde::destroy_app(cde::app* game)
 {
     delete game;
 }
@@ -15,7 +15,7 @@ void cd::DestroyApplication(cd::Application* game)
 namespace unit_tests
 {
 
-    void driver::Setup()
+    void driver::setup()
     {
         // ---------------------------------------------------------------------
         // Math Tests
@@ -24,7 +24,7 @@ namespace unit_tests
         math::test_vec<3>();
         math::test_vec<4>();
 
-        cd::Debug::Get()->Log("");
+        cde::debug::get()->log("");
 
         // ---------------------------------------------------------------------
         // Performance Tests
@@ -34,14 +34,14 @@ namespace unit_tests
         // ---------------------------------------------------------------------
         // Exit Point
 
-        cd::Debug::Get()->LogWarning("\nPress [Enter] to Quit the Application");
+        cde::debug::get()->log_warning("\nPress [Enter] to Quit the app");
     }
 
-    void driver::PostUpdate()
+    void driver::post_update()
     {
         TCHAR input = cd::cin.get();
         if (input == CD_STRING('\r') || input == CD_STRING('\n'))
-            Quit();
+            quit();
     }
 
 }
