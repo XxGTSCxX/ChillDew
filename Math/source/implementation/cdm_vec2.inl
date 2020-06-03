@@ -185,4 +185,28 @@ namespace chilldew::math
                                 , std::max(lhs[1], rhs[1]) };
     }
 
+    template <typename elem_t>
+    constexpr vector<elem_t, 2> cw_perpendicular(vector<elem_t, 2> const& vec)
+    {
+        return vector<elem_t, 2>{ vec.y, -vec.x };
+    }
+
+    template <typename elem_t>
+    constexpr vector<elem_t, 2> ccw_perpendicular(vector<elem_t, 2> const& vec)
+    {
+        return vector<elem_t, 2>{ -vec.y, vec.x };
+    }
+
+    template <typename elem_t>
+    constexpr vector<elem_t, 2> perpendicular(vector<elem_t, 2> const& vec)
+    {
+        return ccw_perpendicular(vec);
+    }
+
+    template <typename elem_t>
+    constexpr elem_t angle(vector<elem_t, 2> const& from, vector<elem_t, 2> const& to)
+    {
+        return static_cast<elem_t>(acos(dot(normalise(from), normalise(to))));
+    }
+
 }

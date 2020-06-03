@@ -85,10 +85,11 @@ namespace chilldew::math
     // -------------------------------------------------------------------------
     // Functionals
 
-    template <typename elem_t, std::size_t size_v> constexpr elem_t dot          (vector<elem_t, size_v> const& lhs, vector<elem_t, size_v> const& rhs);
-    template <typename elem_t, std::size_t size_v> constexpr elem_t length_square(vector<elem_t, size_v> const& vec                                   );
-    template <typename elem_t, std::size_t size_v> constexpr elem_t length       (vector<elem_t, size_v> const& vec                                   );
-    template <typename elem_t, std::size_t size_v> constexpr elem_t distance     (vector<elem_t, size_v> const& lhs, vector<elem_t, size_v> const& rhs);
+    template <typename elem_t, std::size_t size_v> constexpr elem_t                 dot          (vector<elem_t, size_v> const& lhs, vector<elem_t, size_v> const& rhs   );
+    template <typename elem_t, std::size_t size_v> constexpr elem_t                 length_square(vector<elem_t, size_v> const& vec                                      );
+    template <typename elem_t, std::size_t size_v> constexpr elem_t                 length       (vector<elem_t, size_v> const& vec                                      );
+    template <typename elem_t, std::size_t size_v> constexpr elem_t                 distance     (vector<elem_t, size_v> const& lhs, vector<elem_t, size_v> const& rhs   );
+    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> reflect      (vector<elem_t, size_v> const& vec, vector<elem_t, size_v> const& normal);
 
     template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v>  normalise (vector<elem_t, size_v> const& vec);
     template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v>& normalised(vector<elem_t, size_v>&       vec);

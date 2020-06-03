@@ -86,9 +86,10 @@ namespace chilldew::math
     template <typename elem_t, std::size_t size_v>
     constexpr vector<elem_t, size_v>& vector<elem_t, size_v>::operator/=(elem_t const& scale)
     {
+        elem_t inv_scale = static_cast<elem_t>(1) / scale;
         for (std::size_t i = 0; i < size_v; ++i)
         {
-            this->_data[i] /= scale;
+            this->_data[i] *= inv_scale;
         }
         return *this;
     }
@@ -239,6 +240,12 @@ namespace chilldew::math
     constexpr elem_t distance(vector<elem_t, size_v> const& lhs, vector<elem_t, size_v> const& rhs)
     {
         return length(rhs - lhs);
+    }
+
+    template <typename elem_t, std::size_t size_v>
+    constexpr vector<elem_t, size_v> reflect(vector<elem_t, size_v> const& vec, vector<elem_t, size_v> const& normal)
+    {
+        return vec - static_cast<elem_t>(2) * dot(vec, normal) * normal;
     }
 
     template <typename elem_t, std::size_t size_v>

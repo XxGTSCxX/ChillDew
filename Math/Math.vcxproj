@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\implementation\cdm_degree.cpp" />
-    <ClCompile Include="source\implementation\cdm_functionals.cpp" />
     <ClCompile Include="source\implementation\cdm_radian.cpp" />
   </ItemGroup>
   <ItemGroup>

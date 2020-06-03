@@ -55,18 +55,18 @@ namespace chilldew::math
         using detail::vector_base<elem_t, 2>::yx;
 
         explicit constexpr vector() noexcept = default;
-        explicit constexpr vector(elem_t const& fill_value);                                                    // Fill constructor
+        explicit constexpr vector(elem_t const& fill_value);                                                   // Fill constructor
 
         template <typename val1_t, typename val2_t, typename = enable_if_valid_params<val1_t, val2_t>>
-        explicit constexpr vector(val1_t&& val1, val2_t&& val2);                                                // Construct with elements
+        explicit constexpr vector(val1_t&& val1, val2_t&& val2);                                               // Construct with elements
 
         template <typename _elem_t, std::size_t _size_v, typename = enable_if_valid_vector<_elem_t, _size_v>>
         explicit constexpr vector(vector<_elem_t, _size_v> const& vec);                                        // Conversion from other vectors
 
         constexpr vector<elem_t, 2>& operator+=(vector const& vec);
         constexpr vector<elem_t, 2>& operator-=(vector const& vec);
-        constexpr vector<elem_t, 2>& operator*=(vector const& vec);                                             // Multiplies two vectors component-wise (Hadamard Product)
-        constexpr vector<elem_t, 2>& operator/=(vector const& vec);                                             // Divides self by other vector component-wise
+        constexpr vector<elem_t, 2>& operator*=(vector const& vec);                                            // Multiplies two vectors component-wise (Hadamard Product)
+        constexpr vector<elem_t, 2>& operator/=(vector const& vec);                                            // Divides self by other vector component-wise
 
         constexpr vector<elem_t, 2>& operator*=(elem_t const& scale);
         constexpr vector<elem_t, 2>& operator/=(elem_t const& scale);
@@ -103,5 +103,11 @@ namespace chilldew::math
     template <typename elem_t> constexpr elem_t            dot(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs);
     template <typename elem_t> constexpr vector<elem_t, 2> min(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs);
     template <typename elem_t> constexpr vector<elem_t, 2> max(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs);
+
+    template <typename elem_t> constexpr vector<elem_t, 2>  cw_perpendicular(vector<elem_t, 2> const& vec); // Rotates clockwise
+    template <typename elem_t> constexpr vector<elem_t, 2> ccw_perpendicular(vector<elem_t, 2> const& vec); // Rotates counter-clockwise
+    template <typename elem_t> constexpr vector<elem_t, 2>     perpendicular(vector<elem_t, 2> const& vec); // Uses counter-clockwise rotations by default
+
+    template <typename elem_t> constexpr elem_t            angle  (vector<elem_t, 2> const& from, vector<elem_t, 2> const& to    );
 
 }

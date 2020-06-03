@@ -99,9 +99,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\implementation\cdm_functionals.cpp">
-      <Filter>Utility\Functions</Filter>
-    </ClCompile>
     <ClCompile Include="source\implementation\cdm_degree.cpp">
       <Filter>Data\Angles\Degree</Filter>
     </ClCompile>
