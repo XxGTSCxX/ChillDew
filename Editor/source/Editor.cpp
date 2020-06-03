@@ -1,16 +1,11 @@
-#define GLM_FORCE_SWIZZLE
-
 #include "Editor.h"
-#include "glm/glm.hpp"
-#include "glm/gtx/projection.inl"
-#include "glm/gtx/perpendicular.inl"
 
-CD::Application* CD::CreateApplication()
+cd::Application* cd::CreateApplication()
 {
     return new ChilldewEditor{};
 }
 
-void CD::DestroyApplication(CD::Application* game)
+void cd::DestroyApplication(cd::Application* game)
 {
     delete game;
 }
@@ -27,7 +22,7 @@ bool ChilldewEditor::IsEditor() const
 
 void ChilldewEditor::Setup()
 {
-    CD::Debug::Get()->LogWarning("Press [Enter] to Quit the Application");
+    cd::Debug::Get()->LogWarning("Press [Enter] to Quit the Application");
     std::cin.get();
     Quit();
 }

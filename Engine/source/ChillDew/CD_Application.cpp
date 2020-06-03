@@ -13,7 +13,7 @@
     written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#include "CD_pch.h"
+#include "cd_pch.h"
 #include "CD_Application.h"
 #include <cassert> // assert
 

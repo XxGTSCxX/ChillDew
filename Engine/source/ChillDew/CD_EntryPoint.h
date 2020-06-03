@@ -21,8 +21,8 @@
 
 #include <windows.h>
 
-extern CD::Application* CD::CreateApplication();
-extern void             CD::DestroyApplication(CD::Application* app);
+extern cd::Application* cd::CreateApplication();
+extern void             cd::DestroyApplication(cd::Application* app);
 
 // if Win32 is the platform - different entry point for different platforms
 int CALLBACK WinMain( _In_     [[maybe_unused]] HINSTANCE hInstance
@@ -35,9 +35,9 @@ int CALLBACK WinMain( _In_     [[maybe_unused]] HINSTANCE hInstance
     //_CrtSetBreakAlloc(2799);
 #endif
 
-    CD::Application* app = CD::CreateApplication();
+    cd::Application* app = cd::CreateApplication();
     app->Run();
-    CD::DestroyApplication(app);
+    cd::DestroyApplication(app);
 
     return 0;
 }

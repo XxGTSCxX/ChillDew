@@ -13,7 +13,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h" // CD_API, CD::string_view
+#include "cd_core.h" // CD_API, cd::string_view
 #include "CD_Log.h"
 
 namespace chilldew
@@ -30,10 +30,10 @@ namespace chilldew
         virtual void Disable();
         virtual void FilterLogType(Log::TypeFlag type) = 0;
 
-        virtual void Log       (CD::string_view const& text) = 0;
-        virtual void LogWarning(CD::string_view const& text) = 0;
-        virtual void LogError  (CD::string_view const& text) = 0;
-        virtual void LogAssert (CD::string_view const& text) = 0;
+        virtual void Log       (cd::string_view const& text) = 0;
+        virtual void LogWarning(cd::string_view const& text) = 0;
+        virtual void LogError  (cd::string_view const& text) = 0;
+        virtual void LogAssert (cd::string_view const& text) = 0;
 
         virtual bool IsEnabled() const;
 

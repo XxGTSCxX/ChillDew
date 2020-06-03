@@ -15,7 +15,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h"
+#include "cd_core.h"
 #include "CD_Singleton.inl"
 #include "CD_AppState.h"
 #include "CD_Debug.inl"
@@ -77,7 +77,7 @@ namespace chilldew
             , All     = Play | Pause
         };
 
-        using Flags = CD::Flags<AppFlags>;
+        using Flags = cd::Flags<AppFlags>;
 
         //Engine   _engine;
         Debug    _debugger;

@@ -13,7 +13,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h"
+#include "cd_core.h"
 #include <cstdint> // std::uint8_t
 
 namespace chilldew

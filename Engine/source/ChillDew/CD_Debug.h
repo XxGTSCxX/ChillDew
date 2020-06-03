@@ -13,7 +13,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h"
+#include "cd_core.h"
 #include "CD_Singleton.inl"
 #include "CD_ILogger.h"
 #include "CD_Logger.h"

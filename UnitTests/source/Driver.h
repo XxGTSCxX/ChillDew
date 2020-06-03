@@ -5,7 +5,7 @@
 namespace Tests
 {
 
-    class Driver : public CD::Application
+    class Driver : public cd::Application
     {
     private:
 

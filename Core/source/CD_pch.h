@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
   \project Chilldew-Core
-  \file    CD_pch.h
+  \file    cd_pch.h
   \author  Gabrielle Tan Suan Choo
   \brief
     Precompile header.

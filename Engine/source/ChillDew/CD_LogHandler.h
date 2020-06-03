@@ -13,7 +13,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h"
+#include "cd_core.h"
 #include "CD_ILogHandler.h"
 #include <iostream> // std::iostream
 
@@ -26,14 +26,14 @@ namespace chilldew
 
         LogHandler();
 
-        void Log(CD::string_view const& text) override;
+        void Log(cd::string_view const& text) override;
 
-        CD::iostream&       GetStream()       override;
-        CD::iostream const& GetStream() const override;
+        cd::iostream&       GetStream()       override;
+        cd::iostream const& GetStream() const override;
 
     private:
 
-        CD::iostream _log;
+        cd::iostream _log;
     };
 
 }

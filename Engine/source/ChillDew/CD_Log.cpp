@@ -11,15 +11,15 @@
     written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#include "CD_pch.h"
+#include "cd_pch.h"
 #include "CD_Log.h"
 
 namespace chilldew
 {
 
-    CD::string Log::Format::FormatText(CD::string_view const& text)
+    cd::string Log::Format::FormatText(cd::string_view const& text)
     {
-        return CD::string{ text };
+        return cd::string{ text };
     }
 
 }

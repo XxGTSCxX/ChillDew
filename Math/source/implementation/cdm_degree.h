@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
   \project Chilldew-Math
-  \file    CD_Degree.h
+  \file    cdm_degree.h
   \author  Gabrielle Tan Suan Choo
   \brief
     Angles in degrees.
@@ -13,9 +13,9 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_MathDefines.h"
+#include "cdm_defines.h"
 
-namespace chilldew
+namespace chilldew::math
 {
 
     struct radian;

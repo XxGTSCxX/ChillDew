@@ -13,7 +13,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h" // CD::string_view, CD::iostream
+#include "cd_core.h" // cd::string_view, cd::iostream
 
 namespace chilldew
 {
@@ -24,10 +24,10 @@ namespace chilldew
 
         virtual ~ILogHandler() = default;
 
-        virtual void Log(CD::string_view const& text) = 0;
+        virtual void Log(cd::string_view const& text) = 0;
 
-        virtual CD::iostream&       GetStream()       = 0;
-        virtual CD::iostream const& GetStream() const = 0;
+        virtual cd::iostream&       GetStream()       = 0;
+        virtual cd::iostream const& GetStream() const = 0;
     };
 
 }

@@ -31,19 +31,19 @@ namespace chilldew
     template <typename ... Args>
     inline void Debug::Log(std::string_view const& text, Args&& ... args)
     {
-        _logger.Log(CD::cstr_to_str(text), std::forward<Args>(args)...);
+        _logger.Log(cd::cstr_to_str(text), std::forward<Args>(args)...);
     }
 
     template <typename ... Args>
     inline void Debug::LogError(std::string_view const& text, Args&& ... args)
     {
-        _logger.LogError(CD::cstr_to_str(text), std::forward<Args>(args)...);
+        _logger.LogError(cd::cstr_to_str(text), std::forward<Args>(args)...);
     }
 
     template <typename ... Args>
     inline void Debug::LogWarning(std::string_view const& text, Args&& ... args)
     {
-        _logger.LogWarning(CD::cstr_to_str(text), std::forward<Args>(args)...);
+        _logger.LogWarning(cd::cstr_to_str(text), std::forward<Args>(args)...);
     }
 
 }

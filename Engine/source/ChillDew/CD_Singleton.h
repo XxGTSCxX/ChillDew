@@ -14,7 +14,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h"
+#include "cd_core.h"
 #include <cassert> // assert
 
 namespace chilldew

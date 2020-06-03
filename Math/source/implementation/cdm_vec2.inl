@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
-  \project Chilldew-Engine
-  \file    CD_Vector2D.inl
+  \project Chilldew-Math
+  \file    cdm_vec2.inl
   \author  Gabrielle Tan Suan Choo
   \brief
     Partial vector specialisation for 2D vector implementation.
@@ -13,12 +13,10 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Vector2D.h"
-#include "CD_Degree.inl"
-#include "CD_Radian.inl"
+#include "cdm_vec2.h"
 #include <algorithm> // std::min, std::max
 
-namespace chilldew
+namespace chilldew::math
 {
 
     template <typename elem_t> vector<elem_t, 2> const vector<elem_t, 2>::up   {  0,  1 };
@@ -29,99 +27,111 @@ namespace chilldew
     template <typename elem_t> vector<elem_t, 2> const vector<elem_t, 2>::zero {  0,  0 };
 
     template <typename elem_t>
+    constexpr vector<elem_t, 2>::vector(elem_t const& fill_value)
+    : detail::vector_base<elem_t, 2>
+    {
+          fill_value
+        , fill_value
+    }
+    {}
+
+    template <typename elem_t>
     template <typename val1_t, typename val2_t, typename>
-    constexpr vector<elem_t, 2>::vector(val1_t&& value1, val2_t&& value2) noexcept
-    : detail::vector_base<elem_t, 2>{ static_cast<elem_t>(std::forward<val1_t>(value1)), static_cast<elem_t>(std::forward<val2_t>(value2)) }
+    constexpr vector<elem_t, 2>::vector(val1_t&& val1, val2_t&& val2)
+    : detail::vector_base<elem_t, 2>
+    {
+          static_cast<elem_t>(std::forward<val1_t>(val1))
+        , static_cast<elem_t>(std::forward<val2_t>(val2))
+    }
     {}
 
-    template <typename elem_t>
-    template <typename val_t, typename>
-    constexpr vector<elem_t, 2>::vector(val_t&& fill_value) noexcept
-    : detail::vector_base<elem_t, 2>{ static_cast<elem_t>(std::forward<val_t>(fill_value)), static_cast<elem_t>(std::forward<val_t>(fill_value)) }
-    {}
-
-    template <typename elem_t>
-    template <typename other_t, std::size_t other_sz, typename>
-    constexpr vector<elem_t, 2>::vector(vector<other_t, other_sz> const& vec) noexcept
-    : detail::vector_base<elem_t, 2>{ static_cast<elem_t>(vec[0]), static_cast<elem_t>(vec[1]) }
+    template <typename  elem_t>
+    template <typename _elem_t, std::size_t _size_v, typename>
+    constexpr vector<elem_t, 2>::vector(vector<_elem_t, _size_v> const& vec)
+    : detail::vector_base<elem_t, 2>
+    {
+          static_cast<elem_t>(vec[0])
+        , static_cast<elem_t>(vec[1])
+    }
     {}
 
     template <typename elem_t>
     constexpr vector<elem_t, 2>& vector<elem_t, 2>::operator+=(vector<elem_t, 2> const& vec)
     {
-        this->x += static_cast<elem_t>(vec[0]);
-        this->y += static_cast<elem_t>(vec[1]);
+        this->_data[0] += vec[0];
+        this->_data[1] += vec[1];
         return *this;
     }
 
     template <typename elem_t>
     constexpr vector<elem_t, 2>& vector<elem_t, 2>::operator-=(vector<elem_t, 2> const& vec)
     {
-        this->x -= static_cast<elem_t>(vec[0]);
-        this->y -= static_cast<elem_t>(vec[1]);
+        this->_data[0] -= vec[0];
+        this->_data[1] -= vec[1];
         return *this;
     }
 
     template <typename elem_t>
     constexpr vector<elem_t, 2>& vector<elem_t, 2>::operator*=(vector<elem_t, 2> const& vec)
     {
-        this->x *= vec.x;
-        this->y *= vec.x;
+        this->_data[0] *= vec[0];
+        this->_data[1] *= vec[1];
         return *this;
     }
 
     template <typename elem_t>
     constexpr vector<elem_t, 2>& vector<elem_t, 2>::operator/=(vector<elem_t, 2> const& vec)
     {
-        this->x /= static_cast<elem_t>(vec[0]);
-        this->y /= static_cast<elem_t>(vec[1]);
+        this->_data[0] /= vec[0];
+        this->_data[1] /= vec[1];
         return *this;
     }
 
     template <typename elem_t>
     constexpr vector<elem_t, 2>& vector<elem_t, 2>::operator*=(elem_t const& scale)
     {
-        this->x *= static_cast<elem_t>(scale);
-        this->y *= static_cast<elem_t>(scale);
+        this->_data[0] *= scale;
+        this->_data[1] *= scale;
         return *this;
     }
 
     template <typename elem_t>
     constexpr vector<elem_t, 2>& vector<elem_t, 2>::operator/=(elem_t const& scale)
     {
-        this->x /= static_cast<elem_t>(scale);
-        this->y /= static_cast<elem_t>(scale);
+        this->_data[0] /= scale;
+        this->_data[1] /= scale;
         return *this;
     }
 
     template <typename elem_t>
     constexpr elem_t& vector<elem_t, 2>::operator[](std::size_t index)
     {
-        return this->_array[index];
+        return this->_data[index];
     }
 
     template <typename elem_t>
     constexpr elem_t const& vector<elem_t, 2>::operator[](std::size_t index) const
     {
-        return this->_array[index];
+        return this->_data[index];
     }
 
     template <typename elem_t>
     constexpr elem_t* vector<elem_t, 2>::data() noexcept
     {
-        return this->_array.data();
+        return this->_data;
     }
 
     template <typename elem_t>
     constexpr elem_t const* vector<elem_t, 2>::data() const noexcept
     {
-        return this->_array.data();
+        return this->_data;
     }
 
     template <typename elem_t>
-    constexpr void CD::vector<elem_t, 2>::fill(elem_t const& value)
+    void vector<elem_t, 2>::fill(elem_t const& value)
     {
-        this->_array.fill(value);
+        this->_data[0] = value;
+        this->_data[1] = value;
     }
 
     template <typename elem_t>
@@ -133,71 +143,46 @@ namespace chilldew
     template <typename elem_t>
     constexpr vector<elem_t, 2> operator-(vector<elem_t, 2> const& vec)
     {
-        return vector<elem_t, 2>{ -vec.x, -vec.y };
+        return vector<elem_t, 2>{ -vec[0], -vec[1] };
     }
 
     template <typename elem_t>
     constexpr bool operator==(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs) noexcept
     {
-        return lhs.x == rhs.x && lhs.y == rhs.y;
+        return lhs[0] == rhs[0] && lhs[1] == rhs[1];
     }
 
     template <typename elem_t>
-    constexpr CD::ostream& operator<<(CD::ostream& stream, vector<elem_t, 2> const& vec)
+    constexpr cd::ostream& operator<<(cd::ostream& stream, vector<elem_t, 2> const& vec)
     {
-        return stream << CD_STRING("{ ") << vec.x << CD_STRING(", ") << vec.y << CD_STRING(" }");
+        return stream << CD_STRING("{ ") << vec[0] << CD_STRING(", ") << vec[1] << CD_STRING(" }");
     }
 
     template <typename elem_t>
-    constexpr CD::istream& operator>>(CD::istream& stream, vector<elem_t, 2>& vec)
+    constexpr cd::istream& operator>>(cd::istream& stream, vector<elem_t, 2>& vec)
     {
         TCHAR discard;
-        return stream >> discard >> vec.x >> discard >> vec.y >> discard;
-    }
-
-    template <typename elem_t>
-    constexpr vector<elem_t, 2> perpendicular(vector<elem_t, 2> const& vec)
-    {
-        return vector<elem_t, 2>{ -vec.y, vec.x };
+        return stream >> discard >> vec[0] >> discard >> vec[1] >> discard;
     }
 
     template <typename elem_t>
     constexpr elem_t dot(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs)
     {
-        return lhs.x * rhs.x + lhs.y * rhs.y;
-    }
-
-    template <typename elem_t>
-    constexpr vector<elem_t, 2> max(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs)
-    {
-        return vector<elem_t, 2>{ std::max<elem_t>(lhs.x, rhs.x), std::max<elem_t>(lhs.y, rhs.y) };
+        return lhs[0] * rhs[0] + lhs[1] * rhs[1];
     }
 
     template <typename elem_t>
     constexpr vector<elem_t, 2> min(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs)
     {
-        return vector<elem_t, 2>{ std::min<elem_t>(lhs.x, rhs.x), std::min<elem_t>(lhs.y, rhs.y) };
+        return vector<elem_t, 2>{ std::min(lhs[0], rhs[0])
+                                , std::min(lhs[1], rhs[1]) };
     }
 
     template <typename elem_t>
-    constexpr degree angle(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs)
+    constexpr vector<elem_t, 2> max(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs)
     {
-        return degree{ static_cast<real>(acos(dot(normalise(lhs), normalise(rhs))))* math::rad_to_deg };
-    }
-
-    template <typename elem_t>
-    constexpr degree signed_angle(vector<elem_t, 2> const& from, vector<elem_t, 2> const& to)
-    {
-        degree angle = angle(from, to);
-        if (dot(to, perpendicular(from)) < static_cast<elem_t>(0))
-            angle = -angle;
-        return angle;
-    }
-
-    template <typename elem_t>
-    constexpr vector<elem_t, 2> reflect(vector<elem_t, 2> const& vec, vector<elem_t, 2> const& normal)
-    {
-        return vec - static_cast<elem_t>(2) * project(vec, normal);
+        return vector<elem_t, 2>{ std::max(lhs[0], rhs[0])
+                                , std::max(lhs[1], rhs[1]) };
     }
 
 }

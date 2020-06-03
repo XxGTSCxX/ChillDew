@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
-  \project Chilldew-Engine
-  \file    CD_Degree.inl
+  \project Chilldew-Math
+  \file    cdm_degree.inl
   \author  Gabrielle Tan Suan Choo
   \brief
     Angles in degrees.
@@ -13,9 +13,9 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Degree.h"
+#include "cdm_degree.h"
 
-namespace chilldew
+namespace chilldew::math
 {
 
     constexpr degree::degree(real deg_angle) noexcept

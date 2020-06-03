@@ -11,7 +11,7 @@
     written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#include "CD_pch.h"
+#include "cd_pch.h"
 #include "CD_LogHandler.h"
 #include <iostream>
 
@@ -19,20 +19,20 @@ namespace chilldew
 {
 
     LogHandler::LogHandler()
-    : _log{ CD::cout.rdbuf() }
+    : _log{ cd::cout.rdbuf() }
     {}
 
-    void LogHandler::Log(CD::string_view const& text)
+    void LogHandler::Log(cd::string_view const& text)
     {
         _log << text;
     }
 
-    CD::iostream& LogHandler::GetStream()
+    cd::iostream& LogHandler::GetStream()
     {
         return _log;
     }
 
-    CD::iostream const& LogHandler::GetStream() const
+    cd::iostream const& LogHandler::GetStream() const
     {
         return _log;
     }

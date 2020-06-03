@@ -2,7 +2,7 @@
 
 #include "Chilldew.h"
 
-class ChilldewEditor : public CD::Application
+class ChilldewEditor : public cd::Application
 {
 public:
 

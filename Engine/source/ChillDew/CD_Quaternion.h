@@ -14,10 +14,10 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h"
+#include "cd_core.h"
 #include "CD_Math.h"
-#include "CD_Swizzle.inl" // CD::swizzle
-#include "CD_Degree.inl"  // CD::Degree
+#include "CD_Swizzle.inl" // cd::swizzle
+#include "CD_Degree.inl"  // cd::Degree
 #include <array>           // std::array
 
 namespace chilldew
@@ -32,7 +32,7 @@ namespace chilldew
 
         union
         {
-            std::array<T, 4> _array{};
+            std::array<T, 4> _data{};
 
             struct
             {

@@ -16,7 +16,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h"
+#include "cd_core.h"
 #include "CD_MetaFunctions.h"
 #include <type_traits>
 
@@ -56,7 +56,7 @@ namespace chilldew
         2) Create a flag by specifying the enum it uses and the integral type
            that the enum uses.
 
-           E.g. CD::Flag<PhysicsFlag> physicsFlag;
+           E.g. cd::Flag<PhysicsFlag> physicsFlag;
     */
     /**************************************************************************/
     template <typename ENUM>

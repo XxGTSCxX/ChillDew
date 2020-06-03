@@ -13,7 +13,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "CD_Core.h"
+#include "cd_core.h"
 #include "CD_ILogger.h"
 #include "CD_LogHandler.h"
 #include "CD_Log.h"
@@ -30,29 +30,29 @@ namespace chilldew
 		Logger()  = default;
 		~Logger() = default;
 
-		explicit Logger(CD::string_view const& logger_name, CD::string_view const& default_colour, CD::string_view const& error_colour, CD::string_view const& warning_colour, CD::string_view const& assert_colour);
+		explicit Logger(cd::string_view const& logger_name, cd::string_view const& default_colour, cd::string_view const& error_colour, cd::string_view const& warning_colour, cd::string_view const& assert_colour);
 
 		void FilterLogType(Log::TypeFlag type) override;
 
-		void Log       (CD::string_view const& text) override;
-		void LogWarning(CD::string_view const& text) override;
-		void LogError  (CD::string_view const& text) override;
-		void LogAssert (CD::string_view const& text) override;
+		void Log       (cd::string_view const& text) override;
+		void LogWarning(cd::string_view const& text) override;
+		void LogError  (cd::string_view const& text) override;
+		void LogAssert (cd::string_view const& text) override;
 
-		template <typename ... Args> void Log       (CD::string_view const& text, Args&& ... args);
-		template <typename ... Args> void LogWarning(CD::string_view const& text, Args&& ... args);
-		template <typename ... Args> void LogError  (CD::string_view const& text, Args&& ... args);
-		template <typename ... Args> void LogAssert (CD::string_view const& text, Args&& ... args);
+		template <typename ... Args> void Log       (cd::string_view const& text, Args&& ... args);
+		template <typename ... Args> void LogWarning(cd::string_view const& text, Args&& ... args);
+		template <typename ... Args> void LogError  (cd::string_view const& text, Args&& ... args);
+		template <typename ... Args> void LogAssert (cd::string_view const& text, Args&& ... args);
 
-		CD::string const& GetName() const;
+		cd::string const& GetName() const;
 
 	private:
 
-		CD::string _name          { CD_STRING("Default Logger") };
-		CD::string _default_format{ Log::Colour::DEFAULT         };
-		CD::string _warning_format{ Log::Colour::BRIGHT_YELLOW   };
-		CD::string _error_format  { Log::Colour::BRIGHT_MAGENTA  };
-		CD::string _assert_format { Log::Colour::BRIGHT_RED      };
+		cd::string _name          { CD_STRING("Default Logger") };
+		cd::string _default_format{ Log::Colour::DEFAULT         };
+		cd::string _warning_format{ Log::Colour::BRIGHT_YELLOW   };
+		cd::string _error_format  { Log::Colour::BRIGHT_MAGENTA  };
+		cd::string _assert_format { Log::Colour::BRIGHT_RED      };
 		LogHandler  _log_handler;
 	};
 

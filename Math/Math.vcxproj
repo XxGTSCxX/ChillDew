@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,32 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\implementation\CD_Degree.cpp" />
-    <ClCompile Include="source\implementation\CD_MathFunctions.cpp" />
-    <ClCompile Include="source\implementation\CD_Radian.cpp" />
+    <ClCompile Include="source\implementation\cdm_degree.cpp" />
+    <ClCompile Include="source\implementation\cdm_functionals.cpp" />
+    <ClCompile Include="source\implementation\cdm_radian.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Chilldew-Math.h" />
-    <ClInclude Include="source\implementation\CD_Degree.h" />
-    <ClInclude Include="source\implementation\CD_MathDefines.h" />
-    <ClInclude Include="source\implementation\CD_MathFunctions.h" />
-    <ClInclude Include="source\implementation\CD_Radian.h" />
-    <ClInclude Include="source\implementation\CD_Swizzle.h" />
-    <ClInclude Include="source\implementation\CD_Vector.h" />
-    <ClInclude Include="source\implementation\CD_Vector2D.h" />
-    <ClInclude Include="source\implementation\CD_Vector3D.h" />
-    <ClInclude Include="source\implementation\CD_Vector4D.h" />
-    <ClInclude Include="source\implementation\CD_VectorBase.h" />
+    <ClInclude Include="source\implementation\cdm_degree.h" />
+    <ClInclude Include="source\implementation\cdm_defines.h" />
+    <ClInclude Include="source\implementation\cdm_functionals.h" />
+    <ClInclude Include="source\implementation\cdm_radian.h" />
+    <ClInclude Include="source\implementation\cdm_swizzle.h" />
+    <ClInclude Include="source\implementation\cdm_vector.h" />
+    <ClInclude Include="source\implementation\cdm_vec2.h" />
+    <ClInclude Include="source\implementation\cdm_vec3.h" />
+    <ClInclude Include="source\implementation\cdm_vec4.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\implementation\CD_Degree.inl" />
-    <None Include="source\implementation\CD_MathFunctions.inl" />
-    <None Include="source\implementation\CD_Radian.inl" />
-    <None Include="source\implementation\CD_Swizzle.inl" />
-    <None Include="source\implementation\CD_Vector.inl" />
-    <None Include="source\implementation\CD_Vector2D.inl" />
-    <None Include="source\implementation\CD_Vector3D.inl" />
-    <None Include="source\implementation\CD_Vector4D.inl" />
+    <None Include="source\implementation\cdm_degree.inl" />
+    <None Include="source\implementation\cdm_functionals.inl" />
+    <None Include="source\implementation\cdm_radian.inl" />
+    <None Include="source\implementation\cdm_swizzle.inl" />
+    <None Include="source\implementation\cdm_vector.inl" />
+    <None Include="source\implementation\cdm_vec2.inl" />
+    <None Include="source\implementation\cdm_vec3.inl" />
+    <None Include="source\implementation\cdm_vec4.inl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">

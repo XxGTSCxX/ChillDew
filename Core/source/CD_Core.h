@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
   \project Chilldew-Core
-  \file    CD_Core.h
+  \file    cd_core.h
   \author  Gabrielle Tan Suan Choo
   \brief
     Defines engine API and settings for the project.
@@ -31,11 +31,11 @@
 #endif
 
 namespace chilldew {}
-namespace CD = chilldew;
+namespace cd = ::chilldew;
 
 #ifdef UNICODE
 
-#include <iostream>    // std::wistream, std::wostream, std::wiostream
+#include <iostream>    // std::wistream , std::wostream , std::wiostream
 #include <fstream>     // std::wifstream, std::wfostream, std::wfstream
 #include <sstream>     // std::wstringstream
 #include <string>      // std::wstring
@@ -60,9 +60,9 @@ namespace chilldew
     static inline ostream& cerr = std::wcerr;
     static inline ostream& clog = std::wclog;
 
-    inline CD::string cstr_to_str(std::string_view const& c_string)
+    inline cd::string cstr_to_str(std::string_view const& c_string)
     {
-        CD::string result;
+        cd::string result;
         size_t     size      = c_string.size() + 1;
         size_t     converted = 0;
 
@@ -101,9 +101,9 @@ namespace chilldew
     static inline ostream& cerr = std::cerr;
     static inline ostream& clog = std::clog;
 
-    inline CD::string cstr_to_str(std::string_view const& c_string)
+    inline cd::string cstr_to_str(std::string_view const& c_string)
     {
-        return CD::string{ c_string };
+        return cd::string{ c_string };
     }
 }
 

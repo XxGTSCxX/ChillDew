@@ -13,8 +13,11 @@
 /******************************************************************************/
 #pragma once
 
-#include "implementation/CD_MathDefines.h"
-#include "implementation/CD_Degree.inl"
-#include "implementation/CD_Radian.inl"
-#include "implementation/CD_Vector.inl"
-#include "implementation/CD_Vector2D.inl"
+#include "implementation/cdm_defines.h"
+#include "implementation/cdm_functionals.inl"
+#include "implementation/cdm_degree.inl"
+#include "implementation/cdm_radian.inl"
+#include "implementation/cdm_vector.inl"
+#include "implementation/cdm_vec2.inl"
+#include "implementation/cdm_vec3.inl"
+#include "implementation/cdm_vec4.inl"

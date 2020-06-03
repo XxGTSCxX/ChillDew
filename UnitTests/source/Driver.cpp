@@ -1,12 +1,12 @@
 #include "Driver.h"
 #include "MathTests.inl"
 
-CD::Application* CD::CreateApplication()
+cd::Application* cd::CreateApplication()
 {
     return new Tests::Driver{};
 }
 
-void CD::DestroyApplication(CD::Application* game)
+void cd::DestroyApplication(cd::Application* game)
 {
     delete game;
 }
@@ -17,7 +17,9 @@ namespace Tests
     void Driver::Setup()
     {
         MathTests::TestVector<2>();
-        CD::Debug::Get()->LogWarning("Press [Enter] to Quit the Application");
+        MathTests::TestVector<3>();
+        MathTests::TestVector<4>();
+        cd::Debug::Get()->LogWarning("Press [Enter] to Quit the Application");
         std::cin.get();
         Quit();
     }

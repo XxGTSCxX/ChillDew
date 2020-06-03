@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
-  \project Chilldew-Engine
-  \file    CD_Radian.cpp
+  \project Chilldew-Math
+  \file    cdm_radian.cpp
   \author  Gabrielle Tan Suan Choo
   \brief
     Angles in radians.
@@ -11,18 +11,17 @@
     written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#include "CD_pch.h"
-#include "CD_Radian.h"
-#include "CD_Degree.h"
+#include "cdm_radian.h"
+#include "cdm_degree.h"
 
-namespace chilldew
+namespace chilldew::math
 {
 
     radian::radian(degree deg_angle) noexcept
     : _angle{ deg_angle._angle * math::deg_to_rad }
     {}
 
-    radian& CD::radian::operator+=(radian angle) noexcept
+    radian& radian::operator+=(radian angle) noexcept
     {
         _angle += angle._angle;
         return *this;

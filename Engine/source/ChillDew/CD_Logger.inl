@@ -21,25 +21,25 @@ namespace chilldew
 {
 
     template <typename ... Args>
-    inline void Logger::Log(CD::string_view const& text, Args&& ... args)
+    inline void Logger::Log(cd::string_view const& text, Args&& ... args)
     {
         Log(Log::Format::FormatText(text, std::forward<Args>(args)...));
     }
 
     template <typename ... Args>
-    inline void Logger::LogError(CD::string_view const& text, Args&& ... args)
+    inline void Logger::LogError(cd::string_view const& text, Args&& ... args)
     {
         LogError(Log::Format::FormatText(text, std::forward<Args>(args)...));
     }
 
     template <typename ... Args>
-    inline void Logger::LogWarning(CD::string_view const& text, Args&& ... args)
+    inline void Logger::LogWarning(cd::string_view const& text, Args&& ... args)
     {
         LogWarning(Log::Format::FormatText(text, std::forward<Args>(args)...));
     }
 
     template <typename ... Args>
-    inline void Logger::LogAssert(CD::string_view const& text, Args&& ... args)
+    inline void Logger::LogAssert(cd::string_view const& text, Args&& ... args)
     {
         LogAssert(Log::Format::FormatText(text, std::forward<Args>(args)...));
     }

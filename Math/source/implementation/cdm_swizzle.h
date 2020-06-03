@@ -1,6 +1,6 @@
 /******************************************************************************/
 /*!
-  \project Chilldew-Engine
+  \project Chilldew-Math
   \file    CD_Swizzle.h
   \author  Gabrielle Tan Suan Choo
   \brief
@@ -15,24 +15,19 @@
 
 #include <cstddef> // std::size_t
 
-namespace chilldew
+namespace chilldew::math::detail
 {
 
-    namespace detail
+    template <template <typename, std::size_t> typename array_t, typename elem_t, std::size_t size_v, std::size_t ... indices_v>
+    class swizzle final
     {
+        elem_t _array[size_v];
 
-        template <template <typename, std::size_t> typename array_t, typename elem_t, std::size_t size_v, std::size_t ... indices_v>
-        class swizzle final
-        {
-            elem_t _array[size_v];
+    public:
 
-        public:
+        array_t<elem_t, size_v>& operator=(array_t<elem_t, size_v> const& array_template);
 
-            array_t<elem_t, size_v>& operator=(array_t<elem_t, size_v> const& array_template);
-
-            explicit operator array_t<elem_t, sizeof...(indices_v)>() const;
-        };
-
-    }
+        explicit operator array_t<elem_t, sizeof...(indices_v)>() const;
+    };
 
 }
