@@ -210,13 +210,13 @@ namespace chilldew::math
     template <typename elem_t>
     constexpr vector<elem_t, 3> cw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal)
     {
-        return cross(vec, normal);
+        return cdm::cross(vec, normal);
     }
 
     template <typename elem_t>
     constexpr vector<elem_t, 3> ccw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal)
     {
-        return cross(normal, vec);
+        return cdm::cross(normal, vec);
     }
 
     template <typename elem_t>
