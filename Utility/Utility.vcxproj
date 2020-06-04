@@ -109,6 +109,11 @@
   <ItemGroup>
     <ClCompile Include="source\cdu_pch.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.vcxproj">
+      <Project>{68c89c15-ffc1-45af-925e-32d66e0a4043}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
