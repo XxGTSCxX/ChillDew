@@ -16,9 +16,9 @@ namespace chilldew::math
     template <typename elem_t, std::size_t size_v>
     constexpr vector<elem_t, size_v>::vector(elem_t const& fill_value)
     {
-        for (std::size_t i = 0; i < size_v; ++i)
+        for (elem_t* curr = this->data(), *end = curr + size_v; curr != end; ++curr)
         {
-            this->_data[i] = fill_value;
+            *curr = fill_value;
         }
     }
 
@@ -227,37 +227,60 @@ namespace chilldew::math
     template <typename elem_t, std::size_t size_v>
     constexpr elem_t length_square(vector<elem_t, size_v> const& vec)
     {
-        return dot(vec, vec);
+        return cdm::dot(vec, vec);
     }
 
     template <typename elem_t, std::size_t size_v>
     constexpr elem_t length(vector<elem_t, size_v> const& vec)
     {
-        return sqrt(length_square(vec));
+        return sqrt(cdm::length_square(vec));
     }
 
     template <typename elem_t, std::size_t size_v>
     constexpr elem_t distance(vector<elem_t, size_v> const& lhs, vector<elem_t, size_v> const& rhs)
     {
-        return length(rhs - lhs);
+        return cdm::length(rhs - lhs);
+    }
+
+    template <typename elem_t, std::size_t size_v>
+    constexpr radian angle(vector<elem_t, size_v> const& from, vector<elem_t, size_v> const& to)
+    {
+        static_assert(size_v > 1                      , "angle can only exist in dimensions that can form a plane");
+        static_assert(std::is_floating_point_v<elem_t>, "angle is only compatible with floating point vectors"    );
+        static constexpr elem_t lower = static_cast<elem_t>(-1);
+        static constexpr elem_t upper = static_cast<elem_t>( 1);
+        return radian{ acos(cdm::clamp(cdm::dot(from, to), lower, upper)) };
+    }
+
+    template<typename elem_t, std::size_t size_v>
+    constexpr vector<elem_t, size_v> proj(vector<elem_t, size_v> const& vec, vector<elem_t, size_v> const& normal)
+    {
+        return cdm::dot(vec, normal) / cdm::dot(normal, normal) * normal;
+    }
+
+    template<typename elem_t, std::size_t size_v>
+    constexpr vector<elem_t, size_v> perp(vector<elem_t, size_v> const& vec, vector<elem_t, size_v> const& normal)
+    {
+        static_assert(size_v > 1, "normals only exist for dimensions that can have a plane (2D or more)");
+        return vec - cdm::proj(vec, normal);
     }
 
     template <typename elem_t, std::size_t size_v>
     constexpr vector<elem_t, size_v> reflect(vector<elem_t, size_v> const& vec, vector<elem_t, size_v> const& normal)
     {
-        return vec - static_cast<elem_t>(2) * dot(vec, normal) * normal;
+        return vec - static_cast<elem_t>(2) * cdm::dot(vec, normal) * normal;
     }
 
     template <typename elem_t, std::size_t size_v>
     constexpr vector<elem_t, size_v> normalise(vector<elem_t, size_v> const& vec)
     {
-        return vector<elem_t, size_v>{ vec } /= length(vec);
+        return vector<elem_t, size_v>{ vec } *= (static_cast<elem_t>(1) / cdm::length(vec));
     }
 
     template <typename elem_t, std::size_t size_v>
     constexpr vector<elem_t, size_v>& normalised(vector<elem_t, size_v>& vec)
     {
-        return vec /= length(vec);
+        return vec /= cdm::length(vec);
     }
 
     template <typename elem_t, std::size_t size_v>

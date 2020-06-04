@@ -23,8 +23,6 @@ namespace chilldew::math
 
     struct CD_API radian final
     {
-    public:
-
         real _angle = static_cast<real>(0.0l);
 
         constexpr          radian()                 noexcept = default;

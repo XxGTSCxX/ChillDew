@@ -20,7 +20,7 @@ namespace chilldew::math
 
     using real = double;
 
-    static constexpr real epsilon    = std::numeric_limits<real>::epsilon();
+    static constexpr real epsilon    = static_cast<real>(0.0000001l);
     static constexpr real pi         = static_cast<real>(3.14159265358979323846l);
     static constexpr real deg_to_rad = pi / static_cast<real>(180.0l);
     static constexpr real rad_to_deg = static_cast<real>(180.0l) / pi;

@@ -104,10 +104,7 @@ namespace chilldew::math
     template <typename elem_t> constexpr vector<elem_t, 2> min(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs);
     template <typename elem_t> constexpr vector<elem_t, 2> max(vector<elem_t, 2> const& lhs, vector<elem_t, 2> const& rhs);
 
-    template <typename elem_t> constexpr vector<elem_t, 2>  cw_perpendicular(vector<elem_t, 2> const& vec); // Rotates clockwise
-    template <typename elem_t> constexpr vector<elem_t, 2> ccw_perpendicular(vector<elem_t, 2> const& vec); // Rotates counter-clockwise
-    template <typename elem_t> constexpr vector<elem_t, 2>     perpendicular(vector<elem_t, 2> const& vec); // Uses counter-clockwise rotations by default
-
-    template <typename elem_t> constexpr elem_t            angle  (vector<elem_t, 2> const& from, vector<elem_t, 2> const& to    );
+    template <typename elem_t> constexpr vector<elem_t, 2>  cw_perp(vector<elem_t, 2> const& vec); // Gets perpendicular vector that is clockwise         from vec
+    template <typename elem_t> constexpr vector<elem_t, 2> ccw_perp(vector<elem_t, 2> const& vec); // Gets perpendicular vector that is counter-clockwise from vec
 
 }

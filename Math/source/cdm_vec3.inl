@@ -199,4 +199,24 @@ namespace chilldew::math
                                 , std::max(lhs[2], rhs[2]) };
     }
 
+    template<typename elem_t>
+    constexpr vector<elem_t, 3> cross(vector<elem_t, 3> const& from, vector<elem_t, 3> const& to)
+    {
+        return vector<elem_t, 3>{ from.y * to.z - from.z * to.y
+                                , from.z * to.x - from.x * to.z
+                                , from.x * to.y - from.y * to.x };
+    }
+
+    template<typename elem_t>
+    constexpr vector<elem_t, 3> cw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal)
+    {
+        return cross(normal, vec);
+    }
+
+    template<typename elem_t>
+    constexpr vector<elem_t, 3> ccw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal)
+    {
+        return cross(vec, normal);
+    }
+
 }
