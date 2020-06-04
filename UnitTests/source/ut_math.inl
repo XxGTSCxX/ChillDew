@@ -3,6 +3,8 @@
 #include "glm/glm.hpp"
 #include "glm/gtx/projection.inl"
 #include "glm/gtx/perpendicular.inl"
+#include "glm/gtx/transform.inl"
+#include "glm/gtx/vector_angle.inl"
 #include "ut_math.h"
 
 namespace unit_tests
@@ -13,7 +15,11 @@ namespace unit_tests
 
     bool operator==(glm_vec2 const& lhs, cdm_vec2 const& rhs)
     {
+        //*/
         return lhs[0] == rhs[0] && lhs[1] == rhs[1];
+        /*/
+        return cdm::fuzzy_equal(lhs[0], rhs[0]) && cdm::fuzzy_equal(lhs[1], rhs[1]);
+        //*/
     }
 
     bool operator==(cdm_vec2 const& lhs, glm_vec2 const& rhs)
@@ -58,14 +64,17 @@ namespace unit_tests
         stream << copy_init;
         stream >> default_init;
 
-        cde::debug::get()->log("operator>> : {}", copy_init                                           == default_init                                                ? "Passed" : "Failed");
-        cde::debug::get()->log("dot        : {}", cdm::dot      (copy_init, var_init                ) == glm::dot      (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("length     : {}", cdm::length   (copy_init                          ) == glm::length   (glm_copy_init                              ) ? "Passed" : "Failed");
-        cde::debug::get()->log("distance   : {}", cdm::distance (copy_init, var_init                ) == glm::distance (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("min        : {}", cdm::min      (copy_init, var_init                ) == glm::min      (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("max        : {}", cdm::max      (copy_init, var_init                ) == glm::max      (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("normalize  : {}", cdm::normalise(copy_init                          ) == glm::normalize(glm_copy_init                              ) ? "Passed" : "Failed");
-        cde::debug::get()->log("reflect    : {}", cdm::reflect  (copy_init, cdm::normalise(var_init)) == glm::reflect  (glm_copy_init, glm::normalize(glm_var_init)) ? "Passed" : "Failed");
+        cde::debug::get()->log("operator>> : {}", copy_init                                                           == default_init                                                                               ? "Passed" : "Failed");
+        cde::debug::get()->log("dot        : {}", cdm::dot      (               copy_init ,                var_init ) ==              glm::dot      (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("length     : {}", cdm::length   (               copy_init                           ) ==              glm::length   (               glm_copy_init                               )   ? "Passed" : "Failed");
+        cde::debug::get()->log("distance   : {}", cdm::distance (               copy_init ,                var_init ) ==              glm::distance (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("min        : {}", cdm::min      (               copy_init ,                var_init ) ==              glm::min      (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("max        : {}", cdm::max      (               copy_init ,                var_init ) ==              glm::max      (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("normalize  : {}", cdm::normalise(               copy_init                           ) ==              glm::normalize(               glm_copy_init                               )   ? "Passed" : "Failed");
+        cde::debug::get()->log("reflect    : {}", cdm::reflect  (               copy_init , cdm::normalise(var_init)) ==              glm::reflect  (               glm_copy_init , glm::normalize(glm_var_init))   ? "Passed" : "Failed");
+        cde::debug::get()->log("angle      : {}", cdm::angle    (cdm::normalise(copy_init), cdm::normalise(var_init)) == cdm::radian{ glm::angle    (glm::normalize(glm_copy_init), glm::normalize(glm_var_init)) } ? "Passed" : "Failed");
+        cde::debug::get()->log("proj       : {}", cdm::proj     (               copy_init ,                var_init ) ==              glm::proj     (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("perp       : {}", cdm::perp     (               copy_init ,                var_init ) ==              glm::perp     (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
     }
 
     using cdm_vec3 = cdm::vector<float, 3>;
@@ -73,7 +82,11 @@ namespace unit_tests
 
     bool operator==(glm_vec3 const& lhs, cdm_vec3 const& rhs)
     {
+        //*/
         return lhs[0] == rhs[0] && lhs[1] == rhs[1] && lhs[2] == rhs[2];
+        /*/
+        return cdm::fuzzy_equal(lhs[0], rhs[0]) && cdm::fuzzy_equal(lhs[1], rhs[1]) && cdm::fuzzy_equal(lhs[2], rhs[2]);
+        //*/
     }
 
     bool operator==(cdm_vec3 const& lhs, glm_vec3 const& rhs)
@@ -118,14 +131,20 @@ namespace unit_tests
         stream << copy_init;
         stream >> default_init;
 
-        cde::debug::get()->log("operator>> : {}", copy_init                                           == default_init                                                ? "Passed" : "Failed");
-        cde::debug::get()->log("dot        : {}", cdm::dot      (copy_init, var_init                ) == glm::dot      (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("length     : {}", cdm::length   (copy_init                          ) == glm::length   (glm_copy_init                              ) ? "Passed" : "Failed");
-        cde::debug::get()->log("distance   : {}", cdm::distance (copy_init, var_init                ) == glm::distance (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("min        : {}", cdm::min      (copy_init, var_init                ) == glm::min      (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("max        : {}", cdm::max      (copy_init, var_init                ) == glm::max      (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("normalize  : {}", cdm::normalise(copy_init                          ) == glm::normalize(glm_copy_init                              ) ? "Passed" : "Failed");
-        cde::debug::get()->log("reflect    : {}", cdm::reflect  (copy_init, cdm::normalise(var_init)) == glm::reflect  (glm_copy_init, glm::normalize(glm_var_init)) ? "Passed" : "Failed");
+        glm::cross(glm_copy_init, glm_var_init);
+
+        cde::debug::get()->log("operator>> : {}", copy_init                                                           == default_init                                                                               ? "Passed" : "Failed");
+        cde::debug::get()->log("dot        : {}", cdm::dot      (               copy_init ,                var_init ) ==              glm::dot      (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("length     : {}", cdm::length   (               copy_init                           ) ==              glm::length   (               glm_copy_init                               )   ? "Passed" : "Failed");
+        cde::debug::get()->log("distance   : {}", cdm::distance (               copy_init ,                var_init ) ==              glm::distance (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("min        : {}", cdm::min      (               copy_init ,                var_init ) ==              glm::min      (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("max        : {}", cdm::max      (               copy_init ,                var_init ) ==              glm::max      (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("normalize  : {}", cdm::normalise(               copy_init                           ) ==              glm::normalize(               glm_copy_init                               )   ? "Passed" : "Failed");
+        cde::debug::get()->log("reflect    : {}", cdm::reflect  (               copy_init , cdm::normalise(var_init)) ==              glm::reflect  (               glm_copy_init , glm::normalize(glm_var_init))   ? "Passed" : "Failed");
+        cde::debug::get()->log("angle      : {}", cdm::angle    (cdm::normalise(copy_init), cdm::normalise(var_init)) == cdm::radian{ glm::angle    (glm::normalize(glm_copy_init), glm::normalize(glm_var_init)) } ? "Passed" : "Failed");
+        cde::debug::get()->log("cross      : {}", cdm::cross    (cdm::normalise(copy_init), cdm::normalise(var_init)) ==              glm::cross    (glm::normalize(glm_copy_init), glm::normalize(glm_var_init))   ? "Passed" : "Failed");
+        cde::debug::get()->log("proj       : {}", cdm::proj     (               copy_init ,                var_init ) ==              glm::proj     (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("perp       : {}", cdm::perp     (               copy_init ,                var_init ) ==              glm::perp     (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
     }
 
     using cdm_vec4 = cdm::vector<float, 4>;
@@ -133,7 +152,11 @@ namespace unit_tests
 
     bool operator==(glm_vec4 const& lhs, cdm_vec4 const& rhs)
     {
+        //*/
         return lhs[0] == rhs[0] && lhs[1] == rhs[1] && lhs[2] == rhs[2] && lhs[3] == rhs[3];
+        /*/
+        return cdm::fuzzy_equal(lhs[0], rhs[0]) && cdm::fuzzy_equal(lhs[1], rhs[1]) && cdm::fuzzy_equal(lhs[2], rhs[2]) && cdm::fuzzy_equal(lhs[3], rhs[3]);
+        //*/
     }
 
     bool operator==(cdm_vec4 const& lhs, glm_vec4 const& rhs)
@@ -178,14 +201,17 @@ namespace unit_tests
         stream << copy_init;
         stream >> default_init;
 
-        cde::debug::get()->log("operator>> : {}", copy_init                                           == default_init                                                ? "Passed" : "Failed");
-        cde::debug::get()->log("dot        : {}", cdm::dot      (copy_init, var_init                ) == glm::dot      (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("length     : {}", cdm::length   (copy_init                          ) == glm::length   (glm_copy_init                              ) ? "Passed" : "Failed");
-        cde::debug::get()->log("distance   : {}", cdm::distance (copy_init, var_init                ) == glm::distance (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("min        : {}", cdm::min      (copy_init, var_init                ) == glm::min      (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("max        : {}", cdm::max      (copy_init, var_init                ) == glm::max      (glm_copy_init, glm_var_init                ) ? "Passed" : "Failed");
-        cde::debug::get()->log("normalize  : {}", cdm::normalise(copy_init                          ) == glm::normalize(glm_copy_init                              ) ? "Passed" : "Failed");
-        cde::debug::get()->log("reflect    : {}", cdm::reflect  (copy_init, cdm::normalise(var_init)) == glm::reflect  (glm_copy_init, glm::normalize(glm_var_init)) ? "Passed" : "Failed");
+        cde::debug::get()->log("operator>> : {}", copy_init                                                           == default_init                                                                               ? "Passed" : "Failed");
+        cde::debug::get()->log("dot        : {}", cdm::dot      (               copy_init ,                var_init ) ==              glm::dot      (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("length     : {}", cdm::length   (               copy_init                           ) ==              glm::length   (               glm_copy_init                               )   ? "Passed" : "Failed");
+        cde::debug::get()->log("distance   : {}", cdm::distance (               copy_init ,                var_init ) ==              glm::distance (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("min        : {}", cdm::min      (               copy_init ,                var_init ) ==              glm::min      (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("max        : {}", cdm::max      (               copy_init ,                var_init ) ==              glm::max      (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("normalize  : {}", cdm::normalise(               copy_init                           ) ==              glm::normalize(               glm_copy_init                               )   ? "Passed" : "Failed");
+        cde::debug::get()->log("reflect    : {}", cdm::reflect  (               copy_init , cdm::normalise(var_init)) ==              glm::reflect  (               glm_copy_init , glm::normalize(glm_var_init))   ? "Passed" : "Failed");
+        cde::debug::get()->log("angle      : {}", cdm::angle    (cdm::normalise(copy_init), cdm::normalise(var_init)) == cdm::radian{ glm::angle    (glm::normalize(glm_copy_init), glm::normalize(glm_var_init)) } ? "Passed" : "Failed");
+        cde::debug::get()->log("proj       : {}", cdm::proj     (               copy_init ,                var_init ) ==              glm::proj     (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
+        cde::debug::get()->log("perp       : {}", cdm::perp     (               copy_init ,                var_init ) ==              glm::perp     (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
     }
 
 }

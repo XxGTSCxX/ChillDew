@@ -2,6 +2,9 @@
 #include "ut_math.inl"
 #include "ut_performance.h"
 
+#define ENABLE_MATH_TESTS
+//#define ENABLE_PERF_TESTS
+
 cde::app* cde::create_app()
 {
     return new ut::driver{};
@@ -18,23 +21,32 @@ namespace unit_tests
     void driver::setup()
     {
         // ---------------------------------------------------------------------
-        // Math Tests
+        // Setup
 
+#ifndef _DEBUG
+        cde::debug::get()->enable_developer_console();
+#endif // DEBUG
+
+        // ---------------------------------------------------------------------
+        // Math Tests
+#ifdef ENABLE_MATH_TESTS
         math::test_vec<2>();
         math::test_vec<3>();
         math::test_vec<4>();
 
         cde::debug::get()->log("");
-
+#endif
         // ---------------------------------------------------------------------
         // Performance Tests
-
+#ifdef ENABLE_PERF_TESTS
         performance::test_division();
 
+        cde::debug::get()->log("");
+#endif
         // ---------------------------------------------------------------------
         // Exit Point
 
-        cde::debug::get()->log_warning("\nPress [Enter] to Quit the app");
+        cde::debug::get()->log_warning("Press [Enter] to Quit the app");
     }
 
     void driver::post_update()
