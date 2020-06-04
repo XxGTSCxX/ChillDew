@@ -107,4 +107,6 @@ namespace chilldew::math
     template <typename elem_t> constexpr vector<elem_t, 2>  cw_perp(vector<elem_t, 2> const& vec); // Gets perpendicular vector that is clockwise         from vec
     template <typename elem_t> constexpr vector<elem_t, 2> ccw_perp(vector<elem_t, 2> const& vec); // Gets perpendicular vector that is counter-clockwise from vec
 
+    template <typename elem_t> constexpr radian signed_angle(vector<elem_t, 2> const& from, vector<elem_t, 2> const& to);
+
 }

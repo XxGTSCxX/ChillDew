@@ -167,7 +167,9 @@ namespace chilldew::math
     template <typename elem_t> constexpr vector<elem_t, 3> max  (vector<elem_t, 3> const& lhs , vector<elem_t, 3> const& rhs);
     template <typename elem_t> constexpr vector<elem_t, 3> cross(vector<elem_t, 3> const& from, vector<elem_t, 3> const& to );
 
-    template <typename elem_t> constexpr vector<elem_t, 3>  cw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal); // Gets perpendicular vector that is clockwise         from vec (Expects a normalised normal to be passed in)
-    template <typename elem_t> constexpr vector<elem_t, 3> ccw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal); // Gets perpendicular vector that is counter-clockwise from vec (Expects a normalised normal to be passed in)
+    template <typename elem_t> constexpr vector<elem_t, 3>  cw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal); // Gets perpendicular vector that is clockwise         from vec (expects a normalised normal)
+    template <typename elem_t> constexpr vector<elem_t, 3> ccw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal); // Gets perpendicular vector that is counter-clockwise from vec (expects a normalised normal)
+
+    template <typename elem_t> constexpr radian signed_angle(vector<elem_t, 3> const& from, vector<elem_t, 3> const& to, vector<elem_t, 3> const& normal);
 
 }

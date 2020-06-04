@@ -199,7 +199,7 @@ namespace chilldew::math
                                 , std::max(lhs[2], rhs[2]) };
     }
 
-    template<typename elem_t>
+    template <typename elem_t>
     constexpr vector<elem_t, 3> cross(vector<elem_t, 3> const& from, vector<elem_t, 3> const& to)
     {
         return vector<elem_t, 3>{ from.y * to.z - from.z * to.y
@@ -207,16 +207,22 @@ namespace chilldew::math
                                 , from.x * to.y - from.y * to.x };
     }
 
-    template<typename elem_t>
+    template <typename elem_t>
     constexpr vector<elem_t, 3> cw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal)
+    {
+        return cross(vec, normal);
+    }
+
+    template <typename elem_t>
+    constexpr vector<elem_t, 3> ccw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal)
     {
         return cross(normal, vec);
     }
 
-    template<typename elem_t>
-    constexpr vector<elem_t, 3> ccw_perp(vector<elem_t, 3> const& vec, vector<elem_t, 3> const& normal)
+    template <typename elem_t>
+    constexpr radian signed_angle(vector<elem_t, 3> const& from, vector<elem_t, 3> const& to, vector<elem_t, 3> const& normal)
     {
-        return cross(vec, normal);
+        return cdm::dot(cdm::cross(from, to), normal) < static_cast<elem_t>(0) ? -cdm::angle(from, to) : cdm::angle(from, to);
     }
 
 }

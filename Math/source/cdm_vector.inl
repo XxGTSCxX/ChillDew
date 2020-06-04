@@ -259,10 +259,10 @@ namespace chilldew::math
     }
 
     template<typename elem_t, std::size_t size_v>
-    constexpr vector<elem_t, size_v> perp(vector<elem_t, size_v> const& vec, vector<elem_t, size_v> const& normal)
+    constexpr vector<elem_t, size_v> orthogonalise(vector<elem_t, size_v> const& tangent, vector<elem_t, size_v> const& normal)
     {
         static_assert(size_v > 1, "normals only exist for dimensions that can have a plane (2D or more)");
-        return vec - cdm::proj(vec, normal);
+        return tangent - cdm::proj(tangent, normal);
     }
 
     template <typename elem_t, std::size_t size_v>

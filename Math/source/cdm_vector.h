@@ -85,14 +85,14 @@ namespace chilldew::math
     // -------------------------------------------------------------------------
     // Functionals
 
-    template <typename elem_t, std::size_t size_v> constexpr elem_t                 dot          (vector<elem_t, size_v> const& lhs , vector<elem_t, size_v> const& rhs   );
-    template <typename elem_t, std::size_t size_v> constexpr elem_t                 length_square(vector<elem_t, size_v> const& vec                                       );
-    template <typename elem_t, std::size_t size_v> constexpr elem_t                 length       (vector<elem_t, size_v> const& vec                                       );
-    template <typename elem_t, std::size_t size_v> constexpr elem_t                 distance     (vector<elem_t, size_v> const& lhs , vector<elem_t, size_v> const& rhs   );
-    template <typename elem_t, std::size_t size_v> constexpr radian                 angle        (vector<elem_t, size_v> const& from, vector<elem_t, size_v> const& to    ); // Expects both vectors to be normalised before it's passed in
-    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> proj         (vector<elem_t, size_v> const& vec , vector<elem_t, size_v> const& normal); // Normal is expected to be normalised already
-    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> perp         (vector<elem_t, size_v> const& vec , vector<elem_t, size_v> const& normal); // Makes vec perpendicular to the given normal (assumes normal is normalised)
-    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> reflect      (vector<elem_t, size_v> const& vec , vector<elem_t, size_v> const& normal); // Normal is expected to be normalised already
+    template <typename elem_t, std::size_t size_v> constexpr elem_t                 dot          (vector<elem_t, size_v> const& lhs    , vector<elem_t, size_v> const& rhs   );
+    template <typename elem_t, std::size_t size_v> constexpr elem_t                 length_square(vector<elem_t, size_v> const& vec                                          );
+    template <typename elem_t, std::size_t size_v> constexpr elem_t                 length       (vector<elem_t, size_v> const& vec                                          );
+    template <typename elem_t, std::size_t size_v> constexpr elem_t                 distance     (vector<elem_t, size_v> const& lhs    , vector<elem_t, size_v> const& rhs   );
+    template <typename elem_t, std::size_t size_v> constexpr radian                 angle        (vector<elem_t, size_v> const& from   , vector<elem_t, size_v> const& to    ); // Expects both vectors to be normalised before it's passed in
+    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> proj         (vector<elem_t, size_v> const& vec    , vector<elem_t, size_v> const& normal); // Normal is expected to be normalised already
+    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> orthogonalise(vector<elem_t, size_v> const& tangent, vector<elem_t, size_v> const& normal); // Makes tangent orthogonal to the normal
+    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> reflect      (vector<elem_t, size_v> const& vec    , vector<elem_t, size_v> const& normal); // Normal is expected to be normalised already
 
     template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v>  normalise (vector<elem_t, size_v> const& vec);
     template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v>& normalised(vector<elem_t, size_v>&       vec);

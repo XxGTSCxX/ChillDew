@@ -197,4 +197,10 @@ namespace chilldew::math
         return vector<elem_t, 2>{ -vec.y, vec.x };
     }
 
+    template<typename elem_t>
+    constexpr radian signed_angle(vector<elem_t, 2> const& from, vector<elem_t, 2> const& to)
+    {
+        return cdm::dot(cdm::ccw_perp(from), to) < static_cast<elem_t>(0) ? -cdm::angle(from, to) : cdm::angle(from, to);
+    }
+
 }
