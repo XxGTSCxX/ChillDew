@@ -271,6 +271,12 @@ namespace chilldew::math
         return vec - static_cast<elem_t>(2) * cdm::dot(vec, normal) * normal;
     }
 
+    template<typename elem_t, std::size_t size_v>
+    constexpr vector<elem_t, size_v> face_forward(vector<elem_t, size_v> const& vec, vector<elem_t, size_v> const& normal)
+    {
+        return cdm::dot(vec, normal) < static_cast<elem_t>(0) ? vec : -vec;
+    }
+
     template <typename elem_t, std::size_t size_v>
     constexpr vector<elem_t, size_v> normalise(vector<elem_t, size_v> const& vec)
     {
