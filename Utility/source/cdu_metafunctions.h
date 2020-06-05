@@ -22,26 +22,26 @@
 
 // Defines the has_member meta function
 // NOTE: This fails if there are more than one member with the same name
-#define DEFINE_HAS_MEMBER(member)                                                \
-    template <typename T>                                                        \
-    struct has_member_##member                                                    \
-    {                                                                            \
-    private:                                                                     \
-                                                                                 \
-        using RawType = std::remove_cvref_t<T>;                                  \
-        using Yes     = std::uint8_t;                                            \
-        using No      = std::uint16_t;                                           \
-                                                                                 \
-        template <typename C> static Yes& check(decltype(&C::member)) ;          \
-        template <typename C> static No&  check(...);                            \
-                                                                                 \
-    public:                                                                      \
-                                                                                 \
-        static constexpr bool value = sizeof(check<RawType>(0)) == sizeof(Yes);  \
-    };                                                                           \
-                                                                                 \
-    template <typename T>                                                        \
-    static constexpr bool has_member_v_##member = has_member_##member<T>::value; \
+#define DEFINE_HAS_MEMBER(member)                                                      \
+    template <typename class_t>                                                        \
+    struct has_member_##member                                                         \
+    {                                                                                  \
+    private:                                                                           \
+                                                                                       \
+        using raw_t = std::remove_cvref_t<class_t>;                                    \
+        using yes   = std::uint8_t;                                                    \
+        using no    = std::uint16_t;                                                   \
+                                                                                       \
+        template <typename C> static yes& check(decltype(&C::member)) ;                \
+        template <typename C> static no&  check(...);                                  \
+                                                                                       \
+    public:                                                                            \
+                                                                                       \
+        static constexpr bool value = sizeof(check<raw_t>(0)) == sizeof(yes);          \
+    };                                                                                 \
+                                                                                       \
+    template <typename class_t>                                                        \
+    static constexpr bool has_member_v_##member = has_member_##member<class_t>::value; \
 
 #if __cplusplus <= 201703L
 namespace std

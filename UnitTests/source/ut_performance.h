@@ -8,8 +8,14 @@ namespace unit_tests
 
     struct performance final
     {
+        static void test_division_vs_multiplication();
+        static void test_index_vs_ptr();
+        static void test_conditional_vs_multiplication();
+        static void test_if_vs_tenary();
+
+    private:
+
         static double time_test(std::function<void()> const& function, bool suppress_print = false);
-        static void   test_division();
     };
 
 }

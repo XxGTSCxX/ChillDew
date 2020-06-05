@@ -35,9 +35,9 @@ int CALLBACK WinMain( _In_     [[maybe_unused]] HINSTANCE hInstance
     //_CrtSetBreakAlloc(2799);
 #endif
 
-    cde::app* app = cde::create_app();
-    app->run();
-    cde::destroy_app(app);
+    cde::app* p_app = cde::create_app();
+    p_app->run();
+    cde::destroy_app(p_app);
 
     return 0;
 }

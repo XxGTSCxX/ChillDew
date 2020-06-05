@@ -39,7 +39,10 @@ namespace unit_tests
         // ---------------------------------------------------------------------
         // Performance Tests
 #ifdef ENABLE_PERF_TESTS
-        performance::test_division();
+        performance::test_division_vs_multiplication();
+        performance::test_index_vs_ptr();
+        performance::test_conditional_vs_multiplication();
+        performance::test_if_vs_tenary();
 
         cde::debug::get()->log("");
 #endif
