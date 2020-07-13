@@ -26,6 +26,8 @@
         #define CD_API
         #define CD_TEMPLATE
     #endif
+
+    #include <Windows.h>
 #else
     #error Unsupported Platform
 #endif
@@ -41,7 +43,8 @@ namespace cd = ::chilldew;
 #include <string>      // std::wstring
 #include <string_view> // std::wstring_view
 
-#define CD_STRING(x) L##x
+#define CD_STRING(x)    L##x
+#define CD_STRING_W(x)  CD_STRING(x)
 
 namespace chilldew
 {
@@ -82,7 +85,8 @@ namespace chilldew
 #include <string>      // std::string
 #include <string_view> // std::string_view
 
-#define CD_STRING(x) x
+#define CD_STRING(x)    x
+#define CD_STRING_W(x)  CD_STRING(x)
 
 namespace chilldew
 {

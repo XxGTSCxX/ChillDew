@@ -113,29 +113,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="source\Chilldew-Engine.h" />
-    <ClInclude Include="source\cde_core.h" />
-    <ClInclude Include="source\cde_debug.h" />
-    <ClInclude Include="source\cde_app.h" />
-    <ClInclude Include="source\cde_appstate.h" />
-    <ClInclude Include="source\cde_entrypoint.h" />
-    <ClInclude Include="source\cde_ilogger.h" />
-    <ClInclude Include="source\cde_iloghandler.h" />
-    <ClInclude Include="source\cde_log.h" />
-    <ClInclude Include="source\cde_logger.h" />
-    <ClInclude Include="source\cde_loghandler.h" />
+    <ClInclude Include="source\Engine\cde_core.h" />
+    <ClInclude Include="source\Engine\cde_debug.h" />
+    <ClInclude Include="source\Engine\cde_app.h" />
+    <ClInclude Include="source\Engine\cde_appstate.h" />
+    <ClInclude Include="source\Engine\cde_entrypoint.h" />
+    <ClInclude Include="source\Engine\cde_ilogger.h" />
+    <ClInclude Include="source\Engine\cde_iloghandler.h" />
+    <ClInclude Include="source\Engine\cde_log.h" />
+    <ClInclude Include="source\Engine\cde_logger.h" />
+    <ClInclude Include="source\Engine\cde_loghandler.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\cde_debug.cpp" />
-    <ClCompile Include="source\cde_app.cpp" />
-    <ClCompile Include="source\cde_ilogger.cpp" />
-    <ClCompile Include="source\cde_log.cpp" />
-    <ClCompile Include="source\cde_logger.cpp" />
-    <ClCompile Include="source\cde_loghandler.cpp" />
+    <ClCompile Include="source\Engine\cde_debug.cpp" />
+    <ClCompile Include="source\Engine\cde_app.cpp" />
+    <ClCompile Include="source\Engine\cde_ilogger.cpp" />
+    <ClCompile Include="source\Engine\cde_log.cpp" />
+    <ClCompile Include="source\Engine\cde_logger.cpp" />
+    <ClCompile Include="source\Engine\cde_loghandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\cde_debug.inl" />
-    <None Include="source\cde_log.inl" />
-    <None Include="source\cde_logger.inl" />
+    <None Include="source\Engine\cde_debug.inl" />
+    <None Include="source\Engine\cde_log.inl" />
+    <None Include="source\Engine\cde_logger.inl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">

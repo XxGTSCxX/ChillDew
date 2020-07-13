@@ -1,5 +1,6 @@
 #pragma once
 
+#include "cdm_core.h"
 #include "cdm_vector.h"
 #include <algorithm> // std::min, std::max
 #include <cmath>     // sqrt
@@ -272,9 +273,23 @@ namespace chilldew::math
     }
 
     template<typename elem_t, std::size_t size_v>
-    constexpr vector<elem_t, size_v> face_forward(vector<elem_t, size_v> const& vec, vector<elem_t, size_v> const& normal)
+    constexpr vector<elem_t, size_v> faceforward(vector<elem_t, size_v> const& vec, vector<elem_t, size_v> const& normal)
     {
         return cdm::dot(vec, normal) < static_cast<elem_t>(0) ? vec : -vec;
+    }
+
+    template<typename elem_t, std::size_t size_v>
+    constexpr vector<elem_t, size_v> refract(vector<elem_t, size_v> const& incidence, vector<elem_t, size_v> const& normal, real eta)
+    {
+        static constexpr real one  = static_cast<real>(1);
+        static constexpr real zero = static_cast<real>(0);
+
+        real k = one - eta * eta * (one - cdm::dot(normal, incidence) * cdm::dot(normal, incidence));
+
+        if (k < zero)
+            return vector<elem_t, size_v>{ 0 };
+        else
+            return eta * incidence - (eta * cdm::dot(normal, incidence) + sqrt(k)) * normal;
     }
 
     template <typename elem_t, std::size_t size_v>

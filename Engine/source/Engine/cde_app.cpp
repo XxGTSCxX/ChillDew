@@ -28,7 +28,11 @@ namespace chilldew::engine
 
     void app::run()
     {
-        SetConsoleCtrlHandler((PHANDLER_ROUTINE)(app::control_handler_wrapper), TRUE);
+        SetConsoleCtrlHandler
+        (
+            (PHANDLER_ROUTINE)(app::control_handler_wrapper)
+          , TRUE
+        );
 
         setup();
 

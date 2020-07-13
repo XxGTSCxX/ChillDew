@@ -1,5 +1,6 @@
 #pragma once
 
+#include "cd_core.h"
 #include "Chilldew-Engine.h"
 
 namespace chilldew

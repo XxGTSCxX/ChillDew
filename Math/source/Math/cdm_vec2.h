@@ -18,6 +18,8 @@
 #include "cdm_vector.h"
 #include "cdm_swizzle.inl"
 
+#pragma warning (disable : 4201) // Disable nameless struct/union warning
+
 namespace chilldew::math
 {
 
@@ -26,7 +28,7 @@ namespace chilldew::math
     {
         union
         {
-            elem_t _data[2];
+            elem_t _data[2] = {};
 
             struct
             {

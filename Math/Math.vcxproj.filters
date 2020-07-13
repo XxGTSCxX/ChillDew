@@ -41,68 +41,74 @@
     <Filter Include="Utility\Detail\Swizzle">
       <UniqueIdentifier>{431b07a6-0d26-4262-9418-9bab720b1786}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{20b0511a-f198-42f5-b080-79a3f1af1941}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Chilldew-Math.h" />
-    <ClInclude Include="source\cdm_defines.h">
+    <ClInclude Include="source\Math\cdm_defines.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdm_degree.h">
+    <ClInclude Include="source\Math\cdm_degree.h">
       <Filter>Data\Angles\Degree</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdm_functionals.h">
+    <ClInclude Include="source\Math\cdm_functionals.h">
       <Filter>Utility\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdm_radian.h">
+    <ClInclude Include="source\Math\cdm_radian.h">
       <Filter>Data\Angles\Radian</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdm_swizzle.h">
+    <ClInclude Include="source\Math\cdm_swizzle.h">
       <Filter>Utility\Detail\Swizzle</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdm_vec2.h">
+    <ClInclude Include="source\Math\cdm_vec2.h">
       <Filter>Data\Vectors\2D</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdm_vec3.h">
+    <ClInclude Include="source\Math\cdm_vec3.h">
       <Filter>Data\Vectors\3D</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdm_vec4.h">
+    <ClInclude Include="source\Math\cdm_vec4.h">
       <Filter>Data\Vectors\4D</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdm_vector.h">
+    <ClInclude Include="source\Math\cdm_vector.h">
       <Filter>Data\Vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Math\cdm_core.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\cdm_degree.inl">
+    <None Include="source\Math\cdm_degree.inl">
       <Filter>Data\Angles\Degree</Filter>
     </None>
-    <None Include="source\cdm_functionals.inl">
+    <None Include="source\Math\cdm_functionals.inl">
       <Filter>Utility\Functions</Filter>
     </None>
-    <None Include="source\cdm_radian.inl">
+    <None Include="source\Math\cdm_radian.inl">
       <Filter>Data\Angles\Radian</Filter>
     </None>
-    <None Include="source\cdm_swizzle.inl">
+    <None Include="source\Math\cdm_swizzle.inl">
       <Filter>Utility\Detail\Swizzle</Filter>
     </None>
-    <None Include="source\cdm_vec2.inl">
+    <None Include="source\Math\cdm_vec2.inl">
       <Filter>Data\Vectors\2D</Filter>
     </None>
-    <None Include="source\cdm_vec3.inl">
+    <None Include="source\Math\cdm_vec3.inl">
       <Filter>Data\Vectors\3D</Filter>
     </None>
-    <None Include="source\cdm_vec4.inl">
+    <None Include="source\Math\cdm_vec4.inl">
       <Filter>Data\Vectors\4D</Filter>
     </None>
-    <None Include="source\cdm_vector.inl">
+    <None Include="source\Math\cdm_vector.inl">
       <Filter>Data\Vectors</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\cdm_degree.cpp">
+    <ClCompile Include="source\Math\cdm_degree.cpp">
       <Filter>Data\Angles\Degree</Filter>
     </ClCompile>
-    <ClCompile Include="source\cdm_radian.cpp">
+    <ClCompile Include="source\Math\cdm_radian.cpp">
       <Filter>Data\Angles\Radian</Filter>
     </ClCompile>
   </ItemGroup>

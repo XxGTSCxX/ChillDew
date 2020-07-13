@@ -29,65 +29,65 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Chilldew-Engine.h" />
-    <ClInclude Include="source\cde_app.h">
+    <ClInclude Include="source\Engine\cde_app.h">
       <Filter>Architecture\Application</Filter>
     </ClInclude>
-    <ClInclude Include="source\cde_appstate.h">
+    <ClInclude Include="source\Engine\cde_appstate.h">
       <Filter>Architecture\Application</Filter>
     </ClInclude>
-    <ClInclude Include="source\cde_core.h">
+    <ClInclude Include="source\Engine\cde_core.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="source\cde_debug.h">
+    <ClInclude Include="source\Engine\cde_debug.h">
       <Filter>Debug</Filter>
     </ClInclude>
-    <ClInclude Include="source\cde_entrypoint.h">
+    <ClInclude Include="source\Engine\cde_entrypoint.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="source\cde_ilogger.h">
+    <ClInclude Include="source\Engine\cde_ilogger.h">
       <Filter>Debug\Log\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="source\cde_iloghandler.h">
+    <ClInclude Include="source\Engine\cde_iloghandler.h">
       <Filter>Debug\Log\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="source\cde_log.h">
+    <ClInclude Include="source\Engine\cde_log.h">
       <Filter>Debug\Log</Filter>
     </ClInclude>
-    <ClInclude Include="source\cde_logger.h">
+    <ClInclude Include="source\Engine\cde_logger.h">
       <Filter>Debug\Log\Implementations</Filter>
     </ClInclude>
-    <ClInclude Include="source\cde_loghandler.h">
+    <ClInclude Include="source\Engine\cde_loghandler.h">
       <Filter>Debug\Log\Implementations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\cde_app.cpp">
+    <ClCompile Include="source\Engine\cde_app.cpp">
       <Filter>Architecture\Application</Filter>
     </ClCompile>
-    <ClCompile Include="source\cde_debug.cpp">
+    <ClCompile Include="source\Engine\cde_debug.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
-    <ClCompile Include="source\cde_ilogger.cpp">
+    <ClCompile Include="source\Engine\cde_ilogger.cpp">
       <Filter>Debug\Log\Interfaces</Filter>
     </ClCompile>
-    <ClCompile Include="source\cde_log.cpp">
+    <ClCompile Include="source\Engine\cde_log.cpp">
       <Filter>Debug\Log</Filter>
     </ClCompile>
-    <ClCompile Include="source\cde_logger.cpp">
+    <ClCompile Include="source\Engine\cde_logger.cpp">
       <Filter>Debug\Log\Implementations</Filter>
     </ClCompile>
-    <ClCompile Include="source\cde_loghandler.cpp">
+    <ClCompile Include="source\Engine\cde_loghandler.cpp">
       <Filter>Debug\Log\Implementations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\cde_debug.inl">
+    <None Include="source\Engine\cde_debug.inl">
       <Filter>Debug</Filter>
     </None>
-    <None Include="source\cde_log.inl">
+    <None Include="source\Engine\cde_log.inl">
       <Filter>Debug\Log</Filter>
     </None>
-    <None Include="source\cde_logger.inl">
+    <None Include="source\Engine\cde_logger.inl">
       <Filter>Debug\Log\Implementations</Filter>
     </None>
   </ItemGroup>

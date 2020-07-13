@@ -4,7 +4,7 @@
   \file    cde_app.h
   \author  Gabrielle Tan Suan Choo
   \brief
-    app interface for uses who wish to create their program using this
+    app interface for users who wish to create their program using this
     engine. Also defines how the application is mainly run, with some available
     customisations that the clients can make.
 
@@ -16,8 +16,8 @@
 #pragma once
 
 #include "cde_core.h"
-#include "cdu_flag.inl"
-#include "cdu_singleton.inl"
+#include "Utility/cdu_flag.inl"
+#include "Utility/cdu_singleton.inl"
 #include "cde_appstate.h"
 #include "cde_debug.inl"
 #include <Windows.h> // DWORD, BOOL

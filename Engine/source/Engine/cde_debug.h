@@ -14,7 +14,7 @@
 #pragma once
 
 #include "cde_core.h"
-#include "cdu_singleton.inl"
+#include "Utility/cdu_singleton.inl"
 #include "cde_ilogger.h"
 #include "cde_logger.h"
 

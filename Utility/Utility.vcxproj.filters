@@ -20,32 +20,32 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Chilldew-Utility.h" />
-    <ClInclude Include="source\cdu_core.h">
+    <ClInclude Include="source\Utility\cdu_core.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdu_metafunctions.h">
+    <ClInclude Include="source\Utility\cdu_flag.h">
+      <Filter>Implementations\Flag</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\cdu_metafunctions.h">
       <Filter>Implementations</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdu_pch.h">
+    <ClInclude Include="source\Utility\cdu_pch.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="source\cdu_singleton.h">
+    <ClInclude Include="source\Utility\cdu_singleton.h">
       <Filter>Implementations\Singleton</Filter>
-    </ClInclude>
-    <ClInclude Include="source\cdu_flag.h">
-      <Filter>Implementations\Flag</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\cdu_singleton.inl">
-      <Filter>Implementations\Singleton</Filter>
-    </None>
-    <None Include="source\cdu_flag.inl">
+    <None Include="source\Utility\cdu_flag.inl">
       <Filter>Implementations\Flag</Filter>
+    </None>
+    <None Include="source\Utility\cdu_singleton.inl">
+      <Filter>Implementations\Singleton</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\cdu_pch.cpp">
+    <ClCompile Include="source\Utility\cdu_pch.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>

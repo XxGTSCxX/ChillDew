@@ -93,7 +93,9 @@ namespace chilldew::math
     template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> proj         (vector<elem_t, size_v> const& vec    , vector<elem_t, size_v> const& normal); // Normal is expected to be normalised already
     template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> orthogonalise(vector<elem_t, size_v> const& tangent, vector<elem_t, size_v> const& normal); // Makes tangent orthogonal to the normal
     template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> reflect      (vector<elem_t, size_v> const& vec    , vector<elem_t, size_v> const& normal); // Normal is expected to be normalised already
-    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> face_forward (vector<elem_t, size_v> const& vec    , vector<elem_t, size_v> const& normal); // Normal is expected to be normalised already
+    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> faceforward  (vector<elem_t, size_v> const& vec    , vector<elem_t, size_v> const& normal);
+
+    template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v> refract(vector<elem_t, size_v> const& incidence, vector<elem_t, size_v> const& normal, real eta);
 
     template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v>  normalise (vector<elem_t, size_v> const& vec);
     template <typename elem_t, std::size_t size_v> constexpr vector<elem_t, size_v>& normalised(vector<elem_t, size_v>&       vec);

@@ -11,30 +11,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\cdm_degree.cpp" />
-    <ClCompile Include="source\cdm_radian.cpp" />
+    <ClCompile Include="source\Math\cdm_degree.cpp" />
+    <ClCompile Include="source\Math\cdm_radian.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Chilldew-Math.h" />
-    <ClInclude Include="source\cdm_degree.h" />
-    <ClInclude Include="source\cdm_defines.h" />
-    <ClInclude Include="source\cdm_functionals.h" />
-    <ClInclude Include="source\cdm_radian.h" />
-    <ClInclude Include="source\cdm_swizzle.h" />
-    <ClInclude Include="source\cdm_vector.h" />
-    <ClInclude Include="source\cdm_vec2.h" />
-    <ClInclude Include="source\cdm_vec3.h" />
-    <ClInclude Include="source\cdm_vec4.h" />
+    <ClInclude Include="source\Math\cdm_core.h" />
+    <ClInclude Include="source\Math\cdm_degree.h" />
+    <ClInclude Include="source\Math\cdm_defines.h" />
+    <ClInclude Include="source\Math\cdm_functionals.h" />
+    <ClInclude Include="source\Math\cdm_radian.h" />
+    <ClInclude Include="source\Math\cdm_swizzle.h" />
+    <ClInclude Include="source\Math\cdm_vector.h" />
+    <ClInclude Include="source\Math\cdm_vec2.h" />
+    <ClInclude Include="source\Math\cdm_vec3.h" />
+    <ClInclude Include="source\Math\cdm_vec4.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\cdm_degree.inl" />
-    <None Include="source\cdm_functionals.inl" />
-    <None Include="source\cdm_radian.inl" />
-    <None Include="source\cdm_swizzle.inl" />
-    <None Include="source\cdm_vector.inl" />
-    <None Include="source\cdm_vec2.inl" />
-    <None Include="source\cdm_vec3.inl" />
-    <None Include="source\cdm_vec4.inl" />
+    <None Include="source\Math\cdm_degree.inl" />
+    <None Include="source\Math\cdm_functionals.inl" />
+    <None Include="source\Math\cdm_radian.inl" />
+    <None Include="source\Math\cdm_swizzle.inl" />
+    <None Include="source\Math\cdm_vector.inl" />
+    <None Include="source\Math\cdm_vec2.inl" />
+    <None Include="source\Math\cdm_vec3.inl" />
+    <None Include="source\Math\cdm_vec4.inl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">

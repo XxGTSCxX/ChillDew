@@ -58,7 +58,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Core\source</AdditionalIncludeDirectories>
@@ -78,7 +78,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Core\source</AdditionalIncludeDirectories>
@@ -95,19 +95,19 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\cdu_pch.h" />
-    <ClInclude Include="source\cdu_core.h" />
+    <ClInclude Include="source\Utility\cdu_pch.h" />
+    <ClInclude Include="source\Utility\cdu_core.h" />
     <ClInclude Include="source\Chilldew-Utility.h" />
-    <ClInclude Include="source\cdu_flag.h" />
-    <ClInclude Include="source\cdu_metafunctions.h" />
-    <ClInclude Include="source\cdu_singleton.h" />
+    <ClInclude Include="source\Utility\cdu_flag.h" />
+    <ClInclude Include="source\Utility\cdu_metafunctions.h" />
+    <ClInclude Include="source\Utility\cdu_singleton.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\cdu_flag.inl" />
-    <None Include="source\cdu_singleton.inl" />
+    <None Include="source\Utility\cdu_flag.inl" />
+    <None Include="source\Utility\cdu_singleton.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\cdu_pch.cpp" />
+    <ClCompile Include="source\Utility\cdu_pch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">

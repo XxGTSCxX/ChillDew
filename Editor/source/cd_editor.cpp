@@ -25,7 +25,8 @@ namespace chilldew
 
     void editor::setup()
     {
-        cde::debug::get()->LogWarning("Press [Enter] to Quit the app");
+        cde::debug::get()->enable_developer_console();
+        cde::debug::get()->log_warning("Press [Enter] to Quit the app");
         std::cin.get();
         quit();
     }

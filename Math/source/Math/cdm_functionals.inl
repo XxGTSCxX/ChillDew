@@ -19,10 +19,10 @@
 namespace chilldew::math
 {
 
-    constexpr bool fuzzy_equal(real lhs, real rhs, real epsilon) noexcept
+    constexpr bool fuzzy_equal(real lhs, real rhs, real epsilon_value) noexcept
     {
         real delta = lhs - rhs;
-        return (delta < real(0.0l) ? -delta : delta) < epsilon;
+        return (delta < real(0.0l) ? -delta : delta) < epsilon_value;
     }
 
     constexpr bool fuzzy_equal(real lhs, real rhs) noexcept
@@ -31,9 +31,9 @@ namespace chilldew::math
     }
 
     template <typename type>
-    constexpr bool fuzzy_equal(type const& lhs, type const& rhs, type const& epsilon) noexcept
+    constexpr bool fuzzy_equal(type const& lhs, type const& rhs, type const& epsilon_value) noexcept
     {
-        return std::max<type>(lhs - rhs, rhs - lhs) < epsilon;
+        return std::max<type>(lhs - rhs, rhs - lhs) < epsilon_value;
     }
 
     template <typename type>

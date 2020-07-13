@@ -78,7 +78,7 @@ namespace unit_tests
         cde::debug::get()->log("cw_perp     : {}", cdm::dot(cdm::cw_perp (               copy_init ),                             copy_init  ) ==  0.0f                                                                  ? "Passed" : "Failed");
         cde::debug::get()->log("ccw_perp    : {}", cdm::dot(cdm::ccw_perp(               copy_init ),                             copy_init  ) ==  0.0f                                                                  ? "Passed" : "Failed");
         cde::debug::get()->log("cw vs ccw   : {}", cdm::dot(cdm::ccw_perp(cdm::normalise(copy_init)), cdm::cw_perp(cdm::normalise(copy_init))) == -1.0f                                                                  ? "Passed" : "Failed");
-        cde::debug::get()->log("face forward: {}", cdm::face_forward(copy_init, var_init) == glm::faceforward(glm_copy_init, glm_var_init, glm_copy_init)                                                                ? "Passed" : "Failed");
+        cde::debug::get()->log("face forward: {}", cdm::faceforward(copy_init, var_init) == glm::faceforward(glm_copy_init, glm_var_init, glm_copy_init)                                                                ? "Passed" : "Failed");
     }
 
     using cdm_vec3 = cdm::vector<float, 3>;
@@ -152,7 +152,7 @@ namespace unit_tests
         cde::debug::get()->log("cw_perp     : {}", cdm::dot(               cdm::cw_perp (copy_init, var_init) , copy_init                                        ) ==  0.0f                                              ? "Passed" : "Failed");
         cde::debug::get()->log("ccw_perp    : {}", cdm::dot(               cdm::ccw_perp(copy_init, var_init) , copy_init                                        ) ==  0.0f                                              ? "Passed" : "Failed");
         cde::debug::get()->log("cw vs ccw   : {}", cdm::fuzzy_equal(cdm::dot(cdm::normalise(cdm::ccw_perp(copy_init, var_init)), cdm::normalise(cdm::cw_perp(copy_init, var_init))), -1.0f)                              ? "Passed" : "Failed");
-        cde::debug::get()->log("face forward: {}", cdm::face_forward(copy_init, var_init) == glm::faceforward(glm_copy_init, glm_var_init, glm_copy_init)                                                                ? "Passed" : "Failed");
+        cde::debug::get()->log("face forward: {}", cdm::faceforward(copy_init, var_init) == glm::faceforward(glm_copy_init, glm_var_init, glm_copy_init)                                                                ? "Passed" : "Failed");
     }
 
     using cdm_vec4 = cdm::vector<float, 4>;
@@ -220,7 +220,7 @@ namespace unit_tests
         cde::debug::get()->log("angle       : {}", cdm::angle        (cdm::normalise(copy_init), cdm::normalise(var_init)) == cdm::radian{ glm::angle    (glm::normalize(glm_copy_init), glm::normalize(glm_var_init)) } ? "Passed" : "Failed");
         cde::debug::get()->log("proj        : {}", cdm::proj         (               copy_init ,                var_init ) ==              glm::proj     (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
         cde::debug::get()->log("ortho       : {}", cdm::orthogonalise(               copy_init ,                var_init ) ==              glm::perp     (               glm_copy_init ,                glm_var_init )   ? "Passed" : "Failed");
-        cde::debug::get()->log("face forward: {}", cdm::face_forward(copy_init, var_init) == glm::faceforward(glm_copy_init, glm_var_init, glm_copy_init)                                                                ? "Passed" : "Failed");
+        cde::debug::get()->log("face forward: {}", cdm::faceforward(copy_init, var_init) == glm::faceforward(glm_copy_init, glm_var_init, glm_copy_init)                                                                 ? "Passed" : "Failed");
     }
 
 }
