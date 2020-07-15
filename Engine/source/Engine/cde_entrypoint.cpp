@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*!
   \project Chilldew-Engine
-  \file    cde_entrypoint.h
+  \file    cde_entrypoint.cpp
   \author  Gabrielle Tan Suan Choo
   \brief
     Entry point for the application.
@@ -11,9 +11,8 @@
     written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#pragma once
-
-#include "cde_app.h"
+#include "cd_pch.h"
+#include "cde_entrypoint.h"
 #include <memory>
 #include <crtdbg.h>
 
@@ -21,14 +20,23 @@
 
 #include <windows.h>
 
-extern cde::app* cde::create_app();
-extern void      cde::destroy_app(cde::app* app);
-
 // if Win32 is the platform - different entry point for different platforms
 int CALLBACK WinMain( _In_     [[maybe_unused]] HINSTANCE hInstance
                     , _In_opt_ [[maybe_unused]] HINSTANCE hPrevInstance // obsolete
                     , _In_     [[maybe_unused]] LPSTR     lpCmdLine
-                    , _In_     [[maybe_unused]] int       nCmdShow);
+                    , _In_     [[maybe_unused]] int       nCmdShow)
+{
+#ifdef _DEBUG
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    //_CrtSetBreakAlloc(2799);
+#endif
+
+    cde::app* p_app = cde::create_app();
+    p_app->run();
+    cde::destroy_app(p_app);
+
+    return 0;
+}
 
 #else
 

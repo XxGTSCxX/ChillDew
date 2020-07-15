@@ -23,8 +23,8 @@ namespace chilldew::utility
 
     template <typename enum_t>
     template <typename ... params_t, typename>
-    inline flag<enum_t>::flag(params_t ... initial_flags) noexcept
-    : _value{ (static_cast<data_t>(initial_flags) | ...) }
+    inline constexpr flag<enum_t>::flag(params_t ... initial_flags) noexcept
+    : _value{ static_cast<data_t>((static_cast<data_t>(initial_flags) | ...)) }
     {}
 
     template <typename enum_t>

@@ -20,12 +20,20 @@ namespace chilldew::engine
 
     struct CD_API iloghandler
     {
+        iloghandler(cd::string_view const& name);
         virtual ~iloghandler() = default;
 
         virtual void log(cd::string_view const& text) = 0;
 
         virtual cd::iostream&       get_stream()       = 0;
         virtual cd::iostream const& get_stream() const = 0;
+
+        cd::string const& get_name() const;
+        void set_name(cd::string_view const& name);
+
+    private:
+
+        cd::string m_name;
     };
 
 }

@@ -18,23 +18,26 @@
 namespace chilldew::engine
 {
 
-    loghandler::loghandler()
-    : _log{ cd::cout.rdbuf() }
+    loghandler::loghandler(cd::string const& name, cdu::filesystem::path const& directory)
+    : iloghandler{ name                                                                                                              }
+    , m_log      { cd::cout.rdbuf()                                                                                                  }
+    , m_file     { cdu::filesystem::get()->create_file(directory / (name + CD_STRING(".log")), cdu::filesystem::file::access::write) }
     {}
 
     void loghandler::log(cd::string_view const& text)
     {
-        _log << text;
+        m_log  << text;
+        m_file << text;
     }
 
     cd::iostream& loghandler::get_stream()
     {
-        return _log;
+        return m_log;
     }
 
     cd::iostream const& loghandler::get_stream() const
     {
-        return _log;
+        return m_log;
     }
 
 }

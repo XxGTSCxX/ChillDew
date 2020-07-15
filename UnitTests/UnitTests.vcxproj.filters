@@ -16,23 +16,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\ut_performance.h">
-      <Filter>Performace</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ut_math.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="source\ut_driver.h">
+      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="source\ut_core.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="source\ut_driver.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="source\ut_math.inl">
+    <ClInclude Include="source\ut_math.h">
       <Filter>Math</Filter>
-    </None>
+    </ClInclude>
+    <ClInclude Include="source\ut_performance.h">
+      <Filter>Performace</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ut_driver.cpp">
@@ -41,5 +36,10 @@
     <ClCompile Include="source\ut_performance.cpp">
       <Filter>Performace</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\ut_math.inl">
+      <Filter>Math</Filter>
+    </None>
   </ItemGroup>
 </Project>

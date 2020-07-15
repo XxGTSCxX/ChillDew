@@ -41,9 +41,6 @@
     <ClInclude Include="source\Engine\cde_debug.h">
       <Filter>Debug</Filter>
     </ClInclude>
-    <ClInclude Include="source\Engine\cde_entrypoint.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="source\Engine\cde_ilogger.h">
       <Filter>Debug\Log\Interfaces</Filter>
     </ClInclude>
@@ -58,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="source\Engine\cde_loghandler.h">
       <Filter>Debug\Log\Implementations</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Engine\cde_entrypoint.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +78,12 @@
     </ClCompile>
     <ClCompile Include="source\Engine\cde_loghandler.cpp">
       <Filter>Debug\Log\Implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Engine\cde_iloghandler.cpp">
+      <Filter>Debug\Log\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Engine\cde_entrypoint.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

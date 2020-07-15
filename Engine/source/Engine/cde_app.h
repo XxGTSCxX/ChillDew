@@ -76,9 +76,10 @@ namespace chilldew::engine
 
         using Flags = cdu::flag<appflags>;
 
-        debug    _debugger;
-        appstate _app_state = appstate::load;
-        Flags    _flags     = Flags{ appflags::play };
+        cdu::filesystem _file_system;
+        debug           _debugger;
+        appstate        _app_state = appstate::load;
+        Flags           _flags     = Flags{ appflags::play };
 
         void load();
         void init();

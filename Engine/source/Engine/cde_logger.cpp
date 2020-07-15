@@ -23,11 +23,11 @@ namespace chilldew::engine
                   , cd::string_view const& warning_colour
                   , cd::string_view const& error_colour
                   , cd::string_view const& assert_colour)
-    : _name          { logger_name    }
-    , _default_format{ default_colour }
-    , _warning_format{ warning_colour }
-    , _error_format  { error_colour   }
-    , _assert_format { assert_colour  }
+    : _default_format{ default_colour     }
+    , _warning_format{ warning_colour     }
+    , _error_format  { error_colour       }
+    , _assert_format { assert_colour      }
+    , _log_handler   { logger_name.data() }
     {}
 
     void logger::filter_log([[maybe_unused]] log::flag type)
@@ -77,9 +77,24 @@ namespace chilldew::engine
         }
     }
 
+    iloghandler const& logger::get_handler() const
+    {
+        return _log_handler;
+    }
+
+    iloghandler& logger::get_handler()
+    {
+        return _log_handler;
+    }
+
     cd::string const& logger::get_name() const
     {
-        return _name;
+        return _log_handler.get_name();
+    }
+
+    void logger::set_name(cd::string_view const& name)
+    {
+        return _log_handler.set_name(name);
     }
 
 }

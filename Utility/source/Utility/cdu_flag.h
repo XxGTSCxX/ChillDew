@@ -62,12 +62,19 @@ namespace chilldew::utility
     template <typename enum_t>
     struct flag final
     {
+    private:
+
+        template <typename ... params_t>
+        using enable_if_valid_params = std::enable_if_t<is_all_same_v<enum_t, params_t...>>;
+
+    public:
+
         constexpr flag()             noexcept = default;
         constexpr flag(flag const&)  noexcept = default;
         flag& operator=(flag const&) noexcept = default;
 
         template <typename ... params_t, typename = enable_if_valid_params<params_t...>>
-        explicit flag(params_t ... initial_flags) noexcept;
+        explicit constexpr flag(params_t ... initial_flags) noexcept;
 
         flag& operator=(enum_t flag) noexcept;
 
@@ -89,9 +96,6 @@ namespace chilldew::utility
         flag& operator^=(flag flag);
 
     private:
-
-        template <typename ... params_t>
-        using enable_if_valid_params = std::enable_if_t<is_all_same_v<enum_t, params_t...>>;
 
         static_assert(std::is_enum<enum_t>::value, "class Flag: Template requires an enum type"); // Safety parameter check
 

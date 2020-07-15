@@ -42,11 +42,14 @@ namespace chilldew::engine
         template <typename ... Args> void log_error  (cd::string_view const& text, Args&& ... args);
         template <typename ... Args> void log_assert (cd::string_view const& text, Args&& ... args);
 
+        iloghandler const& get_handler() const override;
+        iloghandler&       get_handler()       override;
+
         cd::string const& get_name() const;
+        void set_name(cd::string_view const& name);
 
     private:
 
-        cd::string _name;
         cd::string _default_format;
         cd::string _warning_format;
         cd::string _error_format;

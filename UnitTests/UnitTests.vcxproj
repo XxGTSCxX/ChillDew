@@ -56,54 +56,56 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Utility\source;$(SolutionDir)Math\source;$(SolutionDir)Core\source;$(SolutionDir)Engine\source;$(SolutionDir)dependencies</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\source;$(SolutionDir)Engine\source;$(SolutionDir)Math\source;$(SolutionDir)Utility\source;$(SolutionDir)dependencies</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Chilldew-Core.lib;Chilldew-Math.lib;Chilldew-Engine.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Engine;$(SolutionDir)bin\$(Configuration)-$(Platform)\Core;$(SolutionDir)bin\$(Configuration)-$(Platform)\Math;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Chilldew-Core.lib;Chilldew-Engine.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Engine;$(SolutionDir)bin\$(Configuration)-$(Platform)\Core</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Utility\source;$(SolutionDir)Math\source;$(SolutionDir)Core\source;$(SolutionDir)Engine\source;$(SolutionDir)dependencies</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\source;$(SolutionDir)Engine\source;$(SolutionDir)Math\source;$(SolutionDir)Utility\source;$(SolutionDir)dependencies</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Chilldew-Core.lib;Chilldew-Math.lib;Chilldew-Engine.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Engine;$(SolutionDir)bin\$(Configuration)-$(Platform)\Core;$(SolutionDir)bin\$(Configuration)-$(Platform)\Math;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Chilldew-Core.lib;Chilldew-Engine.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Engine;$(SolutionDir)bin\$(Configuration)-$(Platform)\Core</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\ut_driver.h" />
     <ClInclude Include="source\ut_core.h" />
+    <ClInclude Include="source\ut_driver.h" />
     <ClInclude Include="source\ut_math.h" />
     <ClInclude Include="source\ut_performance.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\ut_driver.cpp" />
+    <ClCompile Include="source\ut_performance.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
       <Project>{3cf7a7c6-5dbc-4ac5-9a01-7a2fbca83f69}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="source\ut_driver.cpp" />
-    <ClCompile Include="source\ut_performance.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source\ut_math.inl" />

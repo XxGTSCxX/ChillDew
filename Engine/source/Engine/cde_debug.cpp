@@ -17,8 +17,31 @@
 namespace chilldew::engine
 {
 
+    namespace detail
+    {
+        inline cd::string get_session_id() noexcept
+        {
+            cd::stringstream      s_stream;
+            cdu::time::local_time curr_time = cdu::time::now();
+
+            s_stream << '[' << (curr_time.tm_year + 1900);
+            if (curr_time.tm_mon < 9) s_stream << 0;
+            s_stream << (curr_time.tm_mon + 1);
+            if (curr_time.tm_mday < 10) s_stream << 0;
+            s_stream << curr_time.tm_mday << '-';
+            if (curr_time.tm_hour < 10) s_stream << 0;
+            s_stream << curr_time.tm_hour;
+            if (curr_time.tm_min < 10) s_stream << 0;
+            s_stream << curr_time.tm_min;
+            if ((curr_time.tm_sec % 60) < 10) s_stream << 0;
+            s_stream << (curr_time.tm_sec % 60) << ']';
+
+            return s_stream.str();
+        }
+    }
+
     debug::debug()
-    : _logger{ CD_STRING("Debug Logger") }
+    : _logger{ detail::get_session_id() + CD_STRING(" Debug Logger") }
     {
         if (is_debug_build())
         {
@@ -98,8 +121,7 @@ namespace chilldew::engine
 
     void debug::disable_developer_console()
     {
-        // TODO: Implement saving current log to a file and closing of the
-        //       console window.
+        // TODO: Implement saving current log to a file.
         if (_developer_console_is_visible)
         {
             ::FreeConsole();

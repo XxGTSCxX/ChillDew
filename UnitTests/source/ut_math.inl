@@ -1,11 +1,13 @@
 #pragma once
 
+#include "ut_math.h"
+#include "ut_core.h"
+
 #include "glm/glm.hpp"
 #include "glm/gtx/projection.inl"
 #include "glm/gtx/perpendicular.inl"
 #include "glm/gtx/transform.inl"
 #include "glm/gtx/vector_angle.inl"
-#include "ut_math.h"
 
 namespace unit_tests
 {

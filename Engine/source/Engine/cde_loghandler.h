@@ -13,7 +13,7 @@
 /******************************************************************************/
 #pragma once
 
-#include "cd_core.h"
+#include "cde_core.h"
 #include "cde_iloghandler.h"
 #include <iostream> // std::iostream
 
@@ -22,7 +22,7 @@ namespace chilldew::engine
 
     struct CD_API loghandler : public iloghandler
     {
-        loghandler();
+        loghandler(cd::string const& name, cdu::filesystem::path const& directory = { cdu::filesystem::mounts::user, {} });
 
         void log(cd::string_view const& text) override;
 
@@ -31,7 +31,8 @@ namespace chilldew::engine
 
     private:
 
-        cd::iostream _log;
+        cd::iostream          m_log;
+        cdu::filesystem::file m_file;
     };
 
 }

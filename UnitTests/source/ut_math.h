@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ut_core.h"
 #include <cstddef> // std::size_t
 
 namespace unit_tests

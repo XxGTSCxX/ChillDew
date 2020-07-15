@@ -17,6 +17,15 @@
     <Filter Include="Implementations\Flag">
       <UniqueIdentifier>{d34ef7ff-490a-4957-ac3e-b5cb855eb04b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Implementations\Type">
+      <UniqueIdentifier>{516682b9-a315-4020-9b44-299cb5a3d78a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementations\Time">
+      <UniqueIdentifier>{a6c36c30-3d31-493f-a4fa-cece1fbf0676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementations\FileIO">
+      <UniqueIdentifier>{45f3e653-f86f-4fa9-b63e-efe8a0fe6052}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Chilldew-Utility.h" />
@@ -35,6 +44,15 @@
     <ClInclude Include="source\Utility\cdu_singleton.h">
       <Filter>Implementations\Singleton</Filter>
     </ClInclude>
+    <ClInclude Include="source\Utility\cdu_type.h">
+      <Filter>Implementations\Type</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\cdu_time.h">
+      <Filter>Implementations\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\cdu_filesystem.h">
+      <Filter>Implementations\FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="source\Utility\cdu_flag.inl">
@@ -47,6 +65,12 @@
   <ItemGroup>
     <ClCompile Include="source\Utility\cdu_pch.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utility\cdu_time.cpp">
+      <Filter>Implementations\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utility\cdu_filesystem.cpp">
+      <Filter>Implementations\FileIO</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

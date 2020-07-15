@@ -7,7 +7,7 @@
 
 cde::app* cde::create_app()
 {
-    return new ut::driver{};
+    return new unit_tests::driver{};
 }
 
 void cde::destroy_app(cde::app* game)

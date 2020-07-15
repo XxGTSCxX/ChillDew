@@ -15,6 +15,7 @@
 
 #include "cd_core.h" // CD_API, cd::string_view
 #include "cde_log.h"
+#include "cde_loghandler.h"
 
 namespace chilldew::engine
 {
@@ -33,7 +34,10 @@ namespace chilldew::engine
         virtual void log_error  (cd::string_view const& text) = 0;
         virtual void log_assert (cd::string_view const& text) = 0;
 
-        virtual bool is_enabled() const;
+        virtual bool is_enabled()  const;
+
+        virtual iloghandler const& get_handler() const = 0;
+        virtual iloghandler&       get_handler()       = 0;
 
     protected:
 

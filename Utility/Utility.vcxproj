@@ -61,15 +61,15 @@
       <PreprocessorDefinitions>NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\source;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Chilldew-Core.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Core</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Chilldew-Core.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Core;</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -81,7 +81,7 @@
       <PreprocessorDefinitions>NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Core\source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\source;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,28 +90,36 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Chilldew-Core.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Core</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Chilldew-Core.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\Core;</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Utility\cdu_filesystem.h" />
     <ClInclude Include="source\Utility\cdu_pch.h" />
     <ClInclude Include="source\Utility\cdu_core.h" />
     <ClInclude Include="source\Chilldew-Utility.h" />
     <ClInclude Include="source\Utility\cdu_flag.h" />
     <ClInclude Include="source\Utility\cdu_metafunctions.h" />
     <ClInclude Include="source\Utility\cdu_singleton.h" />
+    <ClInclude Include="source\Utility\cdu_time.h" />
+    <ClInclude Include="source\Utility\cdu_type.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source\Utility\cdu_flag.inl" />
     <None Include="source\Utility\cdu_singleton.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Utility\cdu_filesystem.cpp" />
     <ClCompile Include="source\Utility\cdu_pch.cpp" />
+    <ClCompile Include="source\Utility\cdu_time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{68c89c15-ffc1-45af-925e-32d66e0a4043}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Math\Math.vcxproj">
+      <Project>{c724be97-cb7b-4b60-841d-f4f02102498b}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

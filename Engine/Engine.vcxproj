@@ -127,7 +127,9 @@
   <ItemGroup>
     <ClCompile Include="source\Engine\cde_debug.cpp" />
     <ClCompile Include="source\Engine\cde_app.cpp" />
+    <ClCompile Include="source\Engine\cde_entrypoint.cpp" />
     <ClCompile Include="source\Engine\cde_ilogger.cpp" />
+    <ClCompile Include="source\Engine\cde_iloghandler.cpp" />
     <ClCompile Include="source\Engine\cde_log.cpp" />
     <ClCompile Include="source\Engine\cde_logger.cpp" />
     <ClCompile Include="source\Engine\cde_loghandler.cpp" />

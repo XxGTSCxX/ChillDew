@@ -18,6 +18,9 @@
 #include "cde_ilogger.h"
 #include "cde_logger.h"
 
+#define CD_LOG_W_FILENAME(string_literal) "[" __FILE__ "]\t" string_literal
+#define CD_LOG_W_ALL_INFO(string_literal) "[" __FILE__ ":" CD_X_STRINGIFY(__LINE__) "]\t" string_literal
+
 namespace chilldew::engine
 {
 
