@@ -30,6 +30,11 @@ namespace chilldew::utility
         return m_registered_types.find(type_id) != m_registered_types.end();
     }
 
+    bool type::is_registered(cd::string_view type_name)
+    {
+        return m_name_list.find(cd::string{ type_name }) != m_name_list.end();
+    }
+
     cd::string_view type::name(id_t type_id)
     {
         auto itr = m_registered_types.find(type_id);

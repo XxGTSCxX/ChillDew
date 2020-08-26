@@ -88,8 +88,11 @@ namespace chilldew::utility
         static bool register_parent()
         {
             static_assert(std::is_base_of_v<base_t, derived_t>, "derived_t must inherit from base_t");
+
+            type::register_type<base_t   >();
             type::register_type<derived_t>();
             m_registered_types[type::id<derived_t>()].m_base_types.emplace(type::id<base_t>());
+
             return true;
         }
 
@@ -101,6 +104,7 @@ namespace chilldew::utility
 
         static bool            is_base_of   (id_t            base_id  , id_t derived_id);
         static bool            is_registered(id_t            type_id                   );
+        static bool            is_registered(cd::string_view type_name                 );
         static cd::string_view name         (id_t            type_id                   );
         static id_t            id           (cd::string_view type_name                 );
 
