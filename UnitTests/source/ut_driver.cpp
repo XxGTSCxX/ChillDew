@@ -2,7 +2,7 @@
 #include "ut_math.inl"
 #include "ut_performance.h"
 
-#define ENABLE_MATH_TESTS
+//#define ENABLE_MATH_TESTS
 //#define ENABLE_PERF_TESTS
 
 cde::app* cde::create_app()
@@ -46,6 +46,10 @@ namespace unit_tests
 
         cde::debug::get()->log("");
 #endif
+
+        performance::test_virtual_vs_static();
+        cde::debug::get()->log("");
+
         // ---------------------------------------------------------------------
         // Exit Point
 
