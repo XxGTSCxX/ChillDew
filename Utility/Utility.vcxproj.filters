@@ -72,5 +72,8 @@
     <ClCompile Include="source\Utility\cdu_filesystem.cpp">
       <Filter>Implementations\FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="source\Utility\cdu_type.cpp">
+      <Filter>Implementations\Type</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
