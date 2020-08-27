@@ -18,7 +18,7 @@ namespace chilldew::utility
 #if defined(__GNUC__) || defined(__clang__)
             return CD_STRING_W(__PRETTY_FUNCTION__);
 #elif defined(_MSC_VER)
-            return CD_STRING_W(__FUNCSIG__);
+            return CD_L_WRAPPER(__FUNCSIG__);
 #else
             #error unsupported compiler (only GCC, clang and MSVC are supported)
 #endif
@@ -44,7 +44,7 @@ namespace chilldew::utility
         using id_t = std::size_t;
 
         static constexpr id_t            invalid_id   = 0;
-        static constexpr cd::string_view invalid_name = CD_STRING("");
+        static constexpr cd::string_view invalid_name = CD_L("");
 
         template <typename type_t>
         static constexpr cd::string_view name() noexcept

@@ -41,7 +41,7 @@ namespace chilldew::engine
     }
 
     debug::debug()
-    : _logger{ detail::get_session_id() + CD_STRING(" Debug Logger") }
+    : _logger{ detail::get_session_id() + CD_L(" Debug Logger") }
     {
         if (is_debug_build())
         {
@@ -92,8 +92,8 @@ namespace chilldew::engine
             freopen_s(&cout_buffer, "CONOUT$", "w", stdout);
 
             // Note that there is no CONERR$ file
-            HANDLE hStdout = CreateFile(CD_STRING("CONOUT$"), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-            HANDLE hStdin  = CreateFile(CD_STRING("CONIN$" ), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+            HANDLE hStdout = CreateFile(CD_L("CONOUT$"), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+            HANDLE hStdin  = CreateFile(CD_L("CONIN$" ), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
             SetStdHandle(STD_OUTPUT_HANDLE, hStdout);
             SetStdHandle(STD_ERROR_HANDLE , hStdout);

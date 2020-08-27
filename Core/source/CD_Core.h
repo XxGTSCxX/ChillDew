@@ -32,6 +32,12 @@
     #error Unsupported Platform
 #endif
 
+#include <iostream>    // std::istream , std::ostream , std::iostream
+#include <fstream>     // std::ifstream, std::fostream, std::fstream
+#include <sstream>     // std::stringstream
+#include <string>      // std::string
+#include <string_view> // std::string_view
+
 namespace chilldew {}
 namespace cd = ::chilldew;
 
@@ -40,14 +46,8 @@ namespace cd = ::chilldew;
 
 #ifdef UNICODE
 
-#include <iostream>    // std::wistream , std::wostream , std::wiostream
-#include <fstream>     // std::wifstream, std::wfostream, std::wfstream
-#include <sstream>     // std::wstringstream
-#include <string>      // std::wstring
-#include <string_view> // std::wstring_view
-
-#define CD_STRING(x)   L##x
-#define CD_STRING_W(x) CD_STRING(x)
+#define CD_L(x)         L##x
+#define CD_L_WRAPPER(x) CD_L(x)
 
 namespace chilldew
 {
@@ -78,15 +78,22 @@ namespace chilldew
 
         return result;
     }
+
+    inline std::string str_to_cstr(cd::string_view const& string)
+    {
+        std::string result;
+        size_t      size      = string.size();
+        size_t      converted = 0;
+
+        result.resize(size);
+        wcstombs_s(&converted, result.data(), size, string.data(), size);
+        result.resize(converted);
+
+        return result;
+    }
 }
 
 #else
-
-#include <iostream>    // std::istream , std::ostream , std::iostream
-#include <fstream>     // std::ifstream, std::fostream, std::fstream
-#include <sstream>     // std::stringstream
-#include <string>      // std::string
-#include <string_view> // std::string_view
 
 #define CD_STRING(x)   x
 #define CD_STRING_W(x) CD_STRING(x)
@@ -111,6 +118,11 @@ namespace chilldew
     inline cd::string cstr_to_str(std::string_view const& c_string)
     {
         return cd::string{ c_string };
+    }
+
+    inline std::string cstr_to_str(cd::string_view const& string)
+    {
+        return std::string{ string };
     }
 }
 

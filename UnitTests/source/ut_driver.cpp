@@ -59,7 +59,7 @@ namespace unit_tests
     void driver::post_update()
     {
         TCHAR input = cd::cin.get();
-        if (input == CD_STRING('\r') || input == CD_STRING('\n'))
+        if (input == CD_L('\r') || input == CD_L('\n'))
             quit();
     }
 
