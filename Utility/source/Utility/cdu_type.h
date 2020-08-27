@@ -16,7 +16,7 @@ namespace chilldew::utility
         constexpr TCHAR const* function_signature()
         {
 #if defined(__GNUC__) || defined(__clang__)
-            return CD_STRING_W(__PRETTY_FUNCTION__);
+            return CD_L_WRAPPER(__PRETTY_FUNCTION__);
 #elif defined(_MSC_VER)
             return CD_L_WRAPPER(__FUNCSIG__);
 #else
