@@ -47,7 +47,7 @@ namespace unit_tests
         cde::debug::get()->log("");
 #endif
 
-        performance::test_virtual_vs_static();
+        performance::test_multiplication_vs_assignment();
         cde::debug::get()->log("");
 
         // ---------------------------------------------------------------------

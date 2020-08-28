@@ -13,6 +13,7 @@ namespace unit_tests
         static void test_conditional_vs_multiplication();
         static void test_if_vs_tenary();
         static void test_virtual_vs_static();
+        static void test_multiplication_vs_assignment();
 
     private:
 

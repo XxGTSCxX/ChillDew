@@ -8,7 +8,7 @@
 namespace unit_tests
 {
 
-    static constexpr std::size_t size    = std::numeric_limits<unsigned short>::max() >> 1;
+    static constexpr std::size_t size    = std::numeric_limits<unsigned short>::max() >> 2;
     static constexpr std::size_t runtime = std::numeric_limits<short>::max();
     static constexpr std::size_t mod     = runtime >> 5;
 
@@ -372,6 +372,61 @@ namespace unit_tests
         double con_vs_mul = m_avg * 100.0 / c_avg;
 
         cde::debug::get()->log("Result: Virtual was {}% {} than custom", con_vs_mul, con_vs_mul >= 100.0 ? "faster" : "slower");
+    }
+
+    void performance::test_multiplication_vs_assignment()
+    {
+        cde::debug::get()->log("// -----------------------------------------------------------------------------");
+        cde::debug::get()->log("// Multiplication vs Assignment"                                                 );
+        cde::debug::get()->log("// -----------------------------------------------------------------------------");
+
+        cd::cout << "Initialising... ";
+
+        double c_avg = 0.0;
+        double m_avg = 0.0;
+        float  value = 0.0f;
+
+        cd::cout << "Complete" << std::endl;
+        cd::cout << "  Multiplication Test: ";
+
+        for (std::size_t run = 0; run < runtime; ++run)
+        {
+            c_avg += time_test([&]()
+                {
+                    for (std::size_t i = 0; i < size; ++i)
+                    {
+                        value  = (float)i;
+                        value *= 0.0f;
+                    }
+                }, true);
+
+            if (!(run % mod))
+                cd::cout << '.';
+        }
+
+        cd::cout << " Avg Time: " << (c_avg /= runtime) << std::endl;
+        cd::cout << "  Assignment Test    : ";
+
+        for (std::size_t run = 0; run < runtime; ++run)
+        {
+            m_avg += time_test([&]()
+                {
+                    for (std::size_t i = 0; i < size; ++i)
+                    {
+                        value = (float)i;
+                        value = 0.0f;
+                    }
+                }, true);
+
+            if (!(run % mod))
+                cd::cout << '.';
+        }
+
+        cd::cout << " Avg Time: " << (m_avg /= runtime) << std::endl;
+
+        double con_vs_mul = m_avg * 100.0 / c_avg;
+
+        cde::debug::get()->log("Result: Multiplication was {}% {} than assignment", con_vs_mul, con_vs_mul >= 100.0 ? "faster" : "slower");
     }
 
     double performance::time_test(std::function<void()> const& function, bool suppress_print)
