@@ -32,6 +32,12 @@
     #error Unsupported Platform
 #endif
 
+#ifdef __GNUC__
+#define GCC_VERSION (  __GNUC__       * 10000 \
+                     + __GNUC_MINOR__ * 100   \
+                     + __GNUC_PATCHLEVEL__)
+#endif
+
 #include <iostream>    // std::istream , std::ostream , std::iostream
 #include <fstream>     // std::ifstream, std::fostream, std::fstream
 #include <sstream>     // std::stringstream

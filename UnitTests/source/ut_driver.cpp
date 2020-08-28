@@ -47,8 +47,8 @@ namespace unit_tests
         cde::debug::get()->log("");
 #endif
 
-        performance::test_virtual_vs_static();
-        cde::debug::get()->log("");
+        cde::debug::get()->log("MSVC version: {} has format {}"        , _MSC_VER, cdu::detail::function_signature<performance>());
+        cde::debug::get()->log("typename of unit_test::performace = {}", cdu::type::name<performance>()                          );
 
         // ---------------------------------------------------------------------
         // Exit Point
