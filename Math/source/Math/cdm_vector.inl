@@ -199,10 +199,10 @@ namespace chilldew::math
     template <typename elem_t, std::size_t size_v>
     constexpr cd::ostream& operator<<(cd::ostream& stream, vector<elem_t, size_v> const& vec)
     {
-        stream << CD_STRING("{ ") << vec[0];
+        stream << CD_L("{ ") << vec[0];
         for (std::size_t i = 1; i < size_v; ++i)
-            stream << CD_STRING(", ") << vec[i];
-        return stream << CD_STRING(" }");
+            stream << CD_L(", ") << vec[i];
+        return stream << CD_L(" }");
     }
 
     template <typename elem_t, std::size_t size_v>

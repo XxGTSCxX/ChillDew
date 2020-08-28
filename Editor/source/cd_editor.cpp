@@ -30,8 +30,8 @@ namespace chilldew
     {
         cde::debug::get()->enable_developer_console();
 
-        cde::debug::get()->log("Working Directory: {}", cdu::filesystem::get()->convert_path(cdu::filesystem::path{ CD_STRING("assets"), CD_STRING("") }));
-        cde::debug::get()->log("User Directory   : {}", cdu::filesystem::get()->convert_path(cdu::filesystem::path{ CD_STRING("user"  ), CD_STRING("") }));
+        cde::debug::get()->log("Working Directory: {}", cdu::filesystem::get()->convert_path(cdu::filesystem::path{ CD_L("assets"), CD_L("") }));
+        cde::debug::get()->log("User Directory   : {}", cdu::filesystem::get()->convert_path(cdu::filesystem::path{ CD_L("user"  ), CD_L("") }));
 
         cde::debug::get()->log_warning("Press [Enter] to Quit the app");
         std::cin.get();

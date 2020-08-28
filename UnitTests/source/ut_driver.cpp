@@ -47,8 +47,8 @@ namespace unit_tests
         cde::debug::get()->log("");
 #endif
 
-        performance::test_multiplication_vs_assignment();
-        cde::debug::get()->log("");
+        cde::debug::get()->log("MSVC version: {} has format {}"        , _MSC_VER, cdu::detail::function_signature<performance>());
+        cde::debug::get()->log("typename of unit_test::performace = {}", cdu::type::name<performance>()                          );
 
         // ---------------------------------------------------------------------
         // Exit Point
@@ -59,7 +59,7 @@ namespace unit_tests
     void driver::post_update()
     {
         TCHAR input = cd::cin.get();
-        if (input == CD_STRING('\r') || input == CD_STRING('\n'))
+        if (input == CD_L('\r') || input == CD_L('\n'))
             quit();
     }
 

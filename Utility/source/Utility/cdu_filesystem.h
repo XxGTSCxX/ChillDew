@@ -13,8 +13,8 @@ namespace chilldew::utility
         // List of built in mounts
         struct mounts
         {
-            static constexpr cd::string_view user   = CD_STRING("user"  );
-            static constexpr cd::string_view assets = CD_STRING("assets");
+            static constexpr cd::string_view user   = CD_L("user"  );
+            static constexpr cd::string_view assets = CD_L("assets");
         };
 
         struct path

@@ -22,28 +22,28 @@ namespace chilldew::engine
     {
         struct colour
         {
-            static constexpr cd::string_view reset          = CD_STRING("\033[0m"   ); // Default
-            static constexpr cd::string_view black          = CD_STRING("\033[30m"  ); // Black
-            static constexpr cd::string_view red            = CD_STRING("\033[31m"  ); // Red
-            static constexpr cd::string_view green          = CD_STRING("\033[32m"  ); // Green
-            static constexpr cd::string_view yellow         = CD_STRING("\033[33m"  ); // Yellow
-            static constexpr cd::string_view blue           = CD_STRING("\033[34m"  ); // Blue
-            static constexpr cd::string_view magenta        = CD_STRING("\033[35m"  ); // Magenta
-            static constexpr cd::string_view cyan           = CD_STRING("\033[36m"  ); // Cyan
-            static constexpr cd::string_view white          = CD_STRING("\033[37m"  ); // White
-            static constexpr cd::string_view bright_black   = CD_STRING("\033[1;30m"); // Bright Black
-            static constexpr cd::string_view bright_red     = CD_STRING("\033[1;31m"); // Bright Red
-            static constexpr cd::string_view bright_green   = CD_STRING("\033[1;32m"); // Bright Green
-            static constexpr cd::string_view bright_yellow  = CD_STRING("\033[1;33m"); // Bright Yellow
-            static constexpr cd::string_view bright_blue    = CD_STRING("\033[1;34m"); // Bright Blue
-            static constexpr cd::string_view bright_magenta = CD_STRING("\033[1;35m"); // Bright Magenta
-            static constexpr cd::string_view bright_cyan    = CD_STRING("\033[1;36m"); // Bright Cyan
-            static constexpr cd::string_view bright_white   = CD_STRING("\033[1;37m"); // Bright White
+            static constexpr cd::string_view reset          = CD_L("\033[0m"   ); // Default
+            static constexpr cd::string_view black          = CD_L("\033[30m"  ); // Black
+            static constexpr cd::string_view red            = CD_L("\033[31m"  ); // Red
+            static constexpr cd::string_view green          = CD_L("\033[32m"  ); // Green
+            static constexpr cd::string_view yellow         = CD_L("\033[33m"  ); // Yellow
+            static constexpr cd::string_view blue           = CD_L("\033[34m"  ); // Blue
+            static constexpr cd::string_view magenta        = CD_L("\033[35m"  ); // Magenta
+            static constexpr cd::string_view cyan           = CD_L("\033[36m"  ); // Cyan
+            static constexpr cd::string_view white          = CD_L("\033[37m"  ); // White
+            static constexpr cd::string_view bright_black   = CD_L("\033[1;30m"); // Bright Black
+            static constexpr cd::string_view bright_red     = CD_L("\033[1;31m"); // Bright Red
+            static constexpr cd::string_view bright_green   = CD_L("\033[1;32m"); // Bright Green
+            static constexpr cd::string_view bright_yellow  = CD_L("\033[1;33m"); // Bright Yellow
+            static constexpr cd::string_view bright_blue    = CD_L("\033[1;34m"); // Bright Blue
+            static constexpr cd::string_view bright_magenta = CD_L("\033[1;35m"); // Bright Magenta
+            static constexpr cd::string_view bright_cyan    = CD_L("\033[1;36m"); // Bright Cyan
+            static constexpr cd::string_view bright_white   = CD_L("\033[1;37m"); // Bright White
         };
 
         struct format
         {
-            static constexpr cd::string_view variable_specifier = CD_STRING("{}");
+            static constexpr cd::string_view variable_specifier = CD_L("{}");
 
             static cd::string format_text(cd::string_view const& text);
 

@@ -5,6 +5,12 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#if (defined(__GNUC__) && GCC_VERSION >= 100000) || defined(_MSC_VER)
+    #define SYNTAX_VER 1
+#else
+    #define SYNTAX_VER 0
+#endif
+
 namespace chilldew::utility
 {
 
@@ -13,12 +19,12 @@ namespace chilldew::utility
         // This function is used to get the string literal for the templated
         // type. It can then be trimmed using string_view to get the type name.
         template <typename type_t>
-        constexpr TCHAR const* function_signature()
+        constexpr TCHAR const* function_signature() noexcept
         {
 #if defined(__GNUC__) || defined(__clang__)
-            return CD_STRING_W(__PRETTY_FUNCTION__);
+            return CD_L_WRAPPER(__PRETTY_FUNCTION__);
 #elif defined(_MSC_VER)
-            return CD_STRING_W(__FUNCSIG__);
+            return CD_L_WRAPPER(__FUNCSIG__);
 #else
             #error unsupported compiler (only GCC, clang and MSVC are supported)
 #endif
@@ -37,6 +43,18 @@ namespace chilldew::utility
 
             return curr;
         }
+
+        inline constexpr std::size_t find(cd::string_view const& view, TCHAR character, std::size_t offset = 0)
+        {
+#ifdef __clang__
+            for (std::size_t pos = offset; pos < view.size(); ++pos)
+                if (view[pos] == character)
+                    return pos;
+            return std::string_view::npos;
+#else
+            return view.find(character, offset);
+#endif
+        }
     }
 
     struct type
@@ -44,26 +62,36 @@ namespace chilldew::utility
         using id_t = std::size_t;
 
         static constexpr id_t            invalid_id   = 0;
-        static constexpr cd::string_view invalid_name = CD_STRING("");
+        static constexpr cd::string_view invalid_name = CD_L("");
 
         template <typename type_t>
         static constexpr cd::string_view name() noexcept
         {
             constexpr cd::string_view funcsig = detail::function_signature<type_t>();
-            constexpr std::size_t     start   = funcsig.find('<') + 1;
-            constexpr std::size_t     space   = funcsig.find(' ', start);
-            constexpr std::size_t     end     = funcsig.find('>');
 
-            // Checking if we can trim away the "struct" or "class" part of the
-            // name.
-            if constexpr (space != cd::string_view::npos)
+#if SYNTAX_VER == 0
+            constexpr std::size_t start = detail::find(funcsig, CD_L('=')       ) + 2;
+            constexpr std::size_t end   = detail::find(funcsig, CD_L(']'), start);
+            return funcsig.substr(start, end - start);
+#elif SYNTAX_VER == 1
+            constexpr std::size_t t_start = detail::find(funcsig, CD_L('<')         ) + 1;
+            constexpr std::size_t n_start = detail::find(funcsig, CD_L(' '), t_start);
+            constexpr std::size_t end     = detail::find(funcsig, CD_L('>')         );
+
+            if constexpr (n_start < end)
             {
-                return funcsig.substr(space + 1, end - space - 1);
+#if _MSC_VER <= 1916
+                if constexpr (funcsig[t_start] == 's') return funcsig.substr(n_start + 2, end - n_start - 2);
+                else                                   return funcsig.substr(n_start + 1, end - n_start - 1);
+#else
+                return funcsig.substr(n_start + 1, end - n_start - 1);
+#endif
             }
             else
-            {
-                return funcsig.substr(start, end - start);
-            }
+                return funcsig.substr(t_start, end - t_start);
+#else
+            #error unsupported function signature syntax
+#endif
         }
 
         template <typename type_t>

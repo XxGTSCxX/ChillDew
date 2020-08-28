@@ -170,7 +170,7 @@ namespace chilldew::math
     template <typename elem_t>
     cd::ostream& operator<<(cd::ostream& stream, vector<elem_t, 4> const& vec)
     {
-        return stream << CD_STRING("{ ") << vec[0] << CD_STRING(", ") << vec[1] << CD_STRING(", ") << vec[2] << CD_STRING(", ") << vec[3] << CD_STRING(" }");
+        return stream << CD_L("{ ") << vec[0] << CD_L(", ") << vec[1] << CD_L(", ") << vec[2] << CD_L(", ") << vec[3] << CD_L(" }");
     }
 
     template <typename elem_t>
