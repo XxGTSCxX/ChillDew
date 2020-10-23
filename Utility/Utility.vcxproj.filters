@@ -26,6 +26,15 @@
     <Filter Include="Implementations\FileIO">
       <UniqueIdentifier>{45f3e653-f86f-4fa9-b63e-efe8a0fe6052}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Implementations\Reflection">
+      <UniqueIdentifier>{11668e6f-f20d-4edc-9910-4a24b489af88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementations\Containers">
+      <UniqueIdentifier>{ec27dce1-9e58-4f0c-b9a9-ddc68b6a42e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementations\MetaFunctions">
+      <UniqueIdentifier>{e95ec9e4-6713-4be1-93c7-1a47c3c1da4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Chilldew-Utility.h" />
@@ -52,6 +61,27 @@
     </ClInclude>
     <ClInclude Include="source\Utility\cdu_filesystem.h">
       <Filter>Implementations\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\cdu_reflector.h">
+      <Filter>Implementations\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\cdu_stlcontainers.h">
+      <Filter>Implementations\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\Properties.h">
+      <Filter>Implementations\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\PropertyConfig.h">
+      <Filter>Implementations\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\cdu_reflection.h">
+      <Filter>Implementations\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\cdu_reflect.h">
+      <Filter>Implementations\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utility\cdu_metafunction.h">
+      <Filter>Implementations\MetaFunctions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

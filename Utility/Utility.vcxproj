@@ -95,15 +95,22 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Utility\cdu_metafunction.h" />
+    <ClInclude Include="source\Utility\cdu_reflect.h" />
+    <ClInclude Include="source\Utility\cdu_reflection.h" />
+    <ClInclude Include="source\Utility\cdu_stlcontainers.h" />
     <ClInclude Include="source\Utility\cdu_filesystem.h" />
     <ClInclude Include="source\Utility\cdu_pch.h" />
     <ClInclude Include="source\Utility\cdu_core.h" />
     <ClInclude Include="source\Chilldew-Utility.h" />
     <ClInclude Include="source\Utility\cdu_flag.h" />
     <ClInclude Include="source\Utility\cdu_metafunctions.h" />
+    <ClInclude Include="source\Utility\cdu_reflector.h" />
     <ClInclude Include="source\Utility\cdu_singleton.h" />
     <ClInclude Include="source\Utility\cdu_time.h" />
     <ClInclude Include="source\Utility\cdu_type.h" />
+    <ClInclude Include="source\Utility\Properties.h" />
+    <ClInclude Include="source\Utility\PropertyConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source\Utility\cdu_flag.inl" />

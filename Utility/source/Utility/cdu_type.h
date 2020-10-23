@@ -80,7 +80,8 @@ namespace chilldew::utility
 
             if constexpr (n_start < end)
             {
-#if _MSC_VER <= 1916
+#if _MSC_VER <= 1916 // Because for some reason in VS 2017 .find(' ') returns
+                     // one character off.
                 if constexpr (funcsig[t_start] == 's') return funcsig.substr(n_start + 2, end - n_start - 2);
                 else                                   return funcsig.substr(n_start + 1, end - n_start - 1);
 #else
@@ -159,4 +160,16 @@ namespace chilldew::utility
         static inline name_list_t        m_name_list       {};
     };
 
+    template <type::id_t type_id_v>
+    struct get_type;
+
 }
+
+#define CD_MAKE_GET_TYPE(type_t)             \
+    template <>                              \
+    struct cdu::get_type<type::id<type_t>()> \
+    {                                        \
+        using type = type_t;                 \
+    };
+
+#undef SYNTAX_VER
